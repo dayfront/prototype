@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dayfront · Operator console</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root,.df-dark{color-scheme:dark;--df-canvas:#0E1113;--df-sheet:#15191C;--df-recessed:#181D20;--df-raised:#1C2226;--df-in-chair:#1E2B2D;--df-floating:#262E33;--df-lift:#262E33;--df-thumb:#2A3136;--df-thumb-disc:#30383D;--df-scrim:rgba(14,17,19,.86);--df-backdrop:rgba(14,17,19,.72);--df-edge-ink:#FFFFFF;--df-text-1:#EDF0F2;--df-text-2:#B3BCC2;--df-text-3:#8B969E;--df-on-accent:#04211D;--df-on-accent-fill:rgba(4,33,29,.12);--df-accent:#5EEAD4;--df-accent-hover:#99F6E4;--df-accent-edge:rgba(255,255,255,.35);--df-accent-progress:rgba(94,234,212,.07);--df-accent-soft:rgba(94,234,212,.12);--df-accent-chip:rgba(94,234,212,.14);--df-accent-halo:rgba(94,234,212,.16);--df-accent-ring:rgba(94,234,212,.22);--df-accent-glow:rgba(94,234,212,.35);--df-accent-underline:rgba(94,234,212,.75);--df-amber:#F5B454;--df-amber-row:rgba(245,180,84,.08);--df-amber-soft:rgba(245,180,84,.12);--df-amber-chip:rgba(245,180,84,.14);--df-amber-callout:rgba(245,180,84,.16);--df-amber-track:rgba(245,180,84,.25);--df-amber-ring:rgba(245,180,84,.32);--df-amber-dash:rgba(245,180,84,.4);--df-amber-dash-strong:rgba(245,180,84,.6);--df-blue:#8AB4F8;--df-blue-soft:rgba(138,180,248,.12);--df-blue-chip:rgba(138,180,248,.14);--df-overlay-025:rgba(255,255,255,.025);--df-overlay-03:rgba(255,255,255,.03);--df-overlay-04:rgba(255,255,255,.04);--df-overlay-05:rgba(255,255,255,.05);--df-overlay-06:rgba(255,255,255,.06);--df-overlay-07:rgba(255,255,255,.07);--df-overlay-08:rgba(255,255,255,.08);--df-overlay-10:rgba(255,255,255,.1);--df-overlay-12:rgba(255,255,255,.12);--df-overlay-14:rgba(255,255,255,.14);--df-overlay-24:rgba(255,255,255,.24);--df-overlay-28:rgba(255,255,255,.28);--df-shadow-18:rgba(0,0,0,.18);--df-shadow-25:rgba(0,0,0,.25);--df-shadow-30:rgba(0,0,0,.3);--df-shadow-35:rgba(0,0,0,.35);--df-shadow-40:rgba(0,0,0,.4);--df-shadow-45:rgba(0,0,0,.45);--df-shadow-50:rgba(0,0,0,.5);--df-shadow-55:rgba(0,0,0,.55);--df-shadow-60:rgba(0,0,0,.6);--df-shadow-65:rgba(0,0,0,.65);--df-illus-card-front:#E6EAEE;--df-illus-card-back:#DEE3E7;--df-illus-card-disc-1:#CFDCE4;--df-illus-card-disc-2:#D8E2E8;--df-illus-crop:#DDE3E8;--df-illus-logo:#2F5A73;--df-illus-ink-title:#1E3A4C;--df-illus-ink-heading:#33434D;--df-illus-ink-strong:#15232C;--df-illus-ink-field:#1D2A33;--df-illus-ink-meta:#3E4C55;--df-illus-ink-subtle:#5B6972;--df-illus-ink-label:#6A7780;--df-illus-ink-faint:#7C8993;--df-illus-rule:#B7C1C8;--df-illus-amber-fill:rgba(245,180,84,.5);--df-illus-amber-ring:#C98A1E;--df-danger:#F28B82;--df-danger-soft:rgba(242,139,130,.12);--df-focus-ring:#5EEAD4;--df-control-edge:#737F87;--df-shadow-track:inset 0 0 0 1px rgba(255,255,255,.04);--df-shadow-segment-mode:inset 0 1px 0 rgba(255,255,255,.08), 0 1px 2px rgba(0,0,0,.45);--df-shadow-nav-active:inset 0 1px 0 rgba(255,255,255,.05), 0 1px 2px rgba(0,0,0,.3);--df-shadow-ring-tile:inset 0 0 0 1px rgba(255,255,255,.06);--df-shadow-avatar:inset 0 1px 0 rgba(255,255,255,.08);--df-shadow-button-quiet:inset 0 1px 0 rgba(255,255,255,.06), 0 0 0 1px rgba(255,255,255,.04);--df-shadow-sheet:inset 0 1px 0 rgba(255,255,255,.05), 0 0 0 1px rgba(255,255,255,.03), 0 16px 48px rgba(0,0,0,.4);--df-shadow-halo-live:0 0 0 3px rgba(94,234,212,.16);--df-shadow-input:inset 0 1px 0 rgba(255,255,255,.05), 0 0 0 1px #737F87;--df-shadow-floating-chip:inset 0 1px 0 rgba(255,255,255,.06);--df-shadow-raised:inset 0 1px 0 rgba(255,255,255,.06), 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.18);--df-shadow-segment:inset 0 1px 0 rgba(255,255,255,.08), 0 1px 2px rgba(0,0,0,.4);--df-shadow-ring-in-chair:inset 0 0 0 1px rgba(94,234,212,.22);--df-shadow-lift-row:inset 0 1px 0 rgba(255,255,255,.06), 0 4px 12px -2px rgba(0,0,0,.35);--df-shadow-primary-compact:inset 0 1px 0 rgba(255,255,255,.35);--df-shadow-secondary-compact:inset 0 1px 0 rgba(255,255,255,.05);--df-shadow-ring-tier:inset 0 0 0 1px rgba(255,255,255,.08);--df-shadow-panel:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px rgba(255,255,255,.05), 0 2px 6px rgba(0,0,0,.35), 0 32px 64px -12px rgba(0,0,0,.65);--df-shadow-hairline-below:0 1px 0 rgba(255,255,255,.04);--df-shadow-ring-well:inset 0 0 0 1px rgba(255,255,255,.03);--df-shadow-lift:inset 0 1px 0 rgba(255,255,255,.08), 0 0 0 1px rgba(255,255,255,.04), 0 2px 6px rgba(0,0,0,.3), 0 10px 24px -6px rgba(0,0,0,.55);--df-shadow-ring-tier-card:inset 0 0 0 1px rgba(255,255,255,.1);--df-shadow-input-outline:inset 0 0 0 1px #737F87;--df-shadow-primary:inset 0 1px 0 rgba(255,255,255,.35), 0 1px 2px rgba(0,0,0,.4);--df-shadow-panel-composer:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px #737F87;--df-shadow-mic:0 1px 2px rgba(0,0,0,.4);--df-shadow-new-chat:inset 0 1px 0 rgba(255,255,255,.06), 0 1px 2px rgba(0,0,0,.3);--df-shadow-thumb:inset 0 0 0 1px rgba(255,255,255,.06), 0 12px 24px -8px rgba(0,0,0,.6);--df-shadow-photo-card:0 8px 16px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);--df-shadow-photo-highlight-ring:0 0 0 1px #C98A1E;--df-shadow-action-card:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px rgba(255,255,255,.05), 0 2px 6px rgba(0,0,0,.3), 0 20px 48px -12px rgba(0,0,0,.6);--df-shadow-icon-tile:inset 0 1px 0 rgba(255,255,255,.07);--df-shadow-ring-verify:inset 0 0 0 1px rgba(245,180,84,.32);--df-shadow-primary-hero:inset 0 1px 0 rgba(255,255,255,.35), 0 1px 2px rgba(0,0,0,.4), 0 8px 20px -8px rgba(94,234,212,.35);--df-shadow-composer:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px #737F87, 0 2px 6px rgba(0,0,0,.3), 0 16px 40px -8px rgba(0,0,0,.6);--df-shadow-rail:inset 0 1px 0 rgba(255,255,255,.06), 0 0 0 1px rgba(255,255,255,.04), 0 2px 6px rgba(0,0,0,.25), 0 16px 40px -8px rgba(0,0,0,.5);--df-shadow-avatar-lg:inset 0 1px 0 rgba(255,255,255,.08), 0 0 0 1px rgba(255,255,255,.05);--df-shadow-halo-pending:0 0 0 3px rgba(245,180,84,.16);--df-shadow-input-inline:inset 0 0 0 1px #737F87;--df-shadow-choice:inset 0 0 0 1.5px #8B969E;--df-shadow-choice-on:inset 0 0 0 1.5px #5EEAD4, inset 0 0 0 4.5px #262E33;--df-shadow-choice-blocking:inset 0 0 0 1.5px #F5B454;--df-shadow-photo-card-sm:0 6px 12px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);--df-shadow-dot-cutout:0 0 0 3px #1C2226;--df-shadow-dot-cutout-live:0 0 0 3px rgba(94,234,212,.16), 0 0 0 3px #1C2226;--df-shadow-ring-pill:inset 0 0 0 1px rgba(255,255,255,.14);--df-shadow-input-invalid:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px rgba(245,180,84,.6);--df-shadow-hairline-above:0 -1px 0 rgba(255,255,255,.04);--df-shadow-button-disabled:inset 0 1px 0 rgba(255,255,255,.04);--df-shadow-mark:inset 0 0 0 1px rgba(255,255,255,.07);--df-shadow-blockout:inset 0 0 0 1px rgba(255,255,255,.05);--df-shadow-action-bar:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px rgba(255,255,255,.05), 0 2px 6px rgba(0,0,0,.3), 0 16px 40px -8px rgba(0,0,0,.6);--df-shadow-input-attention:inset 0 0 0 1px rgba(245,180,84,.6)}
+:root[data-theme="light"],.df-light{color-scheme:light;--df-canvas:#E6E9EC;--df-sheet:#EFF1F3;--df-recessed:#F3F5F6;--df-raised:#F9FAFB;--df-in-chair:#EBF3F2;--df-floating:#FFFFFF;--df-lift:#FFFFFF;--df-thumb:#2A3136;--df-thumb-disc:#30383D;--df-scrim:rgba(255,255,255,.88);--df-backdrop:rgba(17,24,28,.36);--df-edge-ink:#11181C;--df-text-1:#11181C;--df-text-2:#3E4950;--df-text-3:#57636B;--df-on-accent:#FFFFFF;--df-on-accent-fill:rgba(0,20,18,.22);--df-accent:#0E6F68;--df-accent-hover:#0A5550;--df-accent-edge:rgba(255,255,255,.2);--df-accent-progress:rgba(14,111,104,.07);--df-accent-soft:rgba(14,111,104,.09);--df-accent-chip:rgba(14,111,104,.10);--df-accent-halo:rgba(14,111,104,.16);--df-accent-ring:rgba(14,111,104,.30);--df-accent-glow:rgba(14,111,104,.32);--df-accent-underline:rgba(14,111,104,.7);--df-amber:#8D5400;--df-amber-row:rgba(141,84,0,.06);--df-amber-soft:rgba(141,84,0,.10);--df-amber-chip:rgba(141,84,0,.08);--df-amber-callout:rgba(141,84,0,.12);--df-amber-track:rgba(141,84,0,.22);--df-amber-ring:rgba(141,84,0,.75);--df-amber-dash:rgba(141,84,0,.45);--df-amber-dash-strong:rgba(141,84,0,.6);--df-blue:#1452A9;--df-blue-soft:rgba(20,82,169,.09);--df-blue-chip:rgba(20,82,169,.10);--df-overlay-025:rgba(17,24,28,.035);--df-overlay-03:rgba(17,24,28,.05);--df-overlay-04:rgba(17,24,28,.05);--df-overlay-05:rgba(17,24,28,.06);--df-overlay-06:rgba(17,24,28,.07);--df-overlay-07:rgba(17,24,28,.08);--df-overlay-08:rgba(17,24,28,.10);--df-overlay-10:rgba(17,24,28,.12);--df-overlay-12:rgba(17,24,28,.22);--df-overlay-14:rgba(17,24,28,.24);--df-overlay-24:rgba(17,24,28,.36);--df-overlay-28:rgba(17,24,28,.42);--df-shadow-18:rgba(17,24,28,.05);--df-shadow-25:rgba(17,24,28,.05);--df-shadow-30:rgba(17,24,28,.06);--df-shadow-35:rgba(17,24,28,.07);--df-shadow-40:rgba(17,24,28,.10);--df-shadow-45:rgba(17,24,28,.12);--df-shadow-50:rgba(17,24,28,.10);--df-shadow-55:rgba(17,24,28,.14);--df-shadow-60:rgba(17,24,28,.14);--df-shadow-65:rgba(17,24,28,.18);--df-illus-card-front:#E6EAEE;--df-illus-card-back:#DEE3E7;--df-illus-card-disc-1:#CFDCE4;--df-illus-card-disc-2:#D8E2E8;--df-illus-crop:#DDE3E8;--df-illus-logo:#2F5A73;--df-illus-ink-title:#1E3A4C;--df-illus-ink-heading:#33434D;--df-illus-ink-strong:#15232C;--df-illus-ink-field:#1D2A33;--df-illus-ink-meta:#3E4C55;--df-illus-ink-subtle:#5B6972;--df-illus-ink-label:#6A7780;--df-illus-ink-faint:#7C8993;--df-illus-rule:#B7C1C8;--df-illus-amber-fill:rgba(245,180,84,.5);--df-illus-amber-ring:#C98A1E;--df-danger:#B3261E;--df-danger-soft:rgba(179,38,30,.09);--df-focus-ring:#0E6F68;--df-control-edge:#737F87;--df-shadow-track:inset 0 0 0 1px rgba(17,24,28,.06);--df-shadow-segment-mode:0 0 0 1px rgba(17,24,28,.08), 0 1px 2px rgba(17,24,28,.12);--df-shadow-nav-active:0 0 0 1px rgba(17,24,28,.07), 0 1px 2px rgba(17,24,28,.06);--df-shadow-ring-tile:inset 0 0 0 1px rgba(17,24,28,.08);--df-shadow-avatar:inset 0 0 0 1px rgba(17,24,28,.10);--df-shadow-button-quiet:0 0 0 1px rgba(17,24,28,.10), 0 1px 2px rgba(17,24,28,.06);--df-shadow-sheet:0 0 0 1px rgba(17,24,28,.06), 0 1px 2px rgba(17,24,28,.04), 0 16px 48px rgba(17,24,28,.08);--df-shadow-halo-live:0 0 0 3px rgba(14,111,104,.16);--df-shadow-input:0 0 0 1px #737F87;--df-shadow-floating-chip:inset 0 0 0 1px rgba(17,24,28,.08), 0 1px 2px rgba(17,24,28,.04);--df-shadow-raised:0 0 0 1px rgba(17,24,28,.07), 0 1px 2px rgba(17,24,28,.06), 0 8px 24px rgba(17,24,28,.05);--df-shadow-segment:0 0 0 1px rgba(17,24,28,.08), 0 1px 2px rgba(17,24,28,.10);--df-shadow-ring-in-chair:inset 0 0 0 1px rgba(14,111,104,.30);--df-shadow-lift-row:0 0 0 1px rgba(17,24,28,.07), 0 4px 12px -2px rgba(17,24,28,.10);--df-shadow-primary-compact:inset 0 1px 0 rgba(255,255,255,.2);--df-shadow-secondary-compact:inset 0 0 0 1px rgba(17,24,28,.08);--df-shadow-ring-tier:inset 0 0 0 1px rgba(17,24,28,.12);--df-shadow-panel:0 0 0 1px rgba(17,24,28,.08), 0 2px 6px rgba(17,24,28,.07), 0 32px 64px -12px rgba(17,24,28,.18);--df-shadow-hairline-below:0 1px 0 rgba(17,24,28,.07);--df-shadow-ring-well:inset 0 0 0 1px rgba(17,24,28,.05);--df-shadow-lift:0 0 0 1px rgba(17,24,28,.08), 0 2px 6px rgba(17,24,28,.06), 0 10px 24px -6px rgba(17,24,28,.14);--df-shadow-ring-tier-card:inset 0 0 0 1px rgba(17,24,28,.14);--df-shadow-input-outline:inset 0 0 0 1px #737F87;--df-shadow-primary:inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(17,24,28,.16);--df-shadow-panel-composer:0 0 0 1px #737F87;--df-shadow-mic:0 1px 2px rgba(17,24,28,.16);--df-shadow-new-chat:0 0 0 1px rgba(17,24,28,.08), 0 1px 2px rgba(17,24,28,.06);--df-shadow-thumb:inset 0 0 0 1px rgba(17,24,28,.08), 0 12px 24px -8px rgba(17,24,28,.22);--df-shadow-photo-card:0 8px 16px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);--df-shadow-photo-highlight-ring:0 0 0 1px #C98A1E;--df-shadow-action-card:0 0 0 1px rgba(17,24,28,.08), 0 2px 6px rgba(17,24,28,.06), 0 20px 48px -12px rgba(17,24,28,.14);--df-shadow-icon-tile:inset 0 0 0 1px rgba(17,24,28,.08);--df-shadow-ring-verify:inset 0 0 0 1px rgba(141,84,0,.75);--df-shadow-primary-hero:inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(17,24,28,.16), 0 8px 20px -8px rgba(14,111,104,.32);--df-shadow-composer:0 0 0 1px #737F87, 0 2px 6px rgba(17,24,28,.06), 0 16px 40px -8px rgba(17,24,28,.14);--df-shadow-rail:0 0 0 1px rgba(17,24,28,.07), 0 2px 6px rgba(17,24,28,.05), 0 16px 40px -8px rgba(17,24,28,.10);--df-shadow-avatar-lg:inset 0 0 0 1px rgba(17,24,28,.10), 0 1px 2px rgba(17,24,28,.06);--df-shadow-halo-pending:0 0 0 3px rgba(141,84,0,.12);--df-shadow-input-inline:inset 0 0 0 1px #737F87;--df-shadow-choice:inset 0 0 0 1.5px #57636B;--df-shadow-choice-on:inset 0 0 0 1.5px #0E6F68, inset 0 0 0 4.5px #FFFFFF;--df-shadow-choice-blocking:inset 0 0 0 1.5px #8D5400;--df-shadow-photo-card-sm:0 6px 12px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);--df-shadow-dot-cutout:0 0 0 3px #F9FAFB;--df-shadow-dot-cutout-live:0 0 0 3px rgba(14,111,104,.16), 0 0 0 3px #F9FAFB;--df-shadow-ring-pill:inset 0 0 0 1px rgba(17,24,28,.20);--df-shadow-input-invalid:0 0 0 1px #8D5400;--df-shadow-hairline-above:0 -1px 0 rgba(17,24,28,.07);--df-shadow-button-disabled:inset 0 0 0 1px rgba(17,24,28,.06);--df-shadow-mark:inset 0 0 0 1px rgba(17,24,28,.12);--df-shadow-blockout:inset 0 0 0 1px rgba(17,24,28,.06);--df-shadow-action-bar:0 0 0 1px rgba(17,24,28,.08), 0 2px 6px rgba(17,24,28,.06), 0 20px 48px -12px rgba(17,24,28,.14);--df-shadow-input-attention:inset 0 0 0 1px #8D5400}
+body{margin:0;font-family:'Geist',system-ui,sans-serif;background:var(--df-canvas);color:var(--df-text-1);-webkit-font-smoothing:antialiased}
+a{color:var(--df-accent)}a:hover{color:var(--df-accent-hover)}
+</style>
+<link rel="stylesheet" href="proto.css">
+<script>window.DF_PAGES=[{"slug": "signin", "href": "index.html", "title": "Sign in", "group": "Start"}, {"slug": "today", "href": "today.html", "title": "Today", "group": "Boards"}, {"slug": "schedule", "href": "schedule.html", "title": "Schedule", "group": "Boards"}, {"slug": "patients", "href": "patients.html", "title": "Patients", "group": "Boards"}, {"slug": "patient", "href": "patient.html", "title": "Patient chart", "group": "Boards"}, {"slug": "ledger", "href": "ledger.html", "title": "Ledger", "group": "Boards"}, {"slug": "account", "href": "account.html", "title": "Patient account", "group": "Boards"}, {"slug": "close", "href": "close.html", "title": "Daily close", "group": "Boards", "arrive": "The Close sample is the end of the same day, Fri, Sep 25 at 5:06 PM, so its totals and exceptions differ from the morning boards."}, {"slug": "inbox", "href": "inbox.html", "title": "Inbox", "group": "Boards"}, {"slug": "compliance", "href": "compliance.html", "title": "Compliance", "group": "Boards", "arrive": "Compliance is shown as the owner, Dr. Maya Okafor, sees it: she is the signed-in user here, and its passkey prompts are hers."}, {"slug": "chat", "href": "chat.html", "title": "Chat · insurance card photos", "group": "Chat"}, {"slug": "chat-booking", "href": "chat-booking.html", "title": "Chat · new patient + booking", "group": "Chat"}, {"slug": "chat-refund", "href": "chat-refund.html", "title": "Refund with passkey", "group": "Chat"}, {"slug": "forms", "href": "forms.html", "title": "Forms", "group": "Forms"}, {"slug": "intake", "href": "intake.html", "title": "Intake form", "group": "Forms"}, {"slug": "lock", "href": "lock.html", "title": "Workstation lock", "group": "Start"}, {"slug": "console", "href": "console.html", "title": "Operator console", "group": "Dayfront staff"}];window.DF_PAGE="console";</script>
+<script src="proto-theme.js"></script>
+</head>
+<body>
+<div id="proto-stage">
+<div data-part="console" style="width: 1440px; height: 900px; box-sizing: border-box; display: flex; overflow: hidden; background: var(--df-canvas); color: var(--df-text-1); font-family: 'Geist', system-ui, sans-serif; font-size: 14px; line-height: 20px;">
+
+  <aside data-part="sidebar" aria-label="Console navigation" style="width: 232px; flex: 0 0 232px; height: 900px; box-sizing: border-box; padding: 8px 12px 12px; display: flex; flex-direction: column;">
+
+    <a data-go="console.html" href="#tenants" data-part="brand" aria-label="Dayfront Operator console, home" style="height: 56px; flex: 0 0 56px; box-sizing: border-box; padding: 0 8px; display: flex; align-items: center; gap: 10px; text-decoration: none;">
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="0" y="0" width="24" height="24" rx="7" style="fill: var(--df-accent);"></rect><path d="M6.5 9.5h11" stroke-width="2.25" stroke-linecap="round" style="stroke: var(--df-canvas);"></path></svg>
+      <span style="font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: -0.02em; color: var(--df-text-1);">Dayfront</span>
+      <span data-part="operator-label" style="height: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 6px; box-shadow: var(--df-shadow-ring-tier-card); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; display: inline-flex; align-items: center;">Operator</span>
+    </a>
+
+    <div role="status" aria-label="Secure session: connected over WireGuard, signed in with a hardware key. Session ends 5:05 PM." data-part="secure-session" style="height: 56px; flex: 0 0 56px; box-sizing: border-box; padding: 0 12px; border-radius: 10px; background: var(--df-sheet); box-shadow: var(--df-shadow-track); display: flex; flex-direction: column; justify-content: center; gap: 2px;">
+      <span style="height: 20px; display: flex; align-items: center; gap: 8px; font-size: 13px; line-height: 20px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">
+        <span aria-hidden="true" style="width: 6px; height: 6px; flex: 0 0 6px; border-radius: 999px; background: var(--df-accent); box-shadow: var(--df-shadow-halo-live);"></span>
+        <span>WireGuard · hardware key</span>
+      </span>
+      <span style="height: 16px; padding-left: 14px; display: flex; align-items: center; gap: 4px; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">
+        <span>Session ends</span>
+        <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: var(--df-text-2);">5:05 PM</span>
+      </span>
+    </div>
+
+    <nav data-part="nav" aria-label="Console" style="margin-top: 24px; display: flex; flex-direction: column; gap: 2px;">
+      <div aria-hidden="true" style="height: 28px; padding: 0 8px; display: flex; align-items: center; font-size: 11.5px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--df-text-3);">Console</div>
+      <a data-here="1" href="#tenants" aria-current="page" data-part="nav-item-active" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; background: var(--df-raised); box-shadow: var(--df-shadow-nav-active); color: var(--df-text-1); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-accent);"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path><path d="M10 6h4M10 10h4M10 14h4M10 18h4"></path></svg>
+        <span>Tenants</span>
+      </a>
+      <a data-toast="In the console Onboarding lists each tenant&#x27;s go-live checklist; Lakeview is at Stage O3 · Procure with 3 of 7 done." href="#onboarding" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="m3 17 2 2 4-4"></path><path d="m3 7 2 2 4-4"></path><path d="M13 6h8M13 12h8M13 18h8"></path></svg>
+        <span>Onboarding</span>
+      </a>
+      <a data-toast="In the console the BA register lists every outbound flow and its BAA status; Lakeview holds 1 of 7, so it stays on synthetic data." href="#ba-register" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path><path d="M14 2v6h6"></path><path d="m9 15 2 2 4-4"></path></svg>
+        <span>BA register</span>
+      </a>
+      <a data-toast="In the console Support access lists grants and requests: 0 active, and SG-0007 is awaiting the owner&#x27;s approval." href="#support-access" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><circle cx="7.5" cy="15.5" r="5.5"></circle><path d="m21 2-9.6 9.6"></path><path d="m15.5 7.5 3 3L22 7l-3-3"></path></svg>
+        <span>Support access</span>
+        <span aria-label="1 grant request awaiting the owner" style="margin-left: auto; min-width: 20px; height: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 999px; background: var(--df-raised); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center;">1</span>
+      </a>
+      <a data-toast="In the console Audit shows the Dayfront-level chain with PHI fields redacted; last night&#x27;s job verified 2 tenants with 0 breaks." href="#audit" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path><path d="M12 7v5l4 2"></path></svg>
+        <span>Audit</span>
+      </a>
+      <a data-toast="In the console Flags lists feature flags per tenant; each change needs a step-up and is audited, like boards.ar_aging on Harbor Demo at 9:31 AM." href="#flags" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1Z"></path><path d="M4 22v-7"></path></svg>
+        <span>Flags</span>
+      </a>
+    </nav>
+
+    <div data-part="console-boundary" style="margin-top: 16px; box-sizing: border-box; padding: 12px; border-radius: 10px; background: var(--df-sheet); box-shadow: var(--df-shadow-track); display: flex; align-items: flex-start; gap: 10px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 16px; margin-top: 1px; stroke: var(--df-text-2);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path></svg>
+      <p style="margin: 0; font-size: 12px; line-height: 18px; color: var(--df-text-2);">No data browser. No “sign in as user.” Clinic data only through a grant the practice owner approves.</p>
+    </div>
+
+    <div data-part="sidebar-footer" style="margin-top: auto; display: flex; flex-direction: column; gap: 4px;">
+      <div data-part="environment" style="height: 48px; box-sizing: border-box; padding: 0 8px; display: flex; align-items: center; gap: 12px;">
+        <span aria-hidden="true" style="width: 32px; height: 32px; flex: 0 0 32px; border-radius: 10px; background: var(--df-sheet); box-shadow: var(--df-shadow-ring-tile); color: var(--df-text-2); display: flex; align-items: center; justify-content: center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="7" rx="2"></rect><rect x="3" y="14" width="18" height="7" rx="2"></rect><path d="M7 6.5h.01M7 17.5h.01"></path></svg>
+        </span>
+        <span style="display: flex; flex-direction: column; min-width: 0;">
+          <span style="font-family: 'Geist Mono', monospace; font-size: 12.5px; line-height: 16px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">demo-hetzner</span>
+          <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Not PHI-eligible</span>
+        </span>
+      </div>
+      <div data-part="signed-in-user" style="height: 48px; box-sizing: border-box; padding: 0 0 0 8px; display: flex; align-items: center; gap: 12px;">
+        <span aria-hidden="true" style="width: 32px; height: 32px; flex: 0 0 32px; border-radius: 999px; background: var(--df-floating); box-shadow: var(--df-shadow-avatar); color: var(--df-text-1); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center;">AC</span>
+        <span style="display: flex; flex-direction: column; min-width: 0;">
+          <span style="font-size: 13px; line-height: 16px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">Alex Chen</span>
+          <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3);">Operator</span>
+        </span>
+        <button data-go="index.html" type="button" aria-label="Lock the console" style="margin-left: auto; height: 32px; box-sizing: border-box; padding: 0 10px; border: 0; border-radius: 8px; background: var(--df-raised); box-shadow: var(--df-shadow-button-quiet); color: var(--df-text-1); font-family: inherit; font-size: 12.5px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+          <span>Lock</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <div data-part="sheet" style="position: relative; flex: 0 0 1200px; width: 1200px; height: 884px; margin: 8px 8px 8px 0; box-sizing: border-box; background: var(--df-sheet); border-radius: 16px; box-shadow: var(--df-shadow-sheet); display: flex; flex-direction: column;">
+
+    <header data-part="topbar" style="height: 56px; flex: 0 0 56px; box-sizing: border-box; padding: 0 24px; display: flex; align-items: center; gap: 12px;">
+      <h1 style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Tenants</h1>
+      <span data-part="no-phi-note" style="display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; line-height: 24px; color: var(--df-text-3); white-space: nowrap;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+        <span>No PHI in this view · counts, status and settings only</span>
+      </span>
+
+      <div style="margin-left: auto; display: flex; align-items: center; gap: 8px;">
+        <div data-part="search" style="position: relative; width: 280px; height: 36px; flex: 0 0 280px;">
+          <input id="tenant-search" type="search" style="width: 280px; height: 36px; box-sizing: border-box; padding: 0 44px 0 36px; border: 0; border-radius: 10px; background: var(--df-raised); box-shadow: var(--df-shadow-input); color: var(--df-text-1); font-family: inherit; font-size: 13px; -webkit-appearance: none; appearance: none;" />
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; left: 12px; top: 10px; pointer-events: none; stroke: var(--df-text-3);"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+          <label for="tenant-search" style="position: absolute; left: 36px; top: 0; height: 36px; display: flex; align-items: center; font-size: 13px; color: var(--df-text-3); pointer-events: none; white-space: nowrap;">Search tenants…</label>
+          <kbd style="position: absolute; right: 8px; top: 8px; height: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 6px; background: var(--df-floating); box-shadow: var(--df-shadow-floating-chip); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; display: inline-flex; align-items: center; pointer-events: none;">⌘K</kbd>
+        </div>
+
+        <span data-part="env-badge" style="height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 999px; background: var(--df-raised); box-shadow: var(--df-shadow-ring-tile); color: var(--df-text-2); font-size: 12px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
+          <span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 999px; background: var(--df-amber);"></span>
+          <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: var(--df-text-1);">demo-hetzner</span>
+          <span>· Fictional data only</span>
+        </span>
+
+        <button type="button" data-part="theme-toggle" aria-label="Switch theme" title="Switch theme" style="width: 36px; height: 36px; box-sizing: border-box; padding: 0; border: 0; border-radius: 10px; background: transparent; color: var(--df-text-2); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <span class="df-when-dark" style="display: contents;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg></span>
+          <span class="df-when-light" style="display: contents;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></span>
+        </button>
+
+        <button data-toast="In the console this opens the new-tenant form: operators create every tenant (no self-serve signup), and it starts on synthetic data until its PHI gate holds." type="button" data-part="btn-primary" style="height: 36px; box-sizing: border-box; padding: 0 14px 0 12px; border: 0; border-radius: 10px; background: var(--df-accent); box-shadow: var(--df-shadow-primary); color: var(--df-on-accent); font-family: inherit; font-size: 13.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; cursor: pointer;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+          <span>New tenant</span>
+        </button>
+      </div>
+    </header>
+
+    <div data-part="workspace" style="flex: 1; min-height: 0; display: flex;">
+
+      <main data-part="board" style="flex: 1; min-width: 0; box-sizing: border-box; padding: 16px 24px 24px; display: flex; flex-direction: column; gap: 16px;">
+
+        <section data-part="kpi-row" aria-label="Console at a glance" style="height: 96px; flex: 0 0 96px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px;">
+
+          <a data-here="1" href="#tenants" data-part="kpi" style="min-width: 0; display: flex; flex-direction: column; color: var(--df-text-1); text-decoration: none;">
+            <span style="height: 16px; display: flex; align-items: center; gap: 6px; font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--df-text-3); white-space: nowrap;">
+              <span>Tenants</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left: auto; flex: 0 0 12px;"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+            </span>
+            <span style="margin-top: 8px; height: 40px; display: flex; align-items: baseline; gap: 8px;">
+              <span style="font-size: 36px; line-height: 40px; font-weight: 500; letter-spacing: -0.035em; font-variant-numeric: tabular-nums;">2</span>
+              <span style="font-size: 14px; color: var(--df-text-2); white-space: nowrap;">on this console</span>
+            </span>
+            <span style="margin-top: 8px; height: 24px; display: flex; align-items: center; font-size: 13px; color: var(--df-text-2); white-space: nowrap;">1 onboarding · 1 demo</span>
+          </a>
+
+          <a data-toast="No tenant runs in production mode here: demo-hetzner is not PHI-eligible, so tenants stay synthetic. The PHI gate card lists what Lakeview still needs." href="#phi-gate" data-part="kpi" style="min-width: 0; display: flex; flex-direction: column; color: var(--df-text-1); text-decoration: none;">
+            <span style="height: 16px; display: flex; align-items: center; gap: 6px; font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--df-text-3); white-space: nowrap;">
+              <span>Production mode</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left: auto; flex: 0 0 12px;"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+            </span>
+            <span style="margin-top: 8px; height: 40px; display: flex; align-items: baseline; gap: 8px;">
+              <span style="font-size: 36px; line-height: 40px; font-weight: 500; letter-spacing: -0.035em; font-variant-numeric: tabular-nums;">0</span>
+              <span style="font-size: 14px; color: var(--df-text-2);">tenants</span>
+            </span>
+            <span style="margin-top: 8px; height: 24px; display: flex; align-items: center; font-size: 13px; color: var(--df-text-2); white-space: nowrap;">Not PHI-eligible here</span>
+          </a>
+
+          <a data-toast="0 support grants are active, so no operator can see clinic data; the one request, SG-0007, waits for Dr. Maya Okafor." href="#support-access" data-part="kpi" style="min-width: 0; display: flex; flex-direction: column; color: var(--df-text-1); text-decoration: none;">
+            <span style="height: 16px; display: flex; align-items: center; gap: 6px; font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--df-text-3); white-space: nowrap;">
+              <span>Support grants</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left: auto; flex: 0 0 12px;"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+            </span>
+            <span style="margin-top: 8px; height: 40px; display: flex; align-items: baseline; gap: 8px;">
+              <span style="font-size: 36px; line-height: 40px; font-weight: 500; letter-spacing: -0.035em; font-variant-numeric: tabular-nums;">0</span>
+              <span style="font-size: 14px; color: var(--df-text-2);">active</span>
+            </span>
+            <span style="margin-top: 8px; height: 24px; display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--df-text-2); white-space: nowrap;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-accent);"><path d="M20 6 9 17l-5-5"></path></svg>
+              <span>No PHI visible</span>
+            </span>
+          </a>
+
+          <a data-toast="1 request pending: SG-0007, 2h read-only to map Ascend report columns, awaiting Dr. Maya Okafor. Details are in the right rail." href="#grant-request" data-part="kpi" style="min-width: 0; display: flex; flex-direction: column; color: var(--df-text-1); text-decoration: none;">
+            <span style="height: 16px; display: flex; align-items: center; gap: 6px; font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--df-text-3); white-space: nowrap;">
+              <span>Grant requests</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left: auto; flex: 0 0 12px;"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+            </span>
+            <span style="margin-top: 8px; height: 40px; display: flex; align-items: baseline; gap: 8px;">
+              <span style="font-size: 36px; line-height: 40px; font-weight: 500; letter-spacing: -0.035em; font-variant-numeric: tabular-nums;">1</span>
+              <span style="font-size: 14px; color: var(--df-text-2);">pending</span>
+            </span>
+            <span style="margin-top: 8px; height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--df-text-2); white-space: nowrap;">
+              <span data-part="state-awaiting" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center;">Awaiting owner</span>
+            </span>
+          </a>
+        </section>
+
+        <section data-part="card" aria-labelledby="tenants-title" style="min-width: 0; height: 216px; flex: 0 0 216px; box-sizing: border-box; padding: 16px 16px 12px; background: var(--df-raised); border-radius: 14px; box-shadow: var(--df-shadow-raised); display: flex; flex-direction: column;">
+          <div data-part="card-header" style="height: 32px; flex: 0 0 32px; display: flex; align-items: center; gap: 12px;">
+            <div style="display: inline-flex; align-items: center; gap: 8px;">
+              <h2 id="tenants-title" style="margin: 0; font-size: 15px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">All tenants</h2>
+              <span aria-label="2 tenants" style="height: 20px; min-width: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 999px; background: var(--df-floating); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center;">2</span>
+            </div>
+            <span style="font-size: 13px; color: var(--df-text-3); white-space: nowrap;">Created by operators · no self-serve signup</span>
+            <div role="group" aria-label="Filter tenants" data-part="segmented" style="margin-left: auto; height: 32px; box-sizing: border-box; padding: 2px; display: inline-flex; gap: 2px; background: var(--df-sheet); border-radius: 9px; box-shadow: var(--df-shadow-track);">
+              <button data-toast="All 2 tenants are showing: Lakeview Dental Care (Setup) and Harbor Demo Clinic (Live)." type="button" aria-pressed="true" style="height: 28px; box-sizing: border-box; padding: 0 12px; border: 0; border-radius: 7px; background: var(--df-floating); box-shadow: var(--df-shadow-segment); color: var(--df-text-1); font-family: inherit; font-size: 12.5px; font-weight: 500; cursor: pointer;">All</button>
+              <button data-toast="In the console this filters the list to tenants in setup: Lakeview Dental Care." type="button" aria-pressed="false" style="height: 28px; box-sizing: border-box; padding: 0 12px; border: 0; border-radius: 7px; background: transparent; color: var(--df-text-2); font-family: inherit; font-size: 12.5px; font-weight: 500; cursor: pointer;">Setup</button>
+              <button data-toast="In the console this filters the list to live tenants: Harbor Demo Clinic." type="button" aria-pressed="false" style="height: 28px; box-sizing: border-box; padding: 0 12px; border: 0; border-radius: 7px; background: transparent; color: var(--df-text-2); font-family: inherit; font-size: 12.5px; font-weight: 500; cursor: pointer;">Live</button>
+            </div>
+          </div>
+
+          <div role="table" aria-label="Tenants" aria-rowcount="3" data-part="tenant-table" style="margin: 12px -8px 0; display: flex; flex-direction: column; gap: 4px;">
+
+            <div role="row" data-part="table-head" style="height: 24px; box-sizing: border-box; padding: 0 8px; display: grid; grid-template-columns: minmax(0, 1fr) 88px 104px 112px 56px 80px 16px; column-gap: 10px; align-items: center; font-size: 12px; line-height: 16px; font-weight: 500; color: var(--df-text-3); white-space: nowrap;">
+              <span role="columnheader">Tenant</span>
+              <span role="columnheader">Lifecycle</span>
+              <span role="columnheader">PHI mode</span>
+              <span role="columnheader">Onboarding</span>
+              <span role="columnheader">Users</span>
+              <span role="columnheader">Last activity</span>
+              <span role="columnheader"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;">Open</span></span>
+            </div>
+
+            <div data-toast="In the console this opens Lakeview Dental Care: Setup since Sep 14, onboarding 3 of 7 (3 blocking), 3 users. Counts and settings only, never clinic data." role="row" aria-current="true" data-part="tenant-row-selected" style="height: 56px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; background: var(--df-floating); box-shadow: var(--df-shadow-lift-row); display: grid; grid-template-columns: minmax(0, 1fr) 88px 104px 112px 56px 80px 16px; column-gap: 10px; align-items: center;">
+              <span role="cell" style="min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <a data-toast="In the console this opens Lakeview Dental Care: Setup since Sep 14, onboarding 3 of 7 (3 blocking), 3 users. Counts and settings only, never clinic data." href="#tenant-lakeview" style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lakeview Dental Care</a>
+                <span style="height: 16px; display: flex; align-items: center; gap: 6px; font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">
+                  <span aria-hidden="true" style="width: 6px; height: 6px; flex: 0 0 6px; border-radius: 999px; background: var(--df-amber);"></span>
+                  <span>Fictional · onboarding</span>
+                </span>
+              </span>
+              <span role="cell" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                <span data-part="state-setup" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-overlay-05); color: var(--df-text-2); font-size: 11.5px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;"><span aria-hidden="true" style="width: 6px; height: 6px; box-sizing: border-box; border-radius: 999px; border: 1.5px solid var(--df-text-2);"></span>Setup</span>
+                <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Since Sep 14</span>
+              </span>
+              <span role="cell" style="display: flex; flex-direction: column; gap: 2px;">
+                <span style="font-size: 13px; line-height: 18px; font-weight: 500; color: var(--df-text-1);">Synthetic</span>
+                <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Until PHI gate</span>
+              </span>
+              <span role="cell" style="display: flex; flex-direction: column; gap: 2px;">
+                <span style="height: 18px; display: flex; align-items: center; gap: 8px;">
+                  <span role="img" aria-label="3 of 7 onboarding items done" style="width: 48px; height: 4px; display: flex; gap: 2px;">
+                    <span style="flex: 1; border-radius: 2px; background: var(--df-accent);"></span>
+                    <span style="flex: 1; border-radius: 2px; background: var(--df-accent);"></span>
+                    <span style="flex: 1; border-radius: 2px; background: var(--df-accent);"></span>
+                    <span style="flex: 1; border-radius: 2px; background: var(--df-overlay-10);"></span>
+                    <span style="flex: 1; border-radius: 2px; background: var(--df-overlay-10);"></span>
+                    <span style="flex: 1; border-radius: 2px; background: var(--df-overlay-10);"></span>
+                    <span style="flex: 1; border-radius: 2px; background: var(--df-overlay-10);"></span>
+                  </span>
+                  <span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--df-text-1); white-space: nowrap;">3/7</span>
+                </span>
+                <span style="font-size: 12.5px; line-height: 16px; font-weight: 600; color: var(--df-amber); white-space: nowrap;">3 blocking</span>
+              </span>
+              <span role="cell" style="display: flex; flex-direction: column; gap: 2px;">
+                <span style="font-family: 'Geist Mono', monospace; font-size: 13px; line-height: 18px; color: var(--df-text-1);">3</span>
+                <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">1 owner</span>
+              </span>
+              <span role="cell" style="display: flex; flex-direction: column; gap: 2px;">
+                <span style="font-family: 'Geist Mono', monospace; font-size: 12.5px; line-height: 18px; color: var(--df-text-1); white-space: nowrap;">10:38 AM</span>
+                <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3);">Today</span>
+              </span>
+              <span role="cell" aria-hidden="true" style="display: flex; align-items: center; justify-content: flex-end;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 16px; stroke: var(--df-text-2);"><path d="m9 18 6-6-6-6"></path></svg>
+              </span>
+            </div>
+
+            <div data-toast="In the console this opens Harbor Demo Clinic: a live demo tenant on locked synthetic data, 4 users. Counts and settings only, never clinic data." role="row" data-part="tenant-row" style="height: 56px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: minmax(0, 1fr) 88px 104px 112px 56px 80px 16px; column-gap: 10px; align-items: center;">
+              <span role="cell" style="min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <a data-toast="In the console this opens Harbor Demo Clinic: a live demo tenant on locked synthetic data, 4 users. Counts and settings only, never clinic data." href="#tenant-harbor" style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Harbor Demo Clinic</a>
+                <span style="height: 16px; display: flex; align-items: center; gap: 6px; font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">
+                  <span aria-hidden="true" style="width: 6px; height: 6px; flex: 0 0 6px; border-radius: 999px; background: var(--df-amber);"></span>
+                  <span>Fictional · demo</span>
+                </span>
+              </span>
+              <span role="cell" style="display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                <span data-part="state-live" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-accent-chip); color: var(--df-accent); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 999px; background: var(--df-accent);"></span>Live</span>
+                <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Demo exempt</span>
+              </span>
+              <span role="cell" style="display: flex; flex-direction: column; gap: 2px;">
+                <span style="font-size: 13px; line-height: 18px; font-weight: 500; color: var(--df-text-1);">Synthetic</span>
+                <span style="height: 16px; display: flex; align-items: center; gap: 4px; font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 12px;"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+                  <span>Demo · locked</span>
+                </span>
+              </span>
+              <span role="cell" style="display: flex; flex-direction: column; gap: 2px;">
+                <span style="font-size: 13px; line-height: 18px; color: var(--df-text-2); white-space: nowrap;">Not needed</span>
+                <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Demo tenant</span>
+              </span>
+              <span role="cell" style="display: flex; flex-direction: column; gap: 2px;">
+                <span style="font-family: 'Geist Mono', monospace; font-size: 13px; line-height: 18px; color: var(--df-text-1);">4</span>
+                <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">1 owner</span>
+              </span>
+              <span role="cell" style="display: flex; flex-direction: column; gap: 2px;">
+                <span style="font-family: 'Geist Mono', monospace; font-size: 12.5px; line-height: 18px; color: var(--df-text-1); white-space: nowrap;">4:12 PM</span>
+                <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3);">Yesterday</span>
+              </span>
+              <span role="cell" aria-hidden="true" style="display: flex; align-items: center; justify-content: flex-end;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="flex: 0 0 16px; stroke: var(--df-text-3);"><path d="m9 18 6-6-6-6"></path></svg>
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <div data-part="board-row" style="flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+
+          <section id="phi-gate" data-part="card" aria-labelledby="gate-title" style="min-width: 0; min-height: 0; box-sizing: border-box; padding: 16px 16px 12px; background: var(--df-raised); border-radius: 14px; box-shadow: var(--df-shadow-raised); display: flex; flex-direction: column;">
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px;">
+              <h2 id="gate-title" style="margin: 0; font-size: 15px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">PHI gate</h2>
+              <span aria-label="1 of 7 items hold" style="height: 20px; min-width: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 999px; background: var(--df-floating); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; white-space: nowrap;">1 of 7</span>
+              <a data-toast="In the console the BA register lists every outbound flow and its BAA status; Lakeview holds 1 of 7, so it stays on synthetic data." href="#ba-register" style="margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--df-text-2); text-decoration: none; white-space: nowrap;">
+                <span>BA register</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+            <p style="margin: 4px 0 0; font-size: 12.5px; line-height: 16px; color: var(--df-text-3);">Lakeview stays synthetic until every item holds.</p>
+
+            <ul aria-label="Lakeview flows and their register status" style="list-style: none; margin: 8px -8px 0; padding: 0; display: flex; flex-direction: column;">
+              <li data-toast="core_store · BAA host: no BAA yet, so Lakeview&#x27;s data stays synthetic. In the console this opens its BA register entry." data-part="flow-row" style="height: 44px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: 80px minmax(0, 1fr) auto; column-gap: 8px; align-items: center;">
+                <span style="justify-self: start; height: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 6px; background: var(--df-overlay-05); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; display: inline-flex; align-items: center;">core_store</span>
+                <span style="min-width: 0; font-size: 13px; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">BAA host</span>
+                <span style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; white-space: nowrap;">No BAA yet</span>
+              </li>
+              <li data-toast="llm · HIPAA-ready LLM org: BAA pending. In the console this opens its BA register entry." data-part="flow-row" style="height: 44px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: 80px minmax(0, 1fr) auto; column-gap: 8px; align-items: center;">
+                <span style="justify-self: start; height: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 6px; background: var(--df-overlay-05); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; display: inline-flex; align-items: center;">llm</span>
+                <span style="min-width: 0; font-size: 13px; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">HIPAA-ready LLM org</span>
+                <span style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; white-space: nowrap;">BAA pending</span>
+              </li>
+              <li data-toast="stt · self-hosted speech engine: it follows the host&#x27;s BAA. In the console this opens its BA register entry." data-part="flow-row" style="height: 44px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: 80px minmax(0, 1fr) auto; column-gap: 8px; align-items: center;">
+                <span style="justify-self: start; height: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 6px; background: var(--df-overlay-05); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; display: inline-flex; align-items: center;">stt</span>
+                <span style="min-width: 0; font-size: 13px; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Self-hosted engine</span>
+                <span style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-overlay-05); color: var(--df-text-2); font-size: 11.5px; font-weight: 500; display: inline-flex; align-items: center; white-space: nowrap;">Follows host</span>
+              </li>
+              <li data-toast="sms · SMS vendor (10DLC): BAA pending. In the console this opens its BA register entry." data-part="flow-row" style="height: 44px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: 80px minmax(0, 1fr) auto; column-gap: 8px; align-items: center;">
+                <span style="justify-self: start; height: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 6px; background: var(--df-overlay-05); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; display: inline-flex; align-items: center;">sms</span>
+                <span style="min-width: 0; font-size: 13px; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">SMS vendor · 10DLC</span>
+                <span style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; white-space: nowrap;">BAA pending</span>
+              </li>
+              <li data-toast="email_send · clinic mailbox: not started. In the console this opens its BA register entry." data-part="flow-row" style="height: 44px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: 80px minmax(0, 1fr) auto; column-gap: 8px; align-items: center;">
+                <span style="justify-self: start; height: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 6px; background: var(--df-overlay-05); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; display: inline-flex; align-items: center;">email_send</span>
+                <span style="min-width: 0; font-size: 13px; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Clinic mailbox</span>
+                <span style="height: 20px; box-sizing: border-box; padding: 0 8px; border: 1px dashed var(--df-overlay-24); border-radius: 999px; color: var(--df-text-2); font-size: 11.5px; font-weight: 500; display: inline-flex; align-items: center; white-space: nowrap;">Not started</span>
+              </li>
+              <li data-toast="payments · Stripe: exempt, because no PHI is sent. In the console this opens its BA register entry." data-part="flow-row" style="height: 44px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: 80px minmax(0, 1fr) auto; column-gap: 8px; align-items: center;">
+                <span style="justify-self: start; height: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 6px; background: var(--df-overlay-05); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; display: inline-flex; align-items: center;">payments</span>
+                <span style="min-width: 0; font-size: 13px; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Stripe · no PHI sent</span>
+                <span style="height: 20px; padding: 0 2px; display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 500; color: var(--df-text-2); white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Exempt</span>
+              </li>
+              <li data-toast="tenant · the clinic&#x27;s own BAA: pending, sent to Dr. Okafor on Sep 21. In the console this opens its BA register entry." data-part="flow-row" style="height: 44px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: 80px minmax(0, 1fr) auto; column-gap: 8px; align-items: center;">
+                <span style="justify-self: start; height: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 6px; background: var(--df-overlay-05); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; display: inline-flex; align-items: center;">tenant</span>
+                <span style="min-width: 0; font-size: 13px; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Clinic BAA</span>
+                <span style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; white-space: nowrap;">Pending</span>
+              </li>
+            </ul>
+
+            <div data-part="card-footer" style="margin-top: auto; height: 16px; display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 14px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path></svg>
+              <span>Enforced in code at every outbound adapter</span>
+            </div>
+          </section>
+
+          <section data-part="card" aria-labelledby="audit-title" style="min-width: 0; min-height: 0; box-sizing: border-box; padding: 16px 16px 12px; background: var(--df-raised); border-radius: 14px; box-shadow: var(--df-shadow-raised); display: flex; flex-direction: column;">
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px;">
+              <h2 id="audit-title" style="margin: 0; font-size: 15px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Console audit</h2>
+              <a data-toast="In the console Audit shows the Dayfront-level chain with PHI fields redacted; last night&#x27;s job verified 2 tenants with 0 breaks." href="#audit" style="margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--df-text-2); text-decoration: none; white-space: nowrap;">
+                <span>Open Audit</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+              </a>
+            </div>
+            <p style="margin: 4px 0 0; font-size: 12.5px; line-height: 16px; color: var(--df-text-3);">Today · Dayfront-level chain · PHI fields redacted</p>
+
+            <ol aria-label="Recent console events" style="list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column;">
+              <li data-toast="Audit event, 10:14 AM: Alex Chen requested support grant SG-0007 for Lakeview. In the console this opens the entry in the chain." data-part="audit-row" style="position: relative; height: 52px; box-sizing: border-box; padding-top: 6px; display: grid; grid-template-columns: 60px 7px minmax(0, 1fr); column-gap: 12px; align-items: start;">
+                <span aria-hidden="true" style="position: absolute; left: 75px; top: 16px; width: 1px; height: 52px; background: var(--df-overlay-14);"></span>
+                <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; line-height: 20px; color: var(--df-text-3); white-space: nowrap;">10:14 AM</span>
+                <span aria-hidden="true" style="position: relative; margin-top: 6.5px; width: 7px; height: 7px; border-radius: 999px; background: var(--df-amber); box-shadow: var(--df-shadow-halo-pending);"></span>
+                <span style="min-width: 0; display: flex; flex-direction: column;">
+                  <span style="font-size: 13.5px; line-height: 20px; font-weight: 600; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Support grant requested</span>
+                  <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: var(--df-text-2);">SG-0007</span> · Lakeview · Alex Chen</span>
+                </span>
+              </li>
+              <li data-toast="Audit event, 9:52 AM: Alex Chen marked Fee schedule done for Lakeview. In the console this opens the entry in the chain." data-part="audit-row" style="position: relative; height: 52px; box-sizing: border-box; padding-top: 6px; display: grid; grid-template-columns: 60px 7px minmax(0, 1fr); column-gap: 12px; align-items: start;">
+                <span aria-hidden="true" style="position: absolute; left: 75px; top: 16px; width: 1px; height: 52px; background: var(--df-overlay-14);"></span>
+                <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; line-height: 20px; color: var(--df-text-3); white-space: nowrap;">9:52 AM</span>
+                <span aria-hidden="true" style="position: relative; margin-top: 6.5px; width: 7px; height: 7px; box-sizing: border-box; border-radius: 999px; border: 1.5px solid var(--df-text-3); background: var(--df-raised);"></span>
+                <span style="min-width: 0; display: flex; flex-direction: column;">
+                  <span style="font-size: 13.5px; line-height: 20px; font-weight: 600; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Checklist item done</span>
+                  <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Fee schedule · Lakeview · Alex Chen</span>
+                </span>
+              </li>
+              <li data-toast="Audit event, 9:31 AM: boards.ar_aging turned on for Harbor Demo, with a step-up. In the console this opens the entry in the chain." data-part="audit-row" style="position: relative; height: 52px; box-sizing: border-box; padding-top: 6px; display: grid; grid-template-columns: 60px 7px minmax(0, 1fr); column-gap: 12px; align-items: start;">
+                <span aria-hidden="true" style="position: absolute; left: 75px; top: 16px; width: 1px; height: 52px; background: var(--df-overlay-14);"></span>
+                <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; line-height: 20px; color: var(--df-text-3); white-space: nowrap;">9:31 AM</span>
+                <span aria-hidden="true" style="position: relative; margin-top: 6.5px; width: 7px; height: 7px; box-sizing: border-box; border-radius: 999px; border: 1.5px solid var(--df-text-3); background: var(--df-raised);"></span>
+                <span style="min-width: 0; display: flex; flex-direction: column;">
+                  <span style="font-size: 13.5px; line-height: 20px; font-weight: 600; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Flag changed · with step-up</span>
+                  <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: var(--df-text-2);">boards.ar_aging</span> on · Harbor Demo</span>
+                </span>
+              </li>
+              <li data-toast="Audit event, 9:05 AM: operator signed in with a hardware key over WireGuard peer op-01. In the console this opens the entry in the chain." data-part="audit-row" style="position: relative; height: 52px; box-sizing: border-box; padding-top: 6px; display: grid; grid-template-columns: 60px 7px minmax(0, 1fr); column-gap: 12px; align-items: start;">
+                <span aria-hidden="true" style="position: absolute; left: 75px; top: 16px; width: 1px; height: 52px; background: var(--df-overlay-14);"></span>
+                <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; line-height: 20px; color: var(--df-text-3); white-space: nowrap;">9:05 AM</span>
+                <span aria-hidden="true" style="position: relative; margin-top: 6.5px; width: 7px; height: 7px; box-sizing: border-box; border-radius: 999px; border: 1.5px solid var(--df-text-3); background: var(--df-raised);"></span>
+                <span style="min-width: 0; display: flex; flex-direction: column;">
+                  <span style="font-size: 13.5px; line-height: 20px; font-weight: 600; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Operator signed in</span>
+                  <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Hardware key · WireGuard peer <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: var(--df-text-2);">op-01</span></span>
+                </span>
+              </li>
+              <li data-toast="Audit event, 2:00 AM: the nightly job verified both tenants&#x27; audit chains with 0 breaks. In the console this opens the run." data-part="audit-row" style="position: relative; height: 52px; box-sizing: border-box; padding-top: 6px; display: grid; grid-template-columns: 60px 7px minmax(0, 1fr); column-gap: 12px; align-items: start;">
+                <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; line-height: 20px; color: var(--df-text-3); white-space: nowrap;">2:00 AM</span>
+                <span aria-hidden="true" style="position: relative; margin-top: 6.5px; width: 7px; height: 7px; box-sizing: border-box; border-radius: 999px; border: 1.5px solid var(--df-text-3); background: var(--df-raised);"></span>
+                <span style="min-width: 0; display: flex; flex-direction: column;">
+                  <span style="font-size: 13.5px; line-height: 20px; font-weight: 600; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Audit chains verified</span>
+                  <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">2 tenants · 0 breaks · nightly job</span>
+                </span>
+              </li>
+            </ol>
+
+            <div data-part="card-footer" style="margin-top: auto; height: 16px; display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 14px;"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path></svg>
+              <span>Every console action is audited</span>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <aside data-part="focus-rail" aria-label="Lakeview Dental Care details" style="width: 408px; flex: 0 0 408px; height: 788px; margin: 16px 16px 24px 0; box-sizing: border-box; padding: 20px; background: var(--df-raised); border-radius: 16px; box-shadow: var(--df-shadow-rail); display: flex; flex-direction: column;">
+
+        <section id="onboarding" aria-labelledby="onb-title" style="display: flex; flex-direction: column;">
+          <div style="height: 24px; display: flex; align-items: center; gap: 8px;">
+            <h2 id="onb-title" style="margin: 0; font-size: 15px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Lakeview onboarding</h2>
+            <a data-toast="In the console this opens Lakeview&#x27;s full checklist: 3 of 7 done, with the Ascend export import and the clinic BAA still blocking." href="#onboarding-full" style="margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--df-text-2); text-decoration: none; white-space: nowrap;">
+              <span>Full checklist</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            </a>
+          </div>
+
+          <div style="margin-top: 8px; height: 20px; display: flex; align-items: center; gap: 8px;">
+            <span data-part="tier-tag" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; box-shadow: var(--df-shadow-ring-tier-card); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; display: inline-flex; align-items: center; white-space: nowrap;">Stage O3 · Procure</span>
+            <span style="margin-left: auto; font-size: 12.5px; line-height: 20px; color: var(--df-text-3); white-space: nowrap;"><span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--df-text-1);">3 of 7</span> done</span>
+          </div>
+
+          <div role="progressbar" aria-label="Onboarding progress" aria-valuemin="0" aria-valuemax="7" aria-valuenow="3" aria-valuetext="3 of 7 done" style="margin-top: 12px; height: 4px; display: flex; gap: 4px;">
+            <span style="flex: 1; border-radius: 2px; background: var(--df-accent);"></span>
+            <span style="flex: 1; border-radius: 2px; background: var(--df-accent);"></span>
+            <span style="flex: 1; border-radius: 2px; background: var(--df-accent);"></span>
+            <span style="flex: 1; border-radius: 2px; background: var(--df-overlay-10);"></span>
+            <span style="flex: 1; border-radius: 2px; background: var(--df-overlay-10);"></span>
+            <span style="flex: 1; border-radius: 2px; background: var(--df-overlay-10);"></span>
+            <span style="flex: 1; border-radius: 2px; background: var(--df-overlay-10);"></span>
+          </div>
+
+          <ol data-part="checklist" style="list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column;">
+
+            <li data-part="check-done" style="height: 32px; display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; column-gap: 12px; align-items: center;">
+              <span role="img" aria-label="Done" style="width: 20px; height: 20px; border-radius: 999px; background: var(--df-floating); box-shadow: var(--df-shadow-floating-chip); color: var(--df-text-2); display: flex; align-items: center; justify-content: center;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+              </span>
+              <span style="min-width: 0; font-size: 13.5px; line-height: 20px; font-weight: 500; color: var(--df-text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Practice setup</span>
+              <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;"><span style="font-weight: 600; color: var(--df-text-2);">Done</span> · Owner · <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px;">Sep 16</span></span>
+            </li>
+
+            <li data-part="check-done" style="height: 32px; display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; column-gap: 12px; align-items: center;">
+              <span role="img" aria-label="Done" style="width: 20px; height: 20px; border-radius: 999px; background: var(--df-floating); box-shadow: var(--df-shadow-floating-chip); color: var(--df-text-2); display: flex; align-items: center; justify-content: center;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+              </span>
+              <span style="min-width: 0; font-size: 13.5px; line-height: 20px; font-weight: 500; color: var(--df-text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Providers &amp; operatories</span>
+              <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;"><span style="font-weight: 600; color: var(--df-text-2);">Done</span> · 2 · Op 1, Op 2 · <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px;">Sep 17</span></span>
+            </li>
+
+            <li data-part="check-done" style="height: 32px; display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; column-gap: 12px; align-items: center;">
+              <span role="img" aria-label="Done" style="width: 20px; height: 20px; border-radius: 999px; background: var(--df-floating); box-shadow: var(--df-shadow-floating-chip); color: var(--df-text-2); display: flex; align-items: center; justify-content: center;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+              </span>
+              <span style="min-width: 0; font-size: 13.5px; line-height: 20px; font-weight: 500; color: var(--df-text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Fee schedule</span>
+              <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;"><span style="font-weight: 600; color: var(--df-text-2);">Done</span> · Operator · <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px;">Today 9:52</span></span>
+            </li>
+
+            <li data-part="check-blocking" style="height: 48px; box-sizing: border-box; padding-top: 5px; display: grid; grid-template-columns: 20px minmax(0, 1fr); column-gap: 12px; align-items: start;">
+              <svg role="img" aria-label="Needs attention" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.75" fill-opacity="0.12" stroke-width="1.5" style="fill: var(--df-amber); stroke: var(--df-amber);"></circle><path d="M10 5.9v4.6" stroke-width="1.75" stroke-linecap="round" style="stroke: var(--df-amber);"></path><circle cx="10" cy="13.7" r="1.05" style="fill: var(--df-amber);"></circle></svg>
+              <span style="min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <span style="height: 20px; display: flex; align-items: center; gap: 8px; min-width: 0;">
+                  <span style="min-width: 0; font-size: 13.5px; line-height: 20px; font-weight: 600; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Ascend export import</span>
+                  <span style="margin-left: auto; flex: 0 0 auto; height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; white-space: nowrap;">Reconciliation pending</span>
+                </span>
+                <span style="height: 16px; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span style="font-weight: 600; color: var(--df-amber);">Blocks go-live</span> · batch <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: var(--df-text-2);">IMP-0003</span> · owner signs off</span>
+              </span>
+            </li>
+
+            <li data-part="check-progress" style="height: 48px; box-sizing: border-box; padding-top: 5px; display: grid; grid-template-columns: 20px minmax(0, 1fr); column-gap: 12px; align-items: start;">
+              <svg role="img" aria-label="In progress" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.75" fill="none" stroke-width="1.5" style="stroke: var(--df-blue);"></circle><path d="M10 4.75a5.25 5.25 0 0 1 0 10.5Z" style="fill: var(--df-blue);"></path></svg>
+              <span style="min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <span style="height: 20px; display: flex; align-items: center; gap: 8px; min-width: 0;">
+                  <span style="min-width: 0; font-size: 13.5px; line-height: 20px; font-weight: 600; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Stripe connected account</span>
+                  <span style="margin-left: auto; flex: 0 0 auto; height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-blue-soft); color: var(--df-blue); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; white-space: nowrap;">Test mode</span>
+                </span>
+                <span style="height: 16px; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Live mode unlocks after the PHI gate · reader ordered</span>
+              </span>
+            </li>
+
+            <li data-part="check-blocking" style="height: 48px; box-sizing: border-box; padding-top: 5px; display: grid; grid-template-columns: 20px minmax(0, 1fr); column-gap: 12px; align-items: start;">
+              <svg role="img" aria-label="Needs attention" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.75" fill-opacity="0.12" stroke-width="1.5" style="fill: var(--df-amber); stroke: var(--df-amber);"></circle><path d="M10 5.9v4.6" stroke-width="1.75" stroke-linecap="round" style="stroke: var(--df-amber);"></path><circle cx="10" cy="13.7" r="1.05" style="fill: var(--df-amber);"></circle></svg>
+              <span style="min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <span style="height: 20px; display: flex; align-items: center; gap: 8px; min-width: 0;">
+                  <span style="min-width: 0; font-size: 13.5px; line-height: 20px; font-weight: 600; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">BAA signed with clinic</span>
+                  <span style="margin-left: auto; flex: 0 0 auto; height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; white-space: nowrap;">Pending</span>
+                </span>
+                <span style="height: 16px; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span style="font-weight: 600; color: var(--df-amber);">Blocks PHI gate</span> · sent to Dr. Okafor <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px;">Sep 21</span></span>
+              </span>
+            </li>
+
+            <li data-part="check-todo" style="height: 48px; box-sizing: border-box; padding-top: 5px; display: grid; grid-template-columns: 20px minmax(0, 1fr); column-gap: 12px; align-items: start;">
+              <svg role="img" aria-label="Not started" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.75" fill="none" stroke-width="1.5" stroke-dasharray="3 2.5" style="stroke: var(--df-text-3);"></circle></svg>
+              <span style="min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <span style="height: 20px; display: flex; align-items: center; gap: 8px; min-width: 0;">
+                  <span style="min-width: 0; font-size: 13.5px; line-height: 20px; font-weight: 600; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Go-live host move</span>
+                  <span style="margin-left: auto; flex: 0 0 auto; height: 20px; box-sizing: border-box; padding: 0 8px; border: 1px dashed var(--df-overlay-24); border-radius: 999px; color: var(--df-text-2); font-size: 11.5px; font-weight: 500; display: inline-flex; align-items: center; white-space: nowrap;">Not started</span>
+                </span>
+                <span style="height: 16px; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span style="font-weight: 600; color: var(--df-amber);">Blocks go-live</span> · operator · BAA host not chosen</span>
+              </span>
+            </li>
+          </ol>
+
+          <p style="margin: 8px 0 0; height: 16px; display: flex; align-items: center; gap: 6px; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 12px;"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-15 6.7L3 16"></path><path d="M3 21v-5h5"></path></svg>
+            <span>Computed items tick themselves</span>
+          </p>
+        </section>
+
+        <section id="support-access" aria-labelledby="support-title" style="margin-top: 28px; flex: 1; min-height: 0; display: flex; flex-direction: column;">
+          <div style="height: 24px; display: flex; align-items: center; gap: 8px;">
+            <h2 id="support-title" style="margin: 0; font-size: 15px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Support access</h2>
+            <span aria-label="0 active grants" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-floating); color: var(--df-text-2); font-size: 11.5px; font-weight: 500; display: inline-flex; align-items: center; white-space: nowrap;">0 active</span>
+            <a data-toast="In the console this lists every support grant: 0 active, and 1 request (SG-0007) awaiting Dr. Maya Okafor." href="#support-grants" style="margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--df-text-2); text-decoration: none; white-space: nowrap;">
+              <span>All grants</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            </a>
+          </div>
+
+          <p data-part="support-policy" style="margin: 8px 0 0; display: flex; align-items: flex-start; gap: 8px; font-size: 12.5px; line-height: 18px; color: var(--df-text-2);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 16px; margin-top: 1px; stroke: var(--df-text-2);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+            <span><span style="font-weight: 500; color: var(--df-text-1);">No PHI access by default.</span> Access requires a time-boxed grant approved by the practice owner.</span>
+          </p>
+
+          <div id="grant-request" data-part="grant-request" role="group" aria-labelledby="grant-title" style="margin-top: 12px; box-sizing: border-box; padding: 14px 16px 16px; border-radius: 14px; background: var(--df-floating); box-shadow: var(--df-shadow-lift); display: flex; flex-direction: column;">
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px;">
+              <span id="grant-title" style="font-size: 14px; line-height: 20px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Request <span style="font-family: 'Geist Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0;">SG-0007</span></span>
+              <span id="grant-status" data-part="status-awaiting" style="margin-left: auto; height: 24px; box-sizing: border-box; padding: 0 10px 0 8px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+                <span>Awaiting owner approval</span>
+              </span>
+            </div>
+
+            <dl style="margin: 10px 0 0; display: grid; grid-template-columns: 84px minmax(0, 1fr); grid-auto-rows: 22px; column-gap: 8px; align-items: center;">
+              <dt style="font-size: 12.5px; color: var(--df-text-3); white-space: nowrap;">Reason</dt>
+              <dd style="margin: 0; min-width: 0; font-size: 13px; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Map Ascend report columns for import</dd>
+              <dt style="font-size: 12.5px; color: var(--df-text-3); white-space: nowrap;">Duration</dt>
+              <dd style="margin: 0; min-width: 0; font-size: 13px; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span style="font-family: 'Geist Mono', monospace; font-size: 12.5px; font-weight: 500;">2h</span> <span style="color: var(--df-text-3);">· read-only · no extensions</span></dd>
+              <dt style="font-size: 12.5px; color: var(--df-text-3); white-space: nowrap;">Requested by</dt>
+              <dd style="margin: 0; min-width: 0; font-size: 13px; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Alex Chen <span style="color: var(--df-text-3);">· <span style="font-family: 'Geist Mono', monospace; font-size: 12px;">10:14 AM</span></span></dd>
+              <dt style="font-size: 12.5px; color: var(--df-text-3); white-space: nowrap;">Approver</dt>
+              <dd style="margin: 0; min-width: 0; font-size: 13px; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Dr. Maya Okafor <span style="color: var(--df-text-3);">· owner</span></dd>
+            </dl>
+
+            <div data-part="grant-actions" style="margin-top: 12px; display: flex; align-items: center; gap: 8px;">
+              <button data-toast="Support access starts only after Dr. Maya Okafor approves SG-0007. Then you start the 2-hour read-only session with your hardware key." type="button" disabled aria-describedby="grant-status" data-part="btn-disabled" style="flex: 1; min-width: 0; height: 44px; box-sizing: border-box; padding: 0 12px; border: 1px dashed var(--df-overlay-14); border-radius: 10px; background: transparent; color: var(--df-text-3); font-family: inherit; font-size: 13.5px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 8px; white-space: nowrap; cursor: not-allowed;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="5.5"></circle><path d="m21 2-9.6 9.6"></path><path d="m15.5 7.5 3 3L22 7l-3-3"></path></svg>
+                <span>Start with hardware key</span>
+              </button>
+              <button data-toast="In the console Withdraw cancels request SG-0007 after you confirm; Dr. Okafor no longer sees it, and the withdrawal is audited." type="button" data-part="btn-text" style="height: 44px; box-sizing: border-box; padding: 0 12px; border: 0; border-radius: 10px; background: transparent; color: var(--df-text-2); font-family: inherit; font-size: 13.5px; font-weight: 500; white-space: nowrap; cursor: pointer;">Withdraw</button>
+            </div>
+          </div>
+
+          <div data-part="support-footer" style="margin-top: auto; height: 16px; display: flex; align-items: center; gap: 6px; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 12px;"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            <span>While active, the clinic sees a banner</span>
+            <span style="margin-left: auto;">Audited per view</span>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

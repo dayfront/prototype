@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dayfront · Intake form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root,.df-dark{color-scheme:dark;--df-canvas:#0E1113;--df-sheet:#15191C;--df-recessed:#181D20;--df-raised:#1C2226;--df-in-chair:#1E2B2D;--df-floating:#262E33;--df-lift:#262E33;--df-thumb:#2A3136;--df-thumb-disc:#30383D;--df-scrim:rgba(14,17,19,.86);--df-backdrop:rgba(14,17,19,.72);--df-edge-ink:#FFFFFF;--df-text-1:#EDF0F2;--df-text-2:#B3BCC2;--df-text-3:#8B969E;--df-on-accent:#04211D;--df-on-accent-fill:rgba(4,33,29,.12);--df-accent:#5EEAD4;--df-accent-hover:#99F6E4;--df-accent-edge:rgba(255,255,255,.35);--df-accent-progress:rgba(94,234,212,.07);--df-accent-soft:rgba(94,234,212,.12);--df-accent-chip:rgba(94,234,212,.14);--df-accent-halo:rgba(94,234,212,.16);--df-accent-ring:rgba(94,234,212,.22);--df-accent-glow:rgba(94,234,212,.35);--df-accent-underline:rgba(94,234,212,.75);--df-amber:#F5B454;--df-amber-row:rgba(245,180,84,.08);--df-amber-soft:rgba(245,180,84,.12);--df-amber-chip:rgba(245,180,84,.14);--df-amber-callout:rgba(245,180,84,.16);--df-amber-track:rgba(245,180,84,.25);--df-amber-ring:rgba(245,180,84,.32);--df-amber-dash:rgba(245,180,84,.4);--df-amber-dash-strong:rgba(245,180,84,.6);--df-blue:#8AB4F8;--df-blue-soft:rgba(138,180,248,.12);--df-blue-chip:rgba(138,180,248,.14);--df-overlay-025:rgba(255,255,255,.025);--df-overlay-03:rgba(255,255,255,.03);--df-overlay-04:rgba(255,255,255,.04);--df-overlay-05:rgba(255,255,255,.05);--df-overlay-06:rgba(255,255,255,.06);--df-overlay-07:rgba(255,255,255,.07);--df-overlay-08:rgba(255,255,255,.08);--df-overlay-10:rgba(255,255,255,.1);--df-overlay-12:rgba(255,255,255,.12);--df-overlay-14:rgba(255,255,255,.14);--df-overlay-24:rgba(255,255,255,.24);--df-overlay-28:rgba(255,255,255,.28);--df-shadow-18:rgba(0,0,0,.18);--df-shadow-25:rgba(0,0,0,.25);--df-shadow-30:rgba(0,0,0,.3);--df-shadow-35:rgba(0,0,0,.35);--df-shadow-40:rgba(0,0,0,.4);--df-shadow-45:rgba(0,0,0,.45);--df-shadow-50:rgba(0,0,0,.5);--df-shadow-55:rgba(0,0,0,.55);--df-shadow-60:rgba(0,0,0,.6);--df-shadow-65:rgba(0,0,0,.65);--df-illus-card-front:#E6EAEE;--df-illus-card-back:#DEE3E7;--df-illus-card-disc-1:#CFDCE4;--df-illus-card-disc-2:#D8E2E8;--df-illus-crop:#DDE3E8;--df-illus-logo:#2F5A73;--df-illus-ink-title:#1E3A4C;--df-illus-ink-heading:#33434D;--df-illus-ink-strong:#15232C;--df-illus-ink-field:#1D2A33;--df-illus-ink-meta:#3E4C55;--df-illus-ink-subtle:#5B6972;--df-illus-ink-label:#6A7780;--df-illus-ink-faint:#7C8993;--df-illus-rule:#B7C1C8;--df-illus-amber-fill:rgba(245,180,84,.5);--df-illus-amber-ring:#C98A1E;--df-danger:#F28B82;--df-danger-soft:rgba(242,139,130,.12);--df-focus-ring:#5EEAD4;--df-control-edge:#737F87;--df-shadow-track:inset 0 0 0 1px rgba(255,255,255,.04);--df-shadow-segment-mode:inset 0 1px 0 rgba(255,255,255,.08), 0 1px 2px rgba(0,0,0,.45);--df-shadow-nav-active:inset 0 1px 0 rgba(255,255,255,.05), 0 1px 2px rgba(0,0,0,.3);--df-shadow-ring-tile:inset 0 0 0 1px rgba(255,255,255,.06);--df-shadow-avatar:inset 0 1px 0 rgba(255,255,255,.08);--df-shadow-button-quiet:inset 0 1px 0 rgba(255,255,255,.06), 0 0 0 1px rgba(255,255,255,.04);--df-shadow-sheet:inset 0 1px 0 rgba(255,255,255,.05), 0 0 0 1px rgba(255,255,255,.03), 0 16px 48px rgba(0,0,0,.4);--df-shadow-halo-live:0 0 0 3px rgba(94,234,212,.16);--df-shadow-input:inset 0 1px 0 rgba(255,255,255,.05), 0 0 0 1px #737F87;--df-shadow-floating-chip:inset 0 1px 0 rgba(255,255,255,.06);--df-shadow-raised:inset 0 1px 0 rgba(255,255,255,.06), 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.18);--df-shadow-segment:inset 0 1px 0 rgba(255,255,255,.08), 0 1px 2px rgba(0,0,0,.4);--df-shadow-ring-in-chair:inset 0 0 0 1px rgba(94,234,212,.22);--df-shadow-lift-row:inset 0 1px 0 rgba(255,255,255,.06), 0 4px 12px -2px rgba(0,0,0,.35);--df-shadow-primary-compact:inset 0 1px 0 rgba(255,255,255,.35);--df-shadow-secondary-compact:inset 0 1px 0 rgba(255,255,255,.05);--df-shadow-ring-tier:inset 0 0 0 1px rgba(255,255,255,.08);--df-shadow-panel:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px rgba(255,255,255,.05), 0 2px 6px rgba(0,0,0,.35), 0 32px 64px -12px rgba(0,0,0,.65);--df-shadow-hairline-below:0 1px 0 rgba(255,255,255,.04);--df-shadow-ring-well:inset 0 0 0 1px rgba(255,255,255,.03);--df-shadow-lift:inset 0 1px 0 rgba(255,255,255,.08), 0 0 0 1px rgba(255,255,255,.04), 0 2px 6px rgba(0,0,0,.3), 0 10px 24px -6px rgba(0,0,0,.55);--df-shadow-ring-tier-card:inset 0 0 0 1px rgba(255,255,255,.1);--df-shadow-input-outline:inset 0 0 0 1px #737F87;--df-shadow-primary:inset 0 1px 0 rgba(255,255,255,.35), 0 1px 2px rgba(0,0,0,.4);--df-shadow-panel-composer:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px #737F87;--df-shadow-mic:0 1px 2px rgba(0,0,0,.4);--df-shadow-new-chat:inset 0 1px 0 rgba(255,255,255,.06), 0 1px 2px rgba(0,0,0,.3);--df-shadow-thumb:inset 0 0 0 1px rgba(255,255,255,.06), 0 12px 24px -8px rgba(0,0,0,.6);--df-shadow-photo-card:0 8px 16px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);--df-shadow-photo-highlight-ring:0 0 0 1px #C98A1E;--df-shadow-action-card:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px rgba(255,255,255,.05), 0 2px 6px rgba(0,0,0,.3), 0 20px 48px -12px rgba(0,0,0,.6);--df-shadow-icon-tile:inset 0 1px 0 rgba(255,255,255,.07);--df-shadow-ring-verify:inset 0 0 0 1px rgba(245,180,84,.32);--df-shadow-primary-hero:inset 0 1px 0 rgba(255,255,255,.35), 0 1px 2px rgba(0,0,0,.4), 0 8px 20px -8px rgba(94,234,212,.35);--df-shadow-composer:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px #737F87, 0 2px 6px rgba(0,0,0,.3), 0 16px 40px -8px rgba(0,0,0,.6);--df-shadow-rail:inset 0 1px 0 rgba(255,255,255,.06), 0 0 0 1px rgba(255,255,255,.04), 0 2px 6px rgba(0,0,0,.25), 0 16px 40px -8px rgba(0,0,0,.5);--df-shadow-avatar-lg:inset 0 1px 0 rgba(255,255,255,.08), 0 0 0 1px rgba(255,255,255,.05);--df-shadow-halo-pending:0 0 0 3px rgba(245,180,84,.16);--df-shadow-input-inline:inset 0 0 0 1px #737F87;--df-shadow-choice:inset 0 0 0 1.5px #8B969E;--df-shadow-choice-on:inset 0 0 0 1.5px #5EEAD4, inset 0 0 0 4.5px #262E33;--df-shadow-choice-blocking:inset 0 0 0 1.5px #F5B454;--df-shadow-photo-card-sm:0 6px 12px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);--df-shadow-dot-cutout:0 0 0 3px #1C2226;--df-shadow-dot-cutout-live:0 0 0 3px rgba(94,234,212,.16), 0 0 0 3px #1C2226;--df-shadow-ring-pill:inset 0 0 0 1px rgba(255,255,255,.14);--df-shadow-input-invalid:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px rgba(245,180,84,.6);--df-shadow-hairline-above:0 -1px 0 rgba(255,255,255,.04);--df-shadow-button-disabled:inset 0 1px 0 rgba(255,255,255,.04);--df-shadow-mark:inset 0 0 0 1px rgba(255,255,255,.07);--df-shadow-blockout:inset 0 0 0 1px rgba(255,255,255,.05);--df-shadow-action-bar:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px rgba(255,255,255,.05), 0 2px 6px rgba(0,0,0,.3), 0 16px 40px -8px rgba(0,0,0,.6);--df-shadow-input-attention:inset 0 0 0 1px rgba(245,180,84,.6)}
+:root[data-theme="light"],.df-light{color-scheme:light;--df-canvas:#E6E9EC;--df-sheet:#EFF1F3;--df-recessed:#F3F5F6;--df-raised:#F9FAFB;--df-in-chair:#EBF3F2;--df-floating:#FFFFFF;--df-lift:#FFFFFF;--df-thumb:#2A3136;--df-thumb-disc:#30383D;--df-scrim:rgba(255,255,255,.88);--df-backdrop:rgba(17,24,28,.36);--df-edge-ink:#11181C;--df-text-1:#11181C;--df-text-2:#3E4950;--df-text-3:#57636B;--df-on-accent:#FFFFFF;--df-on-accent-fill:rgba(0,20,18,.22);--df-accent:#0E6F68;--df-accent-hover:#0A5550;--df-accent-edge:rgba(255,255,255,.2);--df-accent-progress:rgba(14,111,104,.07);--df-accent-soft:rgba(14,111,104,.09);--df-accent-chip:rgba(14,111,104,.10);--df-accent-halo:rgba(14,111,104,.16);--df-accent-ring:rgba(14,111,104,.30);--df-accent-glow:rgba(14,111,104,.32);--df-accent-underline:rgba(14,111,104,.7);--df-amber:#8D5400;--df-amber-row:rgba(141,84,0,.06);--df-amber-soft:rgba(141,84,0,.10);--df-amber-chip:rgba(141,84,0,.08);--df-amber-callout:rgba(141,84,0,.12);--df-amber-track:rgba(141,84,0,.22);--df-amber-ring:rgba(141,84,0,.75);--df-amber-dash:rgba(141,84,0,.45);--df-amber-dash-strong:rgba(141,84,0,.6);--df-blue:#1452A9;--df-blue-soft:rgba(20,82,169,.09);--df-blue-chip:rgba(20,82,169,.10);--df-overlay-025:rgba(17,24,28,.035);--df-overlay-03:rgba(17,24,28,.05);--df-overlay-04:rgba(17,24,28,.05);--df-overlay-05:rgba(17,24,28,.06);--df-overlay-06:rgba(17,24,28,.07);--df-overlay-07:rgba(17,24,28,.08);--df-overlay-08:rgba(17,24,28,.10);--df-overlay-10:rgba(17,24,28,.12);--df-overlay-12:rgba(17,24,28,.22);--df-overlay-14:rgba(17,24,28,.24);--df-overlay-24:rgba(17,24,28,.36);--df-overlay-28:rgba(17,24,28,.42);--df-shadow-18:rgba(17,24,28,.05);--df-shadow-25:rgba(17,24,28,.05);--df-shadow-30:rgba(17,24,28,.06);--df-shadow-35:rgba(17,24,28,.07);--df-shadow-40:rgba(17,24,28,.10);--df-shadow-45:rgba(17,24,28,.12);--df-shadow-50:rgba(17,24,28,.10);--df-shadow-55:rgba(17,24,28,.14);--df-shadow-60:rgba(17,24,28,.14);--df-shadow-65:rgba(17,24,28,.18);--df-illus-card-front:#E6EAEE;--df-illus-card-back:#DEE3E7;--df-illus-card-disc-1:#CFDCE4;--df-illus-card-disc-2:#D8E2E8;--df-illus-crop:#DDE3E8;--df-illus-logo:#2F5A73;--df-illus-ink-title:#1E3A4C;--df-illus-ink-heading:#33434D;--df-illus-ink-strong:#15232C;--df-illus-ink-field:#1D2A33;--df-illus-ink-meta:#3E4C55;--df-illus-ink-subtle:#5B6972;--df-illus-ink-label:#6A7780;--df-illus-ink-faint:#7C8993;--df-illus-rule:#B7C1C8;--df-illus-amber-fill:rgba(245,180,84,.5);--df-illus-amber-ring:#C98A1E;--df-danger:#B3261E;--df-danger-soft:rgba(179,38,30,.09);--df-focus-ring:#0E6F68;--df-control-edge:#737F87;--df-shadow-track:inset 0 0 0 1px rgba(17,24,28,.06);--df-shadow-segment-mode:0 0 0 1px rgba(17,24,28,.08), 0 1px 2px rgba(17,24,28,.12);--df-shadow-nav-active:0 0 0 1px rgba(17,24,28,.07), 0 1px 2px rgba(17,24,28,.06);--df-shadow-ring-tile:inset 0 0 0 1px rgba(17,24,28,.08);--df-shadow-avatar:inset 0 0 0 1px rgba(17,24,28,.10);--df-shadow-button-quiet:0 0 0 1px rgba(17,24,28,.10), 0 1px 2px rgba(17,24,28,.06);--df-shadow-sheet:0 0 0 1px rgba(17,24,28,.06), 0 1px 2px rgba(17,24,28,.04), 0 16px 48px rgba(17,24,28,.08);--df-shadow-halo-live:0 0 0 3px rgba(14,111,104,.16);--df-shadow-input:0 0 0 1px #737F87;--df-shadow-floating-chip:inset 0 0 0 1px rgba(17,24,28,.08), 0 1px 2px rgba(17,24,28,.04);--df-shadow-raised:0 0 0 1px rgba(17,24,28,.07), 0 1px 2px rgba(17,24,28,.06), 0 8px 24px rgba(17,24,28,.05);--df-shadow-segment:0 0 0 1px rgba(17,24,28,.08), 0 1px 2px rgba(17,24,28,.10);--df-shadow-ring-in-chair:inset 0 0 0 1px rgba(14,111,104,.30);--df-shadow-lift-row:0 0 0 1px rgba(17,24,28,.07), 0 4px 12px -2px rgba(17,24,28,.10);--df-shadow-primary-compact:inset 0 1px 0 rgba(255,255,255,.2);--df-shadow-secondary-compact:inset 0 0 0 1px rgba(17,24,28,.08);--df-shadow-ring-tier:inset 0 0 0 1px rgba(17,24,28,.12);--df-shadow-panel:0 0 0 1px rgba(17,24,28,.08), 0 2px 6px rgba(17,24,28,.07), 0 32px 64px -12px rgba(17,24,28,.18);--df-shadow-hairline-below:0 1px 0 rgba(17,24,28,.07);--df-shadow-ring-well:inset 0 0 0 1px rgba(17,24,28,.05);--df-shadow-lift:0 0 0 1px rgba(17,24,28,.08), 0 2px 6px rgba(17,24,28,.06), 0 10px 24px -6px rgba(17,24,28,.14);--df-shadow-ring-tier-card:inset 0 0 0 1px rgba(17,24,28,.14);--df-shadow-input-outline:inset 0 0 0 1px #737F87;--df-shadow-primary:inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(17,24,28,.16);--df-shadow-panel-composer:0 0 0 1px #737F87;--df-shadow-mic:0 1px 2px rgba(17,24,28,.16);--df-shadow-new-chat:0 0 0 1px rgba(17,24,28,.08), 0 1px 2px rgba(17,24,28,.06);--df-shadow-thumb:inset 0 0 0 1px rgba(17,24,28,.08), 0 12px 24px -8px rgba(17,24,28,.22);--df-shadow-photo-card:0 8px 16px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);--df-shadow-photo-highlight-ring:0 0 0 1px #C98A1E;--df-shadow-action-card:0 0 0 1px rgba(17,24,28,.08), 0 2px 6px rgba(17,24,28,.06), 0 20px 48px -12px rgba(17,24,28,.14);--df-shadow-icon-tile:inset 0 0 0 1px rgba(17,24,28,.08);--df-shadow-ring-verify:inset 0 0 0 1px rgba(141,84,0,.75);--df-shadow-primary-hero:inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(17,24,28,.16), 0 8px 20px -8px rgba(14,111,104,.32);--df-shadow-composer:0 0 0 1px #737F87, 0 2px 6px rgba(17,24,28,.06), 0 16px 40px -8px rgba(17,24,28,.14);--df-shadow-rail:0 0 0 1px rgba(17,24,28,.07), 0 2px 6px rgba(17,24,28,.05), 0 16px 40px -8px rgba(17,24,28,.10);--df-shadow-avatar-lg:inset 0 0 0 1px rgba(17,24,28,.10), 0 1px 2px rgba(17,24,28,.06);--df-shadow-halo-pending:0 0 0 3px rgba(141,84,0,.12);--df-shadow-input-inline:inset 0 0 0 1px #737F87;--df-shadow-choice:inset 0 0 0 1.5px #57636B;--df-shadow-choice-on:inset 0 0 0 1.5px #0E6F68, inset 0 0 0 4.5px #FFFFFF;--df-shadow-choice-blocking:inset 0 0 0 1.5px #8D5400;--df-shadow-photo-card-sm:0 6px 12px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);--df-shadow-dot-cutout:0 0 0 3px #F9FAFB;--df-shadow-dot-cutout-live:0 0 0 3px rgba(14,111,104,.16), 0 0 0 3px #F9FAFB;--df-shadow-ring-pill:inset 0 0 0 1px rgba(17,24,28,.20);--df-shadow-input-invalid:0 0 0 1px #8D5400;--df-shadow-hairline-above:0 -1px 0 rgba(17,24,28,.07);--df-shadow-button-disabled:inset 0 0 0 1px rgba(17,24,28,.06);--df-shadow-mark:inset 0 0 0 1px rgba(17,24,28,.12);--df-shadow-blockout:inset 0 0 0 1px rgba(17,24,28,.06);--df-shadow-action-bar:0 0 0 1px rgba(17,24,28,.08), 0 2px 6px rgba(17,24,28,.06), 0 20px 48px -12px rgba(17,24,28,.14);--df-shadow-input-attention:inset 0 0 0 1px #8D5400}
+body{margin:0;font-family:'Geist',system-ui,sans-serif;background:var(--df-canvas);color:var(--df-text-1);-webkit-font-smoothing:antialiased}
+a{color:var(--df-accent)}a:hover{color:var(--df-accent-hover)}
+</style>
+<link rel="stylesheet" href="proto.css">
+<script>window.DF_PAGES=[{"slug": "signin", "href": "index.html", "title": "Sign in", "group": "Start"}, {"slug": "today", "href": "today.html", "title": "Today", "group": "Boards"}, {"slug": "schedule", "href": "schedule.html", "title": "Schedule", "group": "Boards"}, {"slug": "patients", "href": "patients.html", "title": "Patients", "group": "Boards"}, {"slug": "patient", "href": "patient.html", "title": "Patient chart", "group": "Boards"}, {"slug": "ledger", "href": "ledger.html", "title": "Ledger", "group": "Boards"}, {"slug": "account", "href": "account.html", "title": "Patient account", "group": "Boards"}, {"slug": "close", "href": "close.html", "title": "Daily close", "group": "Boards", "arrive": "The Close sample is the end of the same day, Fri, Sep 25 at 5:06 PM, so its totals and exceptions differ from the morning boards."}, {"slug": "inbox", "href": "inbox.html", "title": "Inbox", "group": "Boards"}, {"slug": "compliance", "href": "compliance.html", "title": "Compliance", "group": "Boards", "arrive": "Compliance is shown as the owner, Dr. Maya Okafor, sees it: she is the signed-in user here, and its passkey prompts are hers."}, {"slug": "chat", "href": "chat.html", "title": "Chat · insurance card photos", "group": "Chat"}, {"slug": "chat-booking", "href": "chat-booking.html", "title": "Chat · new patient + booking", "group": "Chat"}, {"slug": "chat-refund", "href": "chat-refund.html", "title": "Refund with passkey", "group": "Chat"}, {"slug": "forms", "href": "forms.html", "title": "Forms", "group": "Forms"}, {"slug": "intake", "href": "intake.html", "title": "Intake form", "group": "Forms"}, {"slug": "lock", "href": "lock.html", "title": "Workstation lock", "group": "Start"}, {"slug": "console", "href": "console.html", "title": "Operator console", "group": "Dayfront staff"}];window.DF_PAGE="intake";</script>
+<script src="proto-theme.js"></script>
+</head>
+<body>
+<div id="proto-stage">
+<div data-part="app" style="width: 1440px; height: 900px; box-sizing: border-box; display: flex; overflow: hidden; background: var(--df-canvas); color: var(--df-text-1); font-family: 'Geist', system-ui, sans-serif; font-size: 14px; line-height: 20px;">
+
+  <aside data-part="sidebar" aria-label="Main navigation" style="width: 232px; flex: 0 0 232px; height: 900px; box-sizing: border-box; padding: 8px 12px 12px; display: flex; flex-direction: column;">
+
+    <div data-go="today.html" data-part="brand" style="height: 56px; flex: 0 0 56px; box-sizing: border-box; padding: 0 8px; display: flex; align-items: center; gap: 10px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="0" y="0" width="24" height="24" rx="7" style="fill: var(--df-accent);"></rect><path d="M6.5 9.5h11" stroke-width="2.25" stroke-linecap="round" style="stroke: var(--df-canvas);"></path></svg>
+      <span style="font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: -0.02em; color: var(--df-text-1);">Dayfront</span>
+    </div>
+
+    <div role="group" aria-label="Mode" data-part="mode-switch" style="height: 36px; flex: 0 0 36px; box-sizing: border-box; padding: 2px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; background: var(--df-sheet); border-radius: 10px; box-shadow: var(--df-shadow-track);">
+      <button data-go="chat.html" type="button" aria-pressed="false" style="height: 32px; box-sizing: border-box; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--df-text-2); font-family: inherit; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"></path></svg>
+        <span>Chat</span>
+      </button>
+      <button data-go="today.html" type="button" aria-pressed="false" style="height: 32px; box-sizing: border-box; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--df-text-2); font-family: inherit; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
+        <span>Boards</span>
+      </button>
+      <button data-go="forms.html" type="button" aria-pressed="true" style="height: 32px; box-sizing: border-box; padding: 0; border: 0; border-radius: 8px; background: var(--df-floating); box-shadow: var(--df-shadow-segment-mode); color: var(--df-text-1); font-family: inherit; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-accent);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path><path d="M14 2v6h6"></path><path d="M8 13h8M8 17h5"></path></svg>
+        <span>Forms</span>
+      </button>
+    </div>
+
+    <nav data-part="nav" aria-label="Boards" style="margin-top: 24px; display: flex; flex-direction: column; gap: 2px;">
+      <a data-go="today.html" href="#today" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="M12 3v5"></path><path d="m5.64 8.64 1.42 1.42"></path><path d="m18.36 8.64-1.42 1.42"></path><path d="M3 15h2"></path><path d="M19 15h2"></path><path d="M16 15a4 4 0 0 0-8 0"></path><path d="M3 19h18"></path></svg>
+        <span>Today</span>
+      </a>
+      <a data-go="schedule.html" href="#schedule" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>
+        <span>Schedule</span>
+      </a>
+      <a data-go="patients.html" href="#patients" aria-current="page" data-part="nav-item-active" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; background: var(--df-raised); box-shadow: var(--df-shadow-nav-active); color: var(--df-text-1); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-accent);"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <span>Patients</span>
+      </a>
+      <a data-go="ledger.html" href="#ledger" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"></path><path d="M8 7h8M8 11h8M8 15h5"></path></svg>
+        <span>Ledger</span>
+      </a>
+      <a data-go="close.html" data-toast="The Close sample is the end of the same day, Fri, Sep 25 at 5:06 PM, so its totals and exceptions differ from the morning boards." href="#close" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><rect x="8" y="2" width="8" height="4" rx="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="m9 14 2 2 4-4"></path></svg>
+        <span>Close</span>
+      </a>
+      <a data-go="inbox.html" href="#inbox" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="M22 12h-6l-2 3h-4l-2-3H2"></path><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11Z"></path></svg>
+        <span>Inbox</span>
+        <span aria-label="3 messages awaiting reply" style="margin-left: auto; min-width: 20px; height: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 999px; background: var(--df-raised); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center;">3</span>
+      </a>
+      <a data-go="compliance.html" data-toast="Compliance is shown as the owner, Dr. Maya Okafor, sees it: she is the signed-in user here, and its passkey prompts are hers." href="#compliance" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+        <span>Compliance</span>
+      </a>
+    </nav>
+
+    <div data-part="sidebar-footer" style="margin-top: auto; display: flex; flex-direction: column; gap: 4px;">
+      <div data-part="practice" style="height: 48px; box-sizing: border-box; padding: 0 8px; display: flex; align-items: center; gap: 12px;">
+        <span aria-hidden="true" style="width: 32px; height: 32px; flex: 0 0 32px; border-radius: 10px; background: var(--df-sheet); box-shadow: var(--df-shadow-ring-tile); color: var(--df-text-2); display: flex; align-items: center; justify-content: center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5c-1.5-1.5-3-2-4.5-2C5 3.5 3.5 5.5 3.5 8c0 2 .8 3.4 1.4 5 .7 2 .9 4.2 1.6 6 .4 1 1.6 1.2 2.1.1.7-1.6.9-4.1 3.4-4.1s2.7 2.5 3.4 4.1c.5 1.1 1.7.9 2.1-.1.7-1.8.9-4 1.6-6 .6-1.6 1.4-3 1.4-5 0-2.5-1.5-4.5-4-4.5-1.5 0-3 .5-4.5 2Z"></path></svg>
+        </span>
+        <span style="display: flex; flex-direction: column; min-width: 0;">
+          <span style="font-size: 13px; line-height: 16px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">Lakeview Dental Care</span>
+          <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3);">Solo practice</span>
+        </span>
+      </div>
+      <div data-part="signed-in-user" style="height: 48px; box-sizing: border-box; padding: 0 0 0 8px; display: flex; align-items: center; gap: 12px;">
+        <span aria-hidden="true" style="width: 32px; height: 32px; flex: 0 0 32px; border-radius: 999px; background: var(--df-floating); box-shadow: var(--df-shadow-avatar); color: var(--df-text-1); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center;">RD</span>
+        <span style="display: flex; flex-direction: column; min-width: 0;">
+          <span style="font-size: 13px; line-height: 16px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">Rosa Delgado</span>
+          <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3);">Front desk</span>
+        </span>
+        <button data-go="lock.html" type="button" aria-label="Lock this workstation" style="margin-left: auto; height: 32px; box-sizing: border-box; padding: 0 10px; border: 0; border-radius: 8px; background: var(--df-raised); box-shadow: var(--df-shadow-button-quiet); color: var(--df-text-1); font-family: inherit; font-size: 12.5px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+          <span>Lock</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <div data-part="sheet" style="position: relative; flex: 0 0 1200px; width: 1200px; height: 884px; margin: 8px 8px 8px 0; box-sizing: border-box; background: var(--df-sheet); border-radius: 16px; box-shadow: var(--df-shadow-sheet); display: flex; flex-direction: column;">
+
+    <header data-part="topbar" style="height: 56px; flex: 0 0 56px; box-sizing: border-box; padding: 0 24px; display: flex; align-items: center; gap: 12px;">
+      <nav aria-label="Breadcrumb" style="display: flex; align-items: center; gap: 8px;">
+        <a data-go="patients.html" href="#patients" style="font-size: 14px; line-height: 24px; font-weight: 500; color: var(--df-text-3); text-decoration: none; white-space: nowrap;">Patients</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 12px; stroke: var(--df-text-3);"><path d="m9 18 6-6-6-6"></path></svg>
+      </nav>
+      <h1 id="page-title" style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Intake · Taylor Brooks</h1>
+      <span data-part="draft-status" style="margin-left: 4px; display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--df-text-3); white-space: nowrap;">
+        <span aria-hidden="true" style="width: 6px; height: 6px; box-sizing: border-box; border-radius: 999px; border: 1.5px solid var(--df-text-3);"></span>
+        <span>Draft · saved 10:46 AM</span>
+      </span>
+
+      <div style="margin-left: auto; display: flex; align-items: center; gap: 8px;">
+        <div data-part="search" style="position: relative; width: 280px; height: 36px; flex: 0 0 280px;">
+          <input id="global-search" type="search" style="width: 280px; height: 36px; box-sizing: border-box; padding: 0 44px 0 36px; border: 0; border-radius: 10px; background: var(--df-raised); box-shadow: var(--df-shadow-input); color: var(--df-text-1); font-family: inherit; font-size: 13px; -webkit-appearance: none; appearance: none;" />
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; left: 12px; top: 10px; pointer-events: none; stroke: var(--df-text-3);"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+          <label for="global-search" style="position: absolute; left: 36px; top: 0; height: 36px; display: flex; align-items: center; font-size: 13px; color: var(--df-text-3); pointer-events: none; white-space: nowrap;">Search patients, appointments…</label>
+          <kbd style="position: absolute; right: 8px; top: 8px; height: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 6px; background: var(--df-floating); box-shadow: var(--df-shadow-floating-chip); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; display: inline-flex; align-items: center; pointer-events: none;">⌘K</kbd>
+        </div>
+
+        <span data-part="env-badge" style="height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 999px; background: var(--df-raised); box-shadow: var(--df-shadow-ring-tile); color: var(--df-text-2); font-size: 12px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
+          <span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 999px; background: var(--df-amber);"></span>
+          <span>Fictional data</span>
+        </span>
+
+        <button type="button" data-part="theme-toggle" aria-label="Switch theme" title="Switch theme" style="width: 36px; height: 36px; box-sizing: border-box; padding: 0; border: 0; border-radius: 10px; background: transparent; color: var(--df-text-2); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <span class="df-when-dark" style="display: contents;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg></span>
+          <span class="df-when-light" style="display: contents;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></span>
+        </button>
+
+        <button data-toast="privacy" type="button" aria-label="Privacy mode, off" aria-pressed="false" style="width: 36px; height: 36px; box-sizing: border-box; padding: 0; border: 0; border-radius: 10px; background: transparent; color: var(--df-text-2); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path><path d="M6.61 6.61A13.53 13.53 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path><path d="m2 2 20 20"></path></svg>
+        </button>
+
+        <button data-toast="Notifications open a panel here in the real app: 2 unread (a proposal waiting and an Inbox reply)." type="button" aria-label="Notifications, 2 unread" style="position: relative; width: 36px; height: 36px; box-sizing: border-box; padding: 0; border: 0; border-radius: 10px; background: transparent; color: var(--df-text-2); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+          <span aria-hidden="true" style="position: absolute; top: 8px; right: 9px; width: 8px; height: 8px; box-sizing: border-box; border-radius: 999px; background: var(--df-accent); border: 2px solid var(--df-sheet);"></span>
+        </button>
+      </div>
+    </header>
+
+    <main data-part="intake-form" aria-labelledby="page-title" style="flex: 1; min-height: 0; box-sizing: border-box; padding: 8px 24px 16px; display: flex; flex-direction: column; gap: 16px;">
+
+      <nav data-part="stepper" aria-label="Intake sections" style="height: 44px; flex: 0 0 44px; display: flex; align-items: center;">
+        <ol style="list-style: none; margin: 0; padding: 0; flex: 1; min-width: 0; display: flex; align-items: center; gap: 4px;">
+
+          <li style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 4px;">
+            <a data-toast="Demographics: 1 missing, the emergency contact." href="#demographics" data-part="step" data-state="missing" style="flex: 1; min-width: 0; height: 44px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: flex; align-items: center; gap: 10px; color: var(--df-text-1); text-decoration: none;">
+              <span aria-hidden="true" style="width: 24px; height: 24px; flex: 0 0 24px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center;">1</span>
+              <span style="display: flex; flex-direction: column; min-width: 0;">
+                <span style="font-size: 13px; line-height: 16px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Demographics</span>
+                <span style="height: 16px; display: inline-flex; align-items: center; gap: 4px; font-size: 12px; line-height: 16px; font-weight: 500; color: var(--df-amber); white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4M12 16h.01"></path></svg>1 missing</span>
+              </span>
+            </a>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 12px; stroke: var(--df-text-3);"><path d="m9 18 6-6-6-6"></path></svg>
+          </li>
+
+          <li style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 4px;">
+            <a data-toast="Medical history: 8 of 8 answered (questionnaire v3). A blank stays unanswered, never No." href="#medical-history" aria-current="step" data-part="step" data-state="complete-current" style="flex: 1; min-width: 0; height: 44px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: flex; align-items: center; gap: 10px; background: var(--df-raised); box-shadow: var(--df-shadow-nav-active); color: var(--df-text-1); text-decoration: none;">
+              <span aria-hidden="true" style="width: 24px; height: 24px; flex: 0 0 24px; border-radius: 999px; background: var(--df-accent-soft); color: var(--df-accent); display: flex; align-items: center; justify-content: center;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>
+              <span style="display: flex; flex-direction: column; min-width: 0;">
+                <span style="font-size: 13px; line-height: 16px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Medical history</span>
+                <span style="height: 16px; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">8 of 8 answered</span>
+              </span>
+            </a>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 12px; stroke: var(--df-text-3);"><path d="m9 18 6-6-6-6"></path></svg>
+          </li>
+
+          <li style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 4px;">
+            <a data-toast="Allergies and medications: 1 allergy (Latex) and 2 medications (Apixaban, Levothyroxine)." href="#allergies-medications" data-part="step" data-state="complete" style="flex: 1; min-width: 0; height: 44px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: flex; align-items: center; gap: 10px; color: var(--df-text-1); text-decoration: none;">
+              <span aria-hidden="true" style="width: 24px; height: 24px; flex: 0 0 24px; border-radius: 999px; background: var(--df-overlay-06); color: var(--df-text-2); display: flex; align-items: center; justify-content: center;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>
+              <span style="display: flex; flex-direction: column; min-width: 0;">
+                <span style="font-size: 13px; line-height: 16px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Allergies &amp; medications</span>
+                <span style="height: 16px; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">1 allergy · 2 medications</span>
+              </span>
+            </a>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 12px; stroke: var(--df-text-3);"><path d="m9 18 6-6-6-6"></path></svg>
+          </li>
+
+          <li style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 4px;">
+            <a data-toast="Insurance: 1 missing, the subscriber DOB. It is needed because the subscriber isn&#x27;t the patient." href="#insurance" data-part="step" data-state="missing" style="flex: 1; min-width: 0; height: 44px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: flex; align-items: center; gap: 10px; color: var(--df-text-1); text-decoration: none;">
+              <span aria-hidden="true" style="width: 24px; height: 24px; flex: 0 0 24px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center;">4</span>
+              <span style="display: flex; flex-direction: column; min-width: 0;">
+                <span style="font-size: 13px; line-height: 16px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Insurance</span>
+                <span style="height: 16px; display: inline-flex; align-items: center; gap: 4px; font-size: 12px; line-height: 16px; font-weight: 500; color: var(--df-amber); white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4M12 16h.01"></path></svg>1 missing</span>
+              </span>
+            </a>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 12px; stroke: var(--df-text-3);"><path d="m9 18 6-6-6-6"></path></svg>
+          </li>
+
+          <li style="flex: 1; min-width: 0; display: flex; align-items: center;">
+            <a data-toast="Consents: 4 recorded from the paper packet by Rosa Delgado on Sep 25." href="#consents" data-part="step" data-state="complete" style="flex: 1; min-width: 0; height: 44px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: flex; align-items: center; gap: 10px; color: var(--df-text-1); text-decoration: none;">
+              <span aria-hidden="true" style="width: 24px; height: 24px; flex: 0 0 24px; border-radius: 999px; background: var(--df-overlay-06); color: var(--df-text-2); display: flex; align-items: center; justify-content: center;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>
+              <span style="display: flex; flex-direction: column; min-width: 0;">
+                <span style="font-size: 13px; line-height: 16px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Consents</span>
+                <span style="height: 16px; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">4 recorded</span>
+              </span>
+            </a>
+          </li>
+        </ol>
+      </nav>
+
+      <section id="demographics" data-part="demographics" aria-labelledby="demographics-title" style="position: relative; height: 52px; flex: 0 0 52px; display: flex; align-items: center; gap: 12px;">
+        <h2 id="demographics-title" style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;">Demographics</h2>
+        <span aria-hidden="true" style="width: 40px; height: 40px; flex: 0 0 40px; border-radius: 999px; background: var(--df-floating); box-shadow: var(--df-shadow-avatar-lg); color: var(--df-text-1); font-size: 14px; font-weight: 600; letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center;">TB</span>
+        <div style="display: flex; flex-direction: column; min-width: 0;">
+          <div style="height: 24px; display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Taylor Brooks</span>
+            <span data-part="badge-new" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-overlay-06); color: var(--df-text-2); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; white-space: nowrap;">New patient</span>
+          </div>
+          <span style="height: 16px; font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">DOB <span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--df-text-2);">07/19/1988</span> · Age 38</span>
+        </div>
+        <button data-toast="In the app this opens Taylor Brooks&#x27;s name, DOB, mobile and address for editing." type="button" aria-label="Edit demographics" style="width: 32px; height: 32px; flex: 0 0 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--df-text-2); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path></svg>
+        </button>
+
+        <div style="margin-left: 16px; display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3);">Mobile</span>
+          <span style="height: 20px; display: flex; align-items: center; font-family: 'Geist Mono', monospace; font-size: 13.5px; color: var(--df-text-1); white-space: nowrap;">(608) 555-0129</span>
+        </div>
+        <div style="margin-left: 20px; display: flex; flex-direction: column; gap: 4px;">
+          <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3);">Address</span>
+          <span style="height: 20px; display: flex; align-items: center; font-size: 13.5px; color: var(--df-text-1); white-space: nowrap;">118 Birch Hollow Rd</span>
+        </div>
+
+        <div id="emergency-contact" data-part="field-missing" style="margin-left: 12px; height: 48px; box-sizing: border-box; padding: 0 8px 0 12px; border-radius: 10px; background: var(--df-amber-row); box-shadow: var(--df-shadow-ring-verify); display: flex; align-items: center; gap: 16px;">
+          <div style="display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 12px; line-height: 16px; color: var(--df-text-2); white-space: nowrap;">Emergency contact</span>
+            <span data-part="status-missing" style="height: 20px; display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--df-amber); white-space: nowrap;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4M12 16h.01"></path></svg>
+              <span>Missing · required</span>
+            </span>
+          </div>
+          <button data-toast="In the app you add a name, relationship and phone. It is one of the 2 required fields before Submit intake." type="button" aria-label="Add emergency contact" data-part="btn-secondary-sm" style="height: 32px; box-sizing: border-box; padding: 0 12px 0 10px; border: 0; border-radius: 8px; background: var(--df-overlay-07); box-shadow: var(--df-shadow-secondary-compact); color: var(--df-text-1); font-family: inherit; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; cursor: pointer;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+            <span>Add</span>
+          </button>
+        </div>
+
+        <div style="margin-left: auto; display: flex; flex-direction: column; gap: 4px;">
+          <label for="entry-method" style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Entry method</label>
+          <div style="position: relative; width: 208px; height: 32px;">
+            <select id="entry-method" style="width: 208px; height: 32px; box-sizing: border-box; padding: 0 32px 0 12px; border: 0; border-radius: 8px; background: var(--df-raised); box-shadow: var(--df-shadow-input); color: var(--df-text-1); font-family: inherit; font-size: 13px; -webkit-appearance: none; appearance: none; cursor: pointer;">
+              <option value="interview">Interview</option>
+              <option value="paper_transcribed" selected="selected">Paper form, transcribed</option>
+            </select>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; right: 10px; top: 9px; pointer-events: none; stroke: var(--df-text-3);"><path d="m6 9 6 6 6-6"></path></svg>
+          </div>
+        </div>
+      </section>
+
+      <div data-part="form-grid" style="flex: 1; min-height: 0; display: flex; gap: 16px;">
+
+        <section id="medical-history" data-part="card" aria-labelledby="mh-title" style="width: 400px; flex: 0 0 400px; min-height: 0; box-sizing: border-box; padding: 16px; background: var(--df-raised); border-radius: 14px; box-shadow: var(--df-shadow-raised); display: flex; flex-direction: column;">
+          <div data-part="card-header" style="height: 24px; flex: 0 0 24px; display: flex; align-items: center; gap: 8px;">
+            <h2 id="mh-title" style="margin: 0; font-size: 15px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Medical history</h2>
+            <span style="margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 500; color: var(--df-text-2); white-space: nowrap;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+              <span>8 of 8 answered</span>
+            </span>
+          </div>
+          <p style="margin: 4px 0 0; font-size: 12.5px; line-height: 16px; color: var(--df-text-3);">Questionnaire v3 · a blank stays unanswered, never No</p>
+
+          <div data-part="mh-questions" role="group" aria-label="Medical history questions" style="margin: 12px -8px 0; display: flex; flex-direction: column; gap: 4px;">
+
+            <div data-part="mh-question" style="height: 36px; box-sizing: border-box; padding: 0 8px; display: flex; align-items: center; gap: 12px;">
+              <span id="q-heart" style="flex: 1; min-width: 0; font-size: 13.5px; line-height: 20px; color: var(--df-text-1); white-space: nowrap;">Heart condition or murmur</span>
+              <div role="radiogroup" aria-labelledby="q-heart" data-part="yn-segmented" style="flex: 0 0 auto; height: 32px; box-sizing: border-box; padding: 2px; display: inline-flex; gap: 2px; background: var(--df-sheet); border-radius: 9px; box-shadow: var(--df-shadow-track);">
+                <label style="position: relative; min-width: 44px; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; color: var(--df-text-2); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-heart" value="yes" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />Yes</label>
+                <label style="position: relative; min-width: 44px; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; background: var(--df-floating); box-shadow: var(--df-shadow-segment); color: var(--df-text-1); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-heart" value="no" checked="checked" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />No</label>
+                <label style="position: relative; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; color: var(--df-text-2); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-heart" value="unknown" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />Unknown</label>
+              </div>
+            </div>
+
+            <div data-part="mh-question" style="height: 36px; box-sizing: border-box; padding: 0 8px; display: flex; align-items: center; gap: 12px;">
+              <span id="q-bp" style="flex: 1; min-width: 0; font-size: 13.5px; line-height: 20px; color: var(--df-text-1); white-space: nowrap;">High blood pressure</span>
+              <div role="radiogroup" aria-labelledby="q-bp" data-part="yn-segmented" style="flex: 0 0 auto; height: 32px; box-sizing: border-box; padding: 2px; display: inline-flex; gap: 2px; background: var(--df-sheet); border-radius: 9px; box-shadow: var(--df-shadow-track);">
+                <label style="position: relative; min-width: 44px; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; color: var(--df-text-2); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-bp" value="yes" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />Yes</label>
+                <label style="position: relative; min-width: 44px; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; background: var(--df-floating); box-shadow: var(--df-shadow-segment); color: var(--df-text-1); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-bp" value="no" checked="checked" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />No</label>
+                <label style="position: relative; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; color: var(--df-text-2); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-bp" value="unknown" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />Unknown</label>
+              </div>
+            </div>
+
+            <div data-part="mh-question" style="height: 36px; box-sizing: border-box; padding: 0 8px; display: flex; align-items: center; gap: 12px;">
+              <span id="q-diabetes" style="flex: 1; min-width: 0; font-size: 13.5px; line-height: 20px; color: var(--df-text-1); white-space: nowrap;">Diabetes</span>
+              <div role="radiogroup" aria-labelledby="q-diabetes" data-part="yn-segmented" style="flex: 0 0 auto; height: 32px; box-sizing: border-box; padding: 2px; display: inline-flex; gap: 2px; background: var(--df-sheet); border-radius: 9px; box-shadow: var(--df-shadow-track);">
+                <label style="position: relative; min-width: 44px; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; color: var(--df-text-2); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-diabetes" value="yes" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />Yes</label>
+                <label style="position: relative; min-width: 44px; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; color: var(--df-text-2); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-diabetes" value="no" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />No</label>
+                <label style="position: relative; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; background: var(--df-floating); box-shadow: var(--df-shadow-segment); color: var(--df-text-1); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-diabetes" value="unknown" checked="checked" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />Unknown</label>
+              </div>
+            </div>
+
+            <div data-part="mh-question" style="height: 36px; box-sizing: border-box; padding: 0 8px; display: flex; align-items: center; gap: 12px;">
+              <span id="q-bleeding" style="flex: 1; min-width: 0; font-size: 13.5px; line-height: 20px; color: var(--df-text-1); white-space: nowrap;">Bleeding disorder</span>
+              <div role="radiogroup" aria-labelledby="q-bleeding" data-part="yn-segmented" style="flex: 0 0 auto; height: 32px; box-sizing: border-box; padding: 2px; display: inline-flex; gap: 2px; background: var(--df-sheet); border-radius: 9px; box-shadow: var(--df-shadow-track);">
+                <label style="position: relative; min-width: 44px; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; color: var(--df-text-2); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-bleeding" value="yes" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />Yes</label>
+                <label style="position: relative; min-width: 44px; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; background: var(--df-floating); box-shadow: var(--df-shadow-segment); color: var(--df-text-1); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-bleeding" value="no" checked="checked" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />No</label>
+                <label style="position: relative; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; color: var(--df-text-2); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-bleeding" value="unknown" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />Unknown</label>
+              </div>
+            </div>
+
+            <div data-part="mh-question" data-answer="yes" style="box-sizing: border-box; padding: 0 8px 8px; border-radius: 10px; background: var(--df-floating); box-shadow: var(--df-shadow-floating-chip);">
+              <div style="height: 36px; display: flex; align-items: center; gap: 12px;">
+                <span id="q-thinners" style="flex: 1; min-width: 0; font-size: 13.5px; line-height: 20px; font-weight: 600; color: var(--df-text-1); white-space: nowrap;">Takes blood thinners</span>
+                <div role="radiogroup" aria-labelledby="q-thinners" data-part="yn-segmented" style="flex: 0 0 auto; height: 32px; box-sizing: border-box; padding: 2px; display: inline-flex; gap: 2px; background: var(--df-raised); border-radius: 9px; box-shadow: var(--df-shadow-track);">
+                  <label style="position: relative; min-width: 44px; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; background: var(--df-floating); box-shadow: var(--df-shadow-segment); color: var(--df-text-1); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-thinners" value="yes" checked="checked" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />Yes</label>
+                  <label style="position: relative; min-width: 44px; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; color: var(--df-text-2); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-thinners" value="no" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />No</label>
+                  <label style="position: relative; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; color: var(--df-text-2); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-thinners" value="unknown" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />Unknown</label>
+                </div>
+              </div>
+              <div data-part="mh-detail" style="height: 32px; display: flex; align-items: center; gap: 8px;">
+                <label for="q-thinners-detail" style="flex: 0 0 auto; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Details<span style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;"> for takes blood thinners</span></label>
+                <input id="q-thinners-detail" type="text" value="Apixaban 5 mg, twice daily" style="flex: 1; min-width: 0; height: 32px; box-sizing: border-box; padding: 0 10px; border: 0; border-radius: 8px; background: var(--df-raised); box-shadow: var(--df-shadow-input-inline); color: var(--df-text-1); font-family: inherit; font-size: 13px; -webkit-appearance: none; appearance: none;" />
+                <span data-part="tag-adds-alert" style="flex: 0 0 auto; height: 20px; box-sizing: border-box; padding: 0 8px 0 6px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+                  <span>Adds alert</span>
+                </span>
+              </div>
+            </div>
+
+            <div data-part="mh-question" data-answer="yes" style="box-sizing: border-box; padding: 0 8px 8px; border-radius: 10px; background: var(--df-floating); box-shadow: var(--df-shadow-floating-chip);">
+              <div style="height: 36px; display: flex; align-items: center; gap: 12px;">
+                <span id="q-joint" style="flex: 1; min-width: 0; font-size: 13.5px; line-height: 20px; font-weight: 600; color: var(--df-text-1); white-space: nowrap;">Joint replacement</span>
+                <div role="radiogroup" aria-labelledby="q-joint" data-part="yn-segmented" style="flex: 0 0 auto; height: 32px; box-sizing: border-box; padding: 2px; display: inline-flex; gap: 2px; background: var(--df-raised); border-radius: 9px; box-shadow: var(--df-shadow-track);">
+                  <label style="position: relative; min-width: 44px; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; background: var(--df-floating); box-shadow: var(--df-shadow-segment); color: var(--df-text-1); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-joint" value="yes" checked="checked" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />Yes</label>
+                  <label style="position: relative; min-width: 44px; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; color: var(--df-text-2); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-joint" value="no" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />No</label>
+                  <label style="position: relative; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; color: var(--df-text-2); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-joint" value="unknown" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />Unknown</label>
+                </div>
+              </div>
+              <div data-part="mh-detail" style="height: 32px; display: flex; align-items: center; gap: 8px;">
+                <label for="q-joint-detail" style="flex: 0 0 auto; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Details<span style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;"> for joint replacement</span></label>
+                <input id="q-joint-detail" type="text" value="Right knee, March 2023" style="flex: 1; min-width: 0; height: 32px; box-sizing: border-box; padding: 0 10px; border: 0; border-radius: 8px; background: var(--df-raised); box-shadow: var(--df-shadow-input-inline); color: var(--df-text-1); font-family: inherit; font-size: 13px; -webkit-appearance: none; appearance: none;" />
+                <span data-part="tag-adds-alert" style="flex: 0 0 auto; height: 20px; box-sizing: border-box; padding: 0 8px 0 6px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+                  <span>Adds alert</span>
+                </span>
+              </div>
+            </div>
+
+            <div data-part="mh-question" style="height: 36px; box-sizing: border-box; padding: 0 8px; display: flex; align-items: center; gap: 12px;">
+              <span id="q-pregnant" style="flex: 1; min-width: 0; font-size: 13.5px; line-height: 20px; color: var(--df-text-1); white-space: nowrap;">Pregnant or may be pregnant</span>
+              <div role="radiogroup" aria-labelledby="q-pregnant" data-part="yn-segmented" style="flex: 0 0 auto; height: 32px; box-sizing: border-box; padding: 2px; display: inline-flex; gap: 2px; background: var(--df-sheet); border-radius: 9px; box-shadow: var(--df-shadow-track);">
+                <label style="position: relative; min-width: 44px; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; color: var(--df-text-2); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-pregnant" value="yes" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />Yes</label>
+                <label style="position: relative; min-width: 44px; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; background: var(--df-floating); box-shadow: var(--df-shadow-segment); color: var(--df-text-1); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-pregnant" value="no" checked="checked" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />No</label>
+                <label style="position: relative; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; color: var(--df-text-2); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-pregnant" value="unknown" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />Unknown</label>
+              </div>
+            </div>
+
+            <div data-part="mh-question" style="height: 36px; box-sizing: border-box; padding: 0 8px; display: flex; align-items: center; gap: 12px;">
+              <span id="q-tobacco" style="flex: 1; min-width: 0; font-size: 13.5px; line-height: 20px; color: var(--df-text-1); white-space: nowrap;">Uses tobacco or vapes</span>
+              <div role="radiogroup" aria-labelledby="q-tobacco" data-part="yn-segmented" style="flex: 0 0 auto; height: 32px; box-sizing: border-box; padding: 2px; display: inline-flex; gap: 2px; background: var(--df-sheet); border-radius: 9px; box-shadow: var(--df-shadow-track);">
+                <label style="position: relative; min-width: 44px; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; color: var(--df-text-2); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-tobacco" value="yes" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />Yes</label>
+                <label style="position: relative; min-width: 44px; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; background: var(--df-floating); box-shadow: var(--df-shadow-segment); color: var(--df-text-1); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-tobacco" value="no" checked="checked" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />No</label>
+                <label style="position: relative; height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; color: var(--df-text-2); font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;"><input type="radio" name="q-tobacco" value="unknown" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />Unknown</label>
+              </div>
+            </div>
+          </div>
+
+          <div data-part="mh-notes" style="margin-top: auto; padding-top: 12px; display: flex; flex-direction: column; gap: 6px;">
+            <label for="mh-notes" style="font-size: 12px; line-height: 16px; color: var(--df-text-3);">Other history or notes for the dentist</label>
+            <textarea id="mh-notes" rows="3" style="display: block; width: 100%; height: 72px; box-sizing: border-box; padding: 9px 12px; border: 0; border-radius: 10px; background: var(--df-floating); box-shadow: var(--df-shadow-panel-composer); color: var(--df-text-1); font-family: inherit; font-size: 13px; line-height: 18px; resize: none;">Anxious about needles; asks for topical numbing first. Right knee surgery went well, no issues since.</textarea>
+          </div>
+        </section>
+
+        <div data-part="column-allergies" style="width: 340px; flex: 0 0 340px; min-height: 0; display: flex; flex-direction: column; gap: 16px;">
+
+          <section id="allergies-medications" data-part="card" aria-labelledby="am-title" style="flex: 0 0 auto; box-sizing: border-box; padding: 16px; background: var(--df-raised); border-radius: 14px; box-shadow: var(--df-shadow-raised); display: flex; flex-direction: column;">
+            <h2 id="am-title" style="margin: 0; height: 24px; font-size: 15px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Allergies &amp; medications</h2>
+
+            <div style="margin-top: 12px; height: 28px; display: flex; align-items: center; gap: 8px;">
+              <h3 style="margin: 0; font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--df-text-3); white-space: nowrap;">Allergies</h3>
+              <span data-part="allergy-status" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-overlay-06); color: var(--df-text-2); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; white-space: nowrap;">Has allergies</span>
+              <button data-toast="In the app this adds an allergy row with its reaction and severity. Each allergy becomes a medical alert on submit." type="button" data-part="btn-text" style="margin-left: auto; margin-right: -8px; height: 28px; box-sizing: border-box; padding: 0 8px; border: 0; border-radius: 6px; background: transparent; color: var(--df-text-2); font-family: inherit; font-size: 12.5px; font-weight: 500; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; cursor: pointer;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+                <span>Add allergy</span>
+              </button>
+            </div>
+            <ul data-part="allergy-list" style="list-style: none; margin: 4px -8px 0; padding: 0;">
+              <li style="height: 44px; box-sizing: border-box; padding: 0 4px 0 8px; border-radius: 10px; display: flex; align-items: center; gap: 12px;">
+                <span aria-hidden="true" style="width: 32px; height: 32px; flex: 0 0 32px; border-radius: 8px; background: var(--df-amber-soft); color: var(--df-amber); display: flex; align-items: center; justify-content: center;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>
+                </span>
+                <span style="flex: 1; min-width: 0; display: flex; flex-direction: column;">
+                  <span style="font-size: 13.5px; line-height: 20px; font-weight: 600; color: var(--df-text-1); white-space: nowrap;">Latex</span>
+                  <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Reaction: rash · Severity: mild</span>
+                </span>
+                <button data-toast="In the app this removes Latex from the draft, and its alert leaves the preview." type="button" aria-label="Remove Latex from this draft" style="width: 28px; height: 28px; flex: 0 0 28px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--df-text-3); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+                </button>
+              </li>
+            </ul>
+
+            <div style="margin-top: 12px; height: 28px; display: flex; align-items: center; gap: 8px;">
+              <h3 style="margin: 0; font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--df-text-3); white-space: nowrap;">Current medications</h3>
+              <span style="margin-left: auto; font-size: 12.5px; color: var(--df-text-3); white-space: nowrap;">2 recorded</span>
+            </div>
+            <ul data-part="medication-list" style="list-style: none; margin: 4px -8px 0; padding: 0; display: flex; flex-direction: column;">
+              <li style="height: 36px; box-sizing: border-box; padding: 0 4px 0 8px; border-radius: 10px; display: flex; align-items: center; gap: 12px;">
+                <span style="flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 8px; white-space: nowrap;">
+                  <span style="font-size: 13.5px; line-height: 20px; font-weight: 600; color: var(--df-text-1);">Apixaban</span>
+                  <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3);">5 mg · twice daily</span>
+                </span>
+                <button data-toast="In the app this removes Apixaban from the draft. The blood thinner alert comes from the question, not the medication." type="button" aria-label="Remove Apixaban" style="width: 28px; height: 28px; flex: 0 0 28px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--df-text-3); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+                </button>
+              </li>
+              <li style="height: 36px; box-sizing: border-box; padding: 0 4px 0 8px; border-radius: 10px; display: flex; align-items: center; gap: 12px;">
+                <span style="flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 8px; white-space: nowrap;">
+                  <span style="font-size: 13.5px; line-height: 20px; font-weight: 600; color: var(--df-text-1);">Levothyroxine</span>
+                  <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3);">50 mcg · once daily</span>
+                </span>
+                <button data-toast="In the app this removes Levothyroxine from the draft." type="button" aria-label="Remove Levothyroxine" style="width: 28px; height: 28px; flex: 0 0 28px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--df-text-3); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+                </button>
+              </li>
+            </ul>
+
+            <div data-part="medication-add-row" style="margin-top: 8px; height: 36px; display: flex; align-items: center; gap: 6px;">
+              <div style="position: relative; flex: 1; min-width: 0; height: 36px;">
+                <input id="med-name" type="text" style="width: 100%; height: 36px; box-sizing: border-box; padding: 0 10px; border: 0; border-radius: 10px; background: var(--df-floating); box-shadow: var(--df-shadow-panel-composer); color: var(--df-text-1); font-family: inherit; font-size: 13px; -webkit-appearance: none; appearance: none;" />
+                <label for="med-name" style="position: absolute; left: 10px; top: 0; height: 36px; display: flex; align-items: center; font-size: 13px; color: var(--df-text-3); pointer-events: none; white-space: nowrap;">Medication</label>
+              </div>
+              <div style="position: relative; width: 60px; flex: 0 0 60px; height: 36px;">
+                <input id="med-dose" type="text" style="width: 100%; height: 36px; box-sizing: border-box; padding: 0 10px; border: 0; border-radius: 10px; background: var(--df-floating); box-shadow: var(--df-shadow-panel-composer); color: var(--df-text-1); font-family: inherit; font-size: 13px; -webkit-appearance: none; appearance: none;" />
+                <label for="med-dose" style="position: absolute; left: 10px; top: 0; height: 36px; display: flex; align-items: center; font-size: 13px; color: var(--df-text-3); pointer-events: none; white-space: nowrap;">Dose</label>
+              </div>
+              <div style="position: relative; width: 86px; flex: 0 0 86px; height: 36px;">
+                <input id="med-frequency" type="text" style="width: 100%; height: 36px; box-sizing: border-box; padding: 0 10px; border: 0; border-radius: 10px; background: var(--df-floating); box-shadow: var(--df-shadow-panel-composer); color: var(--df-text-1); font-family: inherit; font-size: 13px; -webkit-appearance: none; appearance: none;" />
+                <label for="med-frequency" style="position: absolute; left: 10px; top: 0; height: 36px; display: flex; align-items: center; font-size: 13px; color: var(--df-text-3); pointer-events: none; white-space: nowrap;">Frequency</label>
+              </div>
+              <button data-toast="In the app this adds the medication, dose and frequency you typed. Medications never create alerts on their own." type="button" aria-label="Add medication" data-part="btn-secondary-sm" style="height: 36px; flex: 0 0 auto; box-sizing: border-box; padding: 0 12px; border: 0; border-radius: 10px; background: var(--df-overlay-07); box-shadow: var(--df-shadow-secondary-compact); color: var(--df-text-1); font-family: inherit; font-size: 13px; font-weight: 500; white-space: nowrap; cursor: pointer;">Add</button>
+            </div>
+          </section>
+
+          <section data-part="alert-preview" aria-labelledby="alerts-title" style="flex: 1; min-height: 0; box-sizing: border-box; padding: 16px 16px 12px; border: 1px dashed var(--df-overlay-14); border-radius: 14px; display: flex; flex-direction: column;">
+            <div data-part="card-header" style="height: 24px; flex: 0 0 24px; display: flex; align-items: center; gap: 8px;">
+              <h2 id="alerts-title" style="margin: 0; font-size: 15px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Medical alerts</h2>
+              <span style="height: 18px; box-sizing: border-box; padding: 0 6px; border-radius: 999px; background: var(--df-overlay-06); color: var(--df-text-2); font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; white-space: nowrap;">Preview</span>
+              <span style="margin-left: auto; font-size: 12.5px; color: var(--df-text-3); white-space: nowrap;">3 added on submit</span>
+            </div>
+            <p style="margin: 4px 0 0; display: flex; align-items: center; gap: 6px; font-size: 12.5px; line-height: 16px; color: var(--df-text-3);">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 12px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 16v-4M12 8h.01"></path></svg>
+              <span>Positive answers create medical alerts.</span>
+            </p>
+
+            <ul data-part="alert-rows" style="list-style: none; margin: 8px -8px 0; padding: 0; display: flex; flex-direction: column;">
+              <li style="height: 44px; box-sizing: border-box; padding: 0 4px 0 8px; border-radius: 10px; display: flex; align-items: center; gap: 12px;">
+                <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                  <span style="height: 20px; display: flex; align-items: center; gap: 8px; min-width: 0; white-space: nowrap;">
+                    <span data-part="alert-kind-allergy" style="flex: 0 0 auto; height: 18px; box-sizing: border-box; padding: 0 6px 0 5px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path><path d="M12 9v4"></path><path d="M12 17h.01"></path></svg>
+                      <span>Allergy</span>
+                    </span>
+                    <span style="font-size: 13.5px; font-weight: 600; color: var(--df-text-1);">Latex</span>
+                    <span style="font-size: 13px; color: var(--df-text-3);">· rash</span>
+                  </span>
+                  <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">From the allergy list</span>
+                </span>
+              </li>
+              <li style="height: 44px; box-sizing: border-box; padding: 0 4px 0 8px; border-radius: 10px; display: flex; align-items: center; gap: 12px;">
+                <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                  <span style="height: 20px; display: flex; align-items: center; gap: 8px; min-width: 0; white-space: nowrap;">
+                    <span data-part="alert-kind-condition" style="flex: 0 0 auto; height: 18px; box-sizing: border-box; padding: 0 6px; border-radius: 999px; background: var(--df-overlay-06); color: var(--df-text-2); font-size: 11px; font-weight: 600; display: inline-flex; align-items: center;">Condition</span>
+                    <span style="font-size: 13.5px; font-weight: 600; color: var(--df-text-1);">Blood thinner</span>
+                  </span>
+                  <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">From “Takes blood thinners” · Yes</span>
+                </span>
+                <button data-toast="In the app this takes the blood thinner alert off the preview, so submit adds 2 alerts instead of 3." type="button" aria-label="Remove blood thinner alert" style="width: 28px; height: 28px; flex: 0 0 28px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--df-text-3); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+                </button>
+              </li>
+              <li style="height: 44px; box-sizing: border-box; padding: 0 4px 0 8px; border-radius: 10px; display: flex; align-items: center; gap: 12px;">
+                <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                  <span style="height: 20px; display: flex; align-items: center; gap: 8px; min-width: 0; white-space: nowrap;">
+                    <span data-part="alert-kind-premed" style="flex: 0 0 auto; height: 18px; box-sizing: border-box; padding: 0 6px; border-radius: 999px; background: var(--df-overlay-06); color: var(--df-text-2); font-size: 11px; font-weight: 600; display: inline-flex; align-items: center;">Premedication</span>
+                    <span style="font-size: 13.5px; font-weight: 600; color: var(--df-text-1);">Joint replacement</span>
+                  </span>
+                  <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">From “Joint replacement” · Yes</span>
+                </span>
+                <button data-toast="In the app this takes the joint replacement premedication alert off the preview, so submit adds 2 alerts instead of 3." type="button" aria-label="Remove joint replacement alert" style="width: 28px; height: 28px; flex: 0 0 28px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--df-text-3); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+                </button>
+              </li>
+            </ul>
+
+            <div data-part="alert-footnotes" style="margin-top: auto; display: flex; flex-direction: column; gap: 4px;">
+              <span style="height: 16px; display: flex; align-items: center; gap: 6px; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 12px;"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"></path><path d="m8.5 8.5 7 7"></path></svg>
+                <span>Medications never create alerts on their own.</span>
+              </span>
+              <span style="height: 16px; display: flex; align-items: center; gap: 6px; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 12px;"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="m9 12 2 2 4-4"></path></svg>
+                <span>Also adds a task: update alerts in Ascend.</span>
+              </span>
+            </div>
+          </section>
+        </div>
+
+        <div data-part="column-insurance" style="flex: 1; min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 16px;">
+
+          <section id="insurance" data-part="card" aria-labelledby="ins-title" style="flex: 0 0 auto; box-sizing: border-box; padding: 16px; background: var(--df-raised); border-radius: 14px; box-shadow: var(--df-shadow-raised); display: flex; flex-direction: column;">
+            <div data-part="card-header" style="height: 24px; display: flex; align-items: center; gap: 8px;">
+              <h2 id="ins-title" style="margin: 0; font-size: 15px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Insurance</h2>
+              <span style="font-size: 13px; color: var(--df-text-3); white-space: nowrap;">Primary</span>
+              <span data-part="status-unverified" style="margin-left: auto; height: 20px; box-sizing: border-box; padding: 0 8px 0 6px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4M12 16h.01"></path></svg>
+                <span>Unverified</span>
+              </span>
+            </div>
+
+            <div data-part="ins-fields" style="margin-top: 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 12px; row-gap: 8px;">
+              <div style="min-width: 0; display: flex; flex-direction: column; gap: 4px;">
+                <label for="ins-carrier" style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Carrier</label>
+                <div style="position: relative; height: 32px;">
+                  <select id="ins-carrier" style="width: 100%; height: 32px; box-sizing: border-box; padding: 0 30px 0 10px; border: 0; border-radius: 8px; background: var(--df-floating); box-shadow: var(--df-shadow-panel-composer); color: var(--df-text-1); font-family: inherit; font-size: 13px; -webkit-appearance: none; appearance: none; cursor: pointer;">
+                    <option value="summit" selected="selected">Summit Dental</option>
+                    <option value="harborline">Harborline Dental Plans</option>
+                    <option value="new">New carrier…</option>
+                  </select>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; right: 10px; top: 9px; pointer-events: none; stroke: var(--df-text-3);"><path d="m6 9 6 6 6-6"></path></svg>
+                </div>
+              </div>
+              <div style="min-width: 0; display: flex; flex-direction: column; gap: 4px;">
+                <label for="ins-plan-type" style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Plan type</label>
+                <div style="position: relative; height: 32px;">
+                  <select id="ins-plan-type" style="width: 100%; height: 32px; box-sizing: border-box; padding: 0 30px 0 10px; border: 0; border-radius: 8px; background: var(--df-floating); box-shadow: var(--df-shadow-panel-composer); color: var(--df-text-1); font-family: inherit; font-size: 13px; -webkit-appearance: none; appearance: none; cursor: pointer;">
+                    <option value="ppo" selected="selected">PPO</option>
+                    <option value="indemnity">Indemnity</option>
+                    <option value="dhmo">DHMO</option>
+                    <option value="medicaid_chip">Medicaid / CHIP</option>
+                    <option value="discount_plan">Discount plan</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; right: 10px; top: 9px; pointer-events: none; stroke: var(--df-text-3);"><path d="m6 9 6 6 6-6"></path></svg>
+                </div>
+              </div>
+              <div style="min-width: 0; display: flex; flex-direction: column; gap: 4px;">
+                <label for="ins-member-id" style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Member ID</label>
+                <input id="ins-member-id" type="text" value="SDX4482107" style="width: 100%; height: 32px; box-sizing: border-box; padding: 0 10px; border: 0; border-radius: 8px; background: var(--df-floating); box-shadow: var(--df-shadow-panel-composer); color: var(--df-text-1); font-family: 'Geist Mono', monospace; font-size: 13px; letter-spacing: 0.02em; -webkit-appearance: none; appearance: none;" />
+              </div>
+              <div style="min-width: 0; display: flex; flex-direction: column; gap: 4px;">
+                <label for="ins-relationship" style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Relationship to subscriber</label>
+                <div style="position: relative; height: 32px;">
+                  <select id="ins-relationship" style="width: 100%; height: 32px; box-sizing: border-box; padding: 0 30px 0 10px; border: 0; border-radius: 8px; background: var(--df-floating); box-shadow: var(--df-shadow-panel-composer); color: var(--df-text-1); font-family: inherit; font-size: 13px; -webkit-appearance: none; appearance: none; cursor: pointer;">
+                    <option value="self">Self</option>
+                    <option value="spouse" selected="selected">Spouse</option>
+                    <option value="child">Child</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; right: 10px; top: 9px; pointer-events: none; stroke: var(--df-text-3);"><path d="m6 9 6 6 6-6"></path></svg>
+                </div>
+              </div>
+              <div style="min-width: 0; display: flex; flex-direction: column; gap: 4px;">
+                <label for="ins-subscriber" style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Subscriber</label>
+                <input id="ins-subscriber" type="text" value="Jordan Brooks" style="width: 100%; height: 32px; box-sizing: border-box; padding: 0 10px; border: 0; border-radius: 8px; background: var(--df-floating); box-shadow: var(--df-shadow-panel-composer); color: var(--df-text-1); font-family: inherit; font-size: 13px; -webkit-appearance: none; appearance: none;" />
+              </div>
+              <div style="min-width: 0; display: flex; flex-direction: column; gap: 4px;">
+                <label for="subscriber-dob" style="height: 16px; display: flex; align-items: center; gap: 6px; font-size: 12px; line-height: 16px; font-weight: 500; color: var(--df-amber); white-space: nowrap;"><span>Subscriber DOB</span><span style="height: 16px; box-sizing: border-box; padding: 0 5px; border-radius: 999px; background: var(--df-amber-chip); font-size: 10.5px; font-weight: 600; display: inline-flex; align-items: center;">Required</span></label>
+                <div style="position: relative; height: 32px;">
+                  <input id="subscriber-dob" type="text" inputmode="numeric" required="required" aria-invalid="true" aria-describedby="subscriber-dob-format subscriber-dob-error" style="width: 100%; height: 32px; box-sizing: border-box; padding: 0 32px 0 10px; border: 0; border-radius: 8px; background: var(--df-amber-row); box-shadow: var(--df-shadow-input-attention); color: var(--df-text-1); font-family: 'Geist Mono', monospace; font-size: 13px; -webkit-appearance: none; appearance: none;" />
+                  <span id="subscriber-dob-format" style="position: absolute; left: 10px; top: 0; height: 32px; display: flex; align-items: center; font-family: 'Geist Mono', monospace; font-size: 12.5px; color: var(--df-text-3); pointer-events: none; white-space: nowrap;">MM/DD/YYYY</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; right: 10px; top: 9px; pointer-events: none; stroke: var(--df-amber);"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4M12 16h.01"></path></svg>
+                </div>
+              </div>
+              <p id="subscriber-dob-error" style="grid-column: 1 / span 2; margin: 0; height: 16px; display: flex; align-items: center; gap: 6px; font-size: 12px; line-height: 16px; font-weight: 500; color: var(--df-amber); white-space: nowrap;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 12px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4M12 16h.01"></path></svg>
+                <span>Needed because the subscriber isn’t the patient.</span>
+              </p>
+            </div>
+
+            <div data-part="card-images" style="margin-top: 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+              <div data-toast="In the app this opens the card front scan (412 KB, scanned clean) in a viewer." data-part="upload-tile" data-state="uploaded" style="height: 64px; box-sizing: border-box; border-radius: 12px; background: var(--df-floating); box-shadow: var(--df-shadow-floating-chip); display: flex; flex-direction: column; overflow: hidden;">
+                <div role="img" aria-label="Insurance card front, blurred preview. Scanned, clean." style="position: relative; height: 38px; flex: 0 0 38px; background: var(--df-thumb); overflow: hidden;">
+                  <span aria-hidden="true" style="position: absolute; left: -24px; top: -52px; width: 110px; height: 110px; border-radius: 999px; background: var(--df-thumb-disc);"></span>
+                  <span aria-hidden="true" style="position: absolute; right: 12px; top: 6px; width: 58px; height: 38px; box-sizing: border-box; padding: 5px 6px; border-radius: 5px; background: var(--df-illus-card-front); transform: rotate(-3deg); box-shadow: var(--df-shadow-photo-card-sm); overflow: hidden; display: flex; flex-direction: column; gap: 3px;">
+                    <span style="height: 5px; display: flex; align-items: center; gap: 3px;"><span style="width: 5px; height: 5px; border-radius: 1px; background: var(--df-illus-logo);"></span><span style="width: 24px; height: 3px; border-radius: 1px; background: var(--df-illus-ink-subtle);"></span></span>
+                    <span style="width: 18px; height: 2px; border-radius: 1px; background: var(--df-illus-ink-label);"></span>
+                    <span style="margin-top: 3px; width: 30px; height: 3px; border-radius: 1px; background: var(--df-illus-ink-strong);"></span>
+                  </span>
+                  <span data-part="scan-badge" style="position: absolute; left: 6px; bottom: 5px; height: 20px; box-sizing: border-box; padding: 0 8px 0 6px; border-radius: 999px; background: var(--df-scrim); box-shadow: var(--df-shadow-ring-tier); color: var(--df-text-1); font-family: 'Geist', system-ui, sans-serif; font-size: 11px; font-weight: 500; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-accent);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                    <span>Scanned · clean</span>
+                  </span>
+                </div>
+                <div style="height: 26px; flex: 0 0 26px; box-sizing: border-box; padding: 0 4px 0 10px; display: flex; align-items: center; gap: 6px;">
+                  <span style="font-size: 12.5px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">Card front</span>
+                  <span style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--df-text-3); white-space: nowrap;">412 KB</span>
+                  <button data-toast="In the app this opens the card front scan (412 KB, scanned clean) in a viewer." type="button" aria-label="View card front" style="margin-left: auto; height: 22px; box-sizing: border-box; padding: 0 8px; border: 0; border-radius: 6px; background: transparent; color: var(--df-text-2); font-family: inherit; font-size: 12px; font-weight: 500; white-space: nowrap; cursor: pointer;">View</button>
+                </div>
+              </div>
+
+              <label data-toast="In the app you upload, scan or photograph the card back. It is scanned for viruses before it attaches, and it can come later." for="card-back-file" data-part="upload-tile" data-state="empty" style="position: relative; height: 64px; box-sizing: border-box; border: 1px dashed var(--df-overlay-14); border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-align: center; cursor: pointer;">
+                <input id="card-back-file" type="file" accept="image/jpeg,image/png,application/pdf" style="position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none;" />
+                <span style="height: 20px; display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-2);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m17 8-5-5-5 5"></path><path d="M12 3v12"></path></svg>
+                  <span>Card back</span>
+                </span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Upload, scan or use camera</span>
+              </label>
+            </div>
+          </section>
+
+          <section id="consents" data-part="card" aria-labelledby="consents-title" style="flex: 1; min-height: 0; box-sizing: border-box; padding: 16px 16px 12px; background: var(--df-raised); border-radius: 14px; box-shadow: var(--df-shadow-raised); display: flex; flex-direction: column;">
+            <div data-part="card-header" style="height: 24px; flex: 0 0 24px; display: flex; align-items: center; gap: 8px;">
+              <h2 id="consents-title" style="margin: 0; font-size: 15px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Consents</h2>
+              <span style="font-size: 13px; color: var(--df-text-3); white-space: nowrap;">from the paper packet</span>
+              <button data-toast="In the app you record another consent from the paper packet: which form, its version, and whether it was granted or declined." type="button" data-part="btn-text" style="margin-left: auto; margin-right: -8px; height: 28px; box-sizing: border-box; padding: 0 8px; border: 0; border-radius: 6px; background: transparent; color: var(--df-text-2); font-family: inherit; font-size: 12.5px; font-weight: 500; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; cursor: pointer;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+                <span>Record consent</span>
+              </button>
+            </div>
+            <p style="margin: 4px 0 0; font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Recorded by Rosa Delgado · Sep 25</p>
+
+            <ul data-part="consent-list" style="list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px;">
+              <li style="display: flex; flex-direction: column;">
+                <div style="height: 18px; display: flex; align-items: center; gap: 6px;">
+                  <span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1); white-space: nowrap;">NPP acknowledgment</span>
+                  <span style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--df-text-3);">v4</span>
+                  <span data-part="consent-granted" style="margin-left: auto; display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; color: var(--df-text-2); white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Acknowledged</span>
+                </div>
+                <p style="margin: 0; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Signed on paper · scan attached</p>
+              </li>
+              <li style="display: flex; flex-direction: column;">
+                <div style="height: 18px; display: flex; align-items: center; gap: 6px;">
+                  <span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1); white-space: nowrap;">Financial policy</span>
+                  <span style="font-family: 'Geist Mono', monospace; font-size: 11px; color: var(--df-text-3);">v2</span>
+                  <span data-part="consent-granted" style="margin-left: auto; display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; color: var(--df-text-2); white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Granted</span>
+                </div>
+                <p style="margin: 0; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Signed on paper · same scan</p>
+              </li>
+              <li style="display: flex; flex-direction: column;">
+                <div style="height: 18px; display: flex; align-items: center; gap: 6px;">
+                  <span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1); white-space: nowrap;">Texts: appointment reminders</span>
+                  <span data-part="consent-granted" style="margin-left: auto; display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; color: var(--df-text-2); white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Granted</span>
+                </div>
+                <p style="margin: 0; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Mobile <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px;">••0129</span> · disclosure v2 · signed on paper</p>
+              </li>
+              <li style="display: flex; flex-direction: column;">
+                <div style="height: 18px; display: flex; align-items: center; gap: 6px;">
+                  <span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1); white-space: nowrap;">Texts: billing and pay links</span>
+                  <span data-part="consent-declined" style="margin-left: auto; display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 500; color: var(--df-text-3); white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path></svg>Declined</span>
+                </div>
+                <p style="margin: 0; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Declined on paper</p>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <footer data-part="form-footer" style="height: 60px; flex: 0 0 60px; box-sizing: border-box; padding: 0 8px 0 12px; border-radius: 16px; background: var(--df-raised); box-shadow: var(--df-shadow-action-bar); display: flex; align-items: center; gap: 16px;">
+        <div id="validation-summary" data-part="validation-summary" role="status" style="min-width: 0; display: flex; align-items: center; gap: 12px;">
+          <span aria-hidden="true" style="width: 36px; height: 36px; flex: 0 0 36px; border-radius: 10px; background: var(--df-amber-soft); color: var(--df-amber); display: flex; align-items: center; justify-content: center;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4M12 16h.01"></path></svg>
+          </span>
+          <div style="min-width: 0; display: flex; flex-direction: column;">
+            <p style="margin: 0; font-size: 13.5px; line-height: 20px; font-weight: 600; color: var(--df-text-1); white-space: nowrap;">2 required fields missing: <a href="#subscriber-dob" style="color: var(--df-amber); text-decoration: underline; text-underline-offset: 3px;">Subscriber DOB</a>, <a data-toast="Emergency contact is in Demographics, at the top: use Add to enter it." href="#emergency-contact" style="color: var(--df-amber); text-decoration: underline; text-underline-offset: 3px;">Emergency contact</a></p>
+            <p style="margin: 0; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Card back and insurance verification can come later; both stay on the intake checklist.</p>
+          </div>
+        </div>
+
+        <div style="margin-left: auto; display: flex; align-items: center; gap: 8px;">
+          <p style="margin: 0 8px 0 0; display: flex; flex-direction: column; align-items: flex-end; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">
+            <span>Submit saves intake v1 and 3 alerts</span>
+            <span>Dr. Maya Okafor reviews it before the visit</span>
+          </p>
+          <button data-go="forms.html" data-toast="Save draft keeps Taylor Brooks&#x27;s intake in Drafts and in progress (2 missing). Nothing is submitted until Submit intake." type="button" data-part="btn-secondary" style="height: 44px; box-sizing: border-box; padding: 0 16px; border: 0; border-radius: 10px; background: var(--df-overlay-07); box-shadow: var(--df-shadow-floating-chip); color: var(--df-text-1); font-family: inherit; font-size: 14px; font-weight: 500; white-space: nowrap; cursor: pointer;">Save draft</button>
+          <button data-toast="Submit is blocked: 2 required fields are missing (Subscriber DOB, Emergency contact). Then submit saves intake v1 and 3 alerts, and Dr. Maya Okafor reviews it before the visit." type="button" data-part="btn-primary" aria-describedby="validation-summary" style="height: 44px; box-sizing: border-box; padding: 0 18px 0 16px; border: 0; border-radius: 10px; background: var(--df-accent); box-shadow: var(--df-shadow-primary); color: var(--df-on-accent); font-family: inherit; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; cursor: pointer;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span>Submit intake</span>
+          </button>
+        </div>
+      </footer>
+    </main>
+  </div>
+</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

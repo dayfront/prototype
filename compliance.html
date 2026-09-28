@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dayfront · Compliance</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root,.df-dark{color-scheme:dark;--df-canvas:#0E1113;--df-sheet:#15191C;--df-recessed:#181D20;--df-raised:#1C2226;--df-in-chair:#1E2B2D;--df-floating:#262E33;--df-lift:#262E33;--df-thumb:#2A3136;--df-thumb-disc:#30383D;--df-scrim:rgba(14,17,19,.86);--df-backdrop:rgba(14,17,19,.72);--df-edge-ink:#FFFFFF;--df-text-1:#EDF0F2;--df-text-2:#B3BCC2;--df-text-3:#8B969E;--df-on-accent:#04211D;--df-on-accent-fill:rgba(4,33,29,.12);--df-accent:#5EEAD4;--df-accent-hover:#99F6E4;--df-accent-edge:rgba(255,255,255,.35);--df-accent-progress:rgba(94,234,212,.07);--df-accent-soft:rgba(94,234,212,.12);--df-accent-chip:rgba(94,234,212,.14);--df-accent-halo:rgba(94,234,212,.16);--df-accent-ring:rgba(94,234,212,.22);--df-accent-glow:rgba(94,234,212,.35);--df-accent-underline:rgba(94,234,212,.75);--df-amber:#F5B454;--df-amber-row:rgba(245,180,84,.08);--df-amber-soft:rgba(245,180,84,.12);--df-amber-chip:rgba(245,180,84,.14);--df-amber-callout:rgba(245,180,84,.16);--df-amber-track:rgba(245,180,84,.25);--df-amber-ring:rgba(245,180,84,.32);--df-amber-dash:rgba(245,180,84,.4);--df-amber-dash-strong:rgba(245,180,84,.6);--df-blue:#8AB4F8;--df-blue-soft:rgba(138,180,248,.12);--df-blue-chip:rgba(138,180,248,.14);--df-overlay-025:rgba(255,255,255,.025);--df-overlay-03:rgba(255,255,255,.03);--df-overlay-04:rgba(255,255,255,.04);--df-overlay-05:rgba(255,255,255,.05);--df-overlay-06:rgba(255,255,255,.06);--df-overlay-07:rgba(255,255,255,.07);--df-overlay-08:rgba(255,255,255,.08);--df-overlay-10:rgba(255,255,255,.1);--df-overlay-12:rgba(255,255,255,.12);--df-overlay-14:rgba(255,255,255,.14);--df-overlay-24:rgba(255,255,255,.24);--df-overlay-28:rgba(255,255,255,.28);--df-shadow-18:rgba(0,0,0,.18);--df-shadow-25:rgba(0,0,0,.25);--df-shadow-30:rgba(0,0,0,.3);--df-shadow-35:rgba(0,0,0,.35);--df-shadow-40:rgba(0,0,0,.4);--df-shadow-45:rgba(0,0,0,.45);--df-shadow-50:rgba(0,0,0,.5);--df-shadow-55:rgba(0,0,0,.55);--df-shadow-60:rgba(0,0,0,.6);--df-shadow-65:rgba(0,0,0,.65);--df-illus-card-front:#E6EAEE;--df-illus-card-back:#DEE3E7;--df-illus-card-disc-1:#CFDCE4;--df-illus-card-disc-2:#D8E2E8;--df-illus-crop:#DDE3E8;--df-illus-logo:#2F5A73;--df-illus-ink-title:#1E3A4C;--df-illus-ink-heading:#33434D;--df-illus-ink-strong:#15232C;--df-illus-ink-field:#1D2A33;--df-illus-ink-meta:#3E4C55;--df-illus-ink-subtle:#5B6972;--df-illus-ink-label:#6A7780;--df-illus-ink-faint:#7C8993;--df-illus-rule:#B7C1C8;--df-illus-amber-fill:rgba(245,180,84,.5);--df-illus-amber-ring:#C98A1E;--df-danger:#F28B82;--df-danger-soft:rgba(242,139,130,.12);--df-focus-ring:#5EEAD4;--df-control-edge:#737F87;--df-shadow-track:inset 0 0 0 1px rgba(255,255,255,.04);--df-shadow-segment-mode:inset 0 1px 0 rgba(255,255,255,.08), 0 1px 2px rgba(0,0,0,.45);--df-shadow-nav-active:inset 0 1px 0 rgba(255,255,255,.05), 0 1px 2px rgba(0,0,0,.3);--df-shadow-ring-tile:inset 0 0 0 1px rgba(255,255,255,.06);--df-shadow-avatar:inset 0 1px 0 rgba(255,255,255,.08);--df-shadow-button-quiet:inset 0 1px 0 rgba(255,255,255,.06), 0 0 0 1px rgba(255,255,255,.04);--df-shadow-sheet:inset 0 1px 0 rgba(255,255,255,.05), 0 0 0 1px rgba(255,255,255,.03), 0 16px 48px rgba(0,0,0,.4);--df-shadow-halo-live:0 0 0 3px rgba(94,234,212,.16);--df-shadow-input:inset 0 1px 0 rgba(255,255,255,.05), 0 0 0 1px #737F87;--df-shadow-floating-chip:inset 0 1px 0 rgba(255,255,255,.06);--df-shadow-raised:inset 0 1px 0 rgba(255,255,255,.06), 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.18);--df-shadow-segment:inset 0 1px 0 rgba(255,255,255,.08), 0 1px 2px rgba(0,0,0,.4);--df-shadow-ring-in-chair:inset 0 0 0 1px rgba(94,234,212,.22);--df-shadow-lift-row:inset 0 1px 0 rgba(255,255,255,.06), 0 4px 12px -2px rgba(0,0,0,.35);--df-shadow-primary-compact:inset 0 1px 0 rgba(255,255,255,.35);--df-shadow-secondary-compact:inset 0 1px 0 rgba(255,255,255,.05);--df-shadow-ring-tier:inset 0 0 0 1px rgba(255,255,255,.08);--df-shadow-panel:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px rgba(255,255,255,.05), 0 2px 6px rgba(0,0,0,.35), 0 32px 64px -12px rgba(0,0,0,.65);--df-shadow-hairline-below:0 1px 0 rgba(255,255,255,.04);--df-shadow-ring-well:inset 0 0 0 1px rgba(255,255,255,.03);--df-shadow-lift:inset 0 1px 0 rgba(255,255,255,.08), 0 0 0 1px rgba(255,255,255,.04), 0 2px 6px rgba(0,0,0,.3), 0 10px 24px -6px rgba(0,0,0,.55);--df-shadow-ring-tier-card:inset 0 0 0 1px rgba(255,255,255,.1);--df-shadow-input-outline:inset 0 0 0 1px #737F87;--df-shadow-primary:inset 0 1px 0 rgba(255,255,255,.35), 0 1px 2px rgba(0,0,0,.4);--df-shadow-panel-composer:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px #737F87;--df-shadow-mic:0 1px 2px rgba(0,0,0,.4);--df-shadow-new-chat:inset 0 1px 0 rgba(255,255,255,.06), 0 1px 2px rgba(0,0,0,.3);--df-shadow-thumb:inset 0 0 0 1px rgba(255,255,255,.06), 0 12px 24px -8px rgba(0,0,0,.6);--df-shadow-photo-card:0 8px 16px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);--df-shadow-photo-highlight-ring:0 0 0 1px #C98A1E;--df-shadow-action-card:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px rgba(255,255,255,.05), 0 2px 6px rgba(0,0,0,.3), 0 20px 48px -12px rgba(0,0,0,.6);--df-shadow-icon-tile:inset 0 1px 0 rgba(255,255,255,.07);--df-shadow-ring-verify:inset 0 0 0 1px rgba(245,180,84,.32);--df-shadow-primary-hero:inset 0 1px 0 rgba(255,255,255,.35), 0 1px 2px rgba(0,0,0,.4), 0 8px 20px -8px rgba(94,234,212,.35);--df-shadow-composer:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px #737F87, 0 2px 6px rgba(0,0,0,.3), 0 16px 40px -8px rgba(0,0,0,.6);--df-shadow-rail:inset 0 1px 0 rgba(255,255,255,.06), 0 0 0 1px rgba(255,255,255,.04), 0 2px 6px rgba(0,0,0,.25), 0 16px 40px -8px rgba(0,0,0,.5);--df-shadow-avatar-lg:inset 0 1px 0 rgba(255,255,255,.08), 0 0 0 1px rgba(255,255,255,.05);--df-shadow-halo-pending:0 0 0 3px rgba(245,180,84,.16);--df-shadow-input-inline:inset 0 0 0 1px #737F87;--df-shadow-choice:inset 0 0 0 1.5px #8B969E;--df-shadow-choice-on:inset 0 0 0 1.5px #5EEAD4, inset 0 0 0 4.5px #262E33;--df-shadow-choice-blocking:inset 0 0 0 1.5px #F5B454;--df-shadow-photo-card-sm:0 6px 12px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);--df-shadow-dot-cutout:0 0 0 3px #1C2226;--df-shadow-dot-cutout-live:0 0 0 3px rgba(94,234,212,.16), 0 0 0 3px #1C2226;--df-shadow-ring-pill:inset 0 0 0 1px rgba(255,255,255,.14);--df-shadow-input-invalid:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px rgba(245,180,84,.6);--df-shadow-hairline-above:0 -1px 0 rgba(255,255,255,.04);--df-shadow-button-disabled:inset 0 1px 0 rgba(255,255,255,.04);--df-shadow-mark:inset 0 0 0 1px rgba(255,255,255,.07);--df-shadow-blockout:inset 0 0 0 1px rgba(255,255,255,.05);--df-shadow-action-bar:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px rgba(255,255,255,.05), 0 2px 6px rgba(0,0,0,.3), 0 16px 40px -8px rgba(0,0,0,.6);--df-shadow-input-attention:inset 0 0 0 1px rgba(245,180,84,.6)}
+:root[data-theme="light"],.df-light{color-scheme:light;--df-canvas:#E6E9EC;--df-sheet:#EFF1F3;--df-recessed:#F3F5F6;--df-raised:#F9FAFB;--df-in-chair:#EBF3F2;--df-floating:#FFFFFF;--df-lift:#FFFFFF;--df-thumb:#2A3136;--df-thumb-disc:#30383D;--df-scrim:rgba(255,255,255,.88);--df-backdrop:rgba(17,24,28,.36);--df-edge-ink:#11181C;--df-text-1:#11181C;--df-text-2:#3E4950;--df-text-3:#57636B;--df-on-accent:#FFFFFF;--df-on-accent-fill:rgba(0,20,18,.22);--df-accent:#0E6F68;--df-accent-hover:#0A5550;--df-accent-edge:rgba(255,255,255,.2);--df-accent-progress:rgba(14,111,104,.07);--df-accent-soft:rgba(14,111,104,.09);--df-accent-chip:rgba(14,111,104,.10);--df-accent-halo:rgba(14,111,104,.16);--df-accent-ring:rgba(14,111,104,.30);--df-accent-glow:rgba(14,111,104,.32);--df-accent-underline:rgba(14,111,104,.7);--df-amber:#8D5400;--df-amber-row:rgba(141,84,0,.06);--df-amber-soft:rgba(141,84,0,.10);--df-amber-chip:rgba(141,84,0,.08);--df-amber-callout:rgba(141,84,0,.12);--df-amber-track:rgba(141,84,0,.22);--df-amber-ring:rgba(141,84,0,.75);--df-amber-dash:rgba(141,84,0,.45);--df-amber-dash-strong:rgba(141,84,0,.6);--df-blue:#1452A9;--df-blue-soft:rgba(20,82,169,.09);--df-blue-chip:rgba(20,82,169,.10);--df-overlay-025:rgba(17,24,28,.035);--df-overlay-03:rgba(17,24,28,.05);--df-overlay-04:rgba(17,24,28,.05);--df-overlay-05:rgba(17,24,28,.06);--df-overlay-06:rgba(17,24,28,.07);--df-overlay-07:rgba(17,24,28,.08);--df-overlay-08:rgba(17,24,28,.10);--df-overlay-10:rgba(17,24,28,.12);--df-overlay-12:rgba(17,24,28,.22);--df-overlay-14:rgba(17,24,28,.24);--df-overlay-24:rgba(17,24,28,.36);--df-overlay-28:rgba(17,24,28,.42);--df-shadow-18:rgba(17,24,28,.05);--df-shadow-25:rgba(17,24,28,.05);--df-shadow-30:rgba(17,24,28,.06);--df-shadow-35:rgba(17,24,28,.07);--df-shadow-40:rgba(17,24,28,.10);--df-shadow-45:rgba(17,24,28,.12);--df-shadow-50:rgba(17,24,28,.10);--df-shadow-55:rgba(17,24,28,.14);--df-shadow-60:rgba(17,24,28,.14);--df-shadow-65:rgba(17,24,28,.18);--df-illus-card-front:#E6EAEE;--df-illus-card-back:#DEE3E7;--df-illus-card-disc-1:#CFDCE4;--df-illus-card-disc-2:#D8E2E8;--df-illus-crop:#DDE3E8;--df-illus-logo:#2F5A73;--df-illus-ink-title:#1E3A4C;--df-illus-ink-heading:#33434D;--df-illus-ink-strong:#15232C;--df-illus-ink-field:#1D2A33;--df-illus-ink-meta:#3E4C55;--df-illus-ink-subtle:#5B6972;--df-illus-ink-label:#6A7780;--df-illus-ink-faint:#7C8993;--df-illus-rule:#B7C1C8;--df-illus-amber-fill:rgba(245,180,84,.5);--df-illus-amber-ring:#C98A1E;--df-danger:#B3261E;--df-danger-soft:rgba(179,38,30,.09);--df-focus-ring:#0E6F68;--df-control-edge:#737F87;--df-shadow-track:inset 0 0 0 1px rgba(17,24,28,.06);--df-shadow-segment-mode:0 0 0 1px rgba(17,24,28,.08), 0 1px 2px rgba(17,24,28,.12);--df-shadow-nav-active:0 0 0 1px rgba(17,24,28,.07), 0 1px 2px rgba(17,24,28,.06);--df-shadow-ring-tile:inset 0 0 0 1px rgba(17,24,28,.08);--df-shadow-avatar:inset 0 0 0 1px rgba(17,24,28,.10);--df-shadow-button-quiet:0 0 0 1px rgba(17,24,28,.10), 0 1px 2px rgba(17,24,28,.06);--df-shadow-sheet:0 0 0 1px rgba(17,24,28,.06), 0 1px 2px rgba(17,24,28,.04), 0 16px 48px rgba(17,24,28,.08);--df-shadow-halo-live:0 0 0 3px rgba(14,111,104,.16);--df-shadow-input:0 0 0 1px #737F87;--df-shadow-floating-chip:inset 0 0 0 1px rgba(17,24,28,.08), 0 1px 2px rgba(17,24,28,.04);--df-shadow-raised:0 0 0 1px rgba(17,24,28,.07), 0 1px 2px rgba(17,24,28,.06), 0 8px 24px rgba(17,24,28,.05);--df-shadow-segment:0 0 0 1px rgba(17,24,28,.08), 0 1px 2px rgba(17,24,28,.10);--df-shadow-ring-in-chair:inset 0 0 0 1px rgba(14,111,104,.30);--df-shadow-lift-row:0 0 0 1px rgba(17,24,28,.07), 0 4px 12px -2px rgba(17,24,28,.10);--df-shadow-primary-compact:inset 0 1px 0 rgba(255,255,255,.2);--df-shadow-secondary-compact:inset 0 0 0 1px rgba(17,24,28,.08);--df-shadow-ring-tier:inset 0 0 0 1px rgba(17,24,28,.12);--df-shadow-panel:0 0 0 1px rgba(17,24,28,.08), 0 2px 6px rgba(17,24,28,.07), 0 32px 64px -12px rgba(17,24,28,.18);--df-shadow-hairline-below:0 1px 0 rgba(17,24,28,.07);--df-shadow-ring-well:inset 0 0 0 1px rgba(17,24,28,.05);--df-shadow-lift:0 0 0 1px rgba(17,24,28,.08), 0 2px 6px rgba(17,24,28,.06), 0 10px 24px -6px rgba(17,24,28,.14);--df-shadow-ring-tier-card:inset 0 0 0 1px rgba(17,24,28,.14);--df-shadow-input-outline:inset 0 0 0 1px #737F87;--df-shadow-primary:inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(17,24,28,.16);--df-shadow-panel-composer:0 0 0 1px #737F87;--df-shadow-mic:0 1px 2px rgba(17,24,28,.16);--df-shadow-new-chat:0 0 0 1px rgba(17,24,28,.08), 0 1px 2px rgba(17,24,28,.06);--df-shadow-thumb:inset 0 0 0 1px rgba(17,24,28,.08), 0 12px 24px -8px rgba(17,24,28,.22);--df-shadow-photo-card:0 8px 16px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);--df-shadow-photo-highlight-ring:0 0 0 1px #C98A1E;--df-shadow-action-card:0 0 0 1px rgba(17,24,28,.08), 0 2px 6px rgba(17,24,28,.06), 0 20px 48px -12px rgba(17,24,28,.14);--df-shadow-icon-tile:inset 0 0 0 1px rgba(17,24,28,.08);--df-shadow-ring-verify:inset 0 0 0 1px rgba(141,84,0,.75);--df-shadow-primary-hero:inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(17,24,28,.16), 0 8px 20px -8px rgba(14,111,104,.32);--df-shadow-composer:0 0 0 1px #737F87, 0 2px 6px rgba(17,24,28,.06), 0 16px 40px -8px rgba(17,24,28,.14);--df-shadow-rail:0 0 0 1px rgba(17,24,28,.07), 0 2px 6px rgba(17,24,28,.05), 0 16px 40px -8px rgba(17,24,28,.10);--df-shadow-avatar-lg:inset 0 0 0 1px rgba(17,24,28,.10), 0 1px 2px rgba(17,24,28,.06);--df-shadow-halo-pending:0 0 0 3px rgba(141,84,0,.12);--df-shadow-input-inline:inset 0 0 0 1px #737F87;--df-shadow-choice:inset 0 0 0 1.5px #57636B;--df-shadow-choice-on:inset 0 0 0 1.5px #0E6F68, inset 0 0 0 4.5px #FFFFFF;--df-shadow-choice-blocking:inset 0 0 0 1.5px #8D5400;--df-shadow-photo-card-sm:0 6px 12px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);--df-shadow-dot-cutout:0 0 0 3px #F9FAFB;--df-shadow-dot-cutout-live:0 0 0 3px rgba(14,111,104,.16), 0 0 0 3px #F9FAFB;--df-shadow-ring-pill:inset 0 0 0 1px rgba(17,24,28,.20);--df-shadow-input-invalid:0 0 0 1px #8D5400;--df-shadow-hairline-above:0 -1px 0 rgba(17,24,28,.07);--df-shadow-button-disabled:inset 0 0 0 1px rgba(17,24,28,.06);--df-shadow-mark:inset 0 0 0 1px rgba(17,24,28,.12);--df-shadow-blockout:inset 0 0 0 1px rgba(17,24,28,.06);--df-shadow-action-bar:0 0 0 1px rgba(17,24,28,.08), 0 2px 6px rgba(17,24,28,.06), 0 20px 48px -12px rgba(17,24,28,.14);--df-shadow-input-attention:inset 0 0 0 1px #8D5400}
+body{margin:0;font-family:'Geist',system-ui,sans-serif;background:var(--df-canvas);color:var(--df-text-1);-webkit-font-smoothing:antialiased}
+a{color:var(--df-accent)}a:hover{color:var(--df-accent-hover)}
+</style>
+<link rel="stylesheet" href="proto.css">
+<script>window.DF_PAGES=[{"slug": "signin", "href": "index.html", "title": "Sign in", "group": "Start"}, {"slug": "today", "href": "today.html", "title": "Today", "group": "Boards"}, {"slug": "schedule", "href": "schedule.html", "title": "Schedule", "group": "Boards"}, {"slug": "patients", "href": "patients.html", "title": "Patients", "group": "Boards"}, {"slug": "patient", "href": "patient.html", "title": "Patient chart", "group": "Boards"}, {"slug": "ledger", "href": "ledger.html", "title": "Ledger", "group": "Boards"}, {"slug": "account", "href": "account.html", "title": "Patient account", "group": "Boards"}, {"slug": "close", "href": "close.html", "title": "Daily close", "group": "Boards", "arrive": "The Close sample is the end of the same day, Fri, Sep 25 at 5:06 PM, so its totals and exceptions differ from the morning boards."}, {"slug": "inbox", "href": "inbox.html", "title": "Inbox", "group": "Boards"}, {"slug": "compliance", "href": "compliance.html", "title": "Compliance", "group": "Boards", "arrive": "Compliance is shown as the owner, Dr. Maya Okafor, sees it: she is the signed-in user here, and its passkey prompts are hers."}, {"slug": "chat", "href": "chat.html", "title": "Chat · insurance card photos", "group": "Chat"}, {"slug": "chat-booking", "href": "chat-booking.html", "title": "Chat · new patient + booking", "group": "Chat"}, {"slug": "chat-refund", "href": "chat-refund.html", "title": "Refund with passkey", "group": "Chat"}, {"slug": "forms", "href": "forms.html", "title": "Forms", "group": "Forms"}, {"slug": "intake", "href": "intake.html", "title": "Intake form", "group": "Forms"}, {"slug": "lock", "href": "lock.html", "title": "Workstation lock", "group": "Start"}, {"slug": "console", "href": "console.html", "title": "Operator console", "group": "Dayfront staff"}];window.DF_PAGE="compliance";</script>
+<script src="proto-theme.js"></script>
+</head>
+<body>
+<div id="proto-stage">
+<div data-part="app" style="width: 1440px; height: 900px; box-sizing: border-box; display: flex; overflow: hidden; background: var(--df-canvas); color: var(--df-text-1); font-family: 'Geist', system-ui, sans-serif; font-size: 14px; line-height: 20px;">
+
+  <aside data-part="sidebar" aria-label="Main navigation" style="width: 232px; flex: 0 0 232px; height: 900px; box-sizing: border-box; padding: 8px 12px 12px; display: flex; flex-direction: column;">
+
+    <div data-go="today.html" data-part="brand" style="height: 56px; flex: 0 0 56px; box-sizing: border-box; padding: 0 8px; display: flex; align-items: center; gap: 10px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="0" y="0" width="24" height="24" rx="7" style="fill: var(--df-accent);"></rect><path d="M6.5 9.5h11" stroke-width="2.25" stroke-linecap="round" style="stroke: var(--df-canvas);"></path></svg>
+      <span style="font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: -0.02em; color: var(--df-text-1);">Dayfront</span>
+    </div>
+
+    <div role="group" aria-label="Mode" data-part="mode-switch" style="height: 36px; flex: 0 0 36px; box-sizing: border-box; padding: 2px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; background: var(--df-sheet); border-radius: 10px; box-shadow: var(--df-shadow-track);">
+      <button data-go="chat.html" type="button" aria-pressed="false" style="height: 32px; box-sizing: border-box; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--df-text-2); font-family: inherit; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"></path></svg>
+        <span>Chat</span>
+      </button>
+      <button data-go="today.html" type="button" aria-pressed="true" style="height: 32px; box-sizing: border-box; padding: 0; border: 0; border-radius: 8px; background: var(--df-floating); box-shadow: var(--df-shadow-segment-mode); color: var(--df-text-1); font-family: inherit; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-accent);"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
+        <span>Boards</span>
+      </button>
+      <button data-go="forms.html" type="button" aria-pressed="false" style="height: 32px; box-sizing: border-box; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--df-text-2); font-family: inherit; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path><path d="M14 2v6h6"></path><path d="M8 13h8M8 17h5"></path></svg>
+        <span>Forms</span>
+      </button>
+    </div>
+
+    <nav data-part="nav" aria-label="Boards" style="margin-top: 24px; display: flex; flex-direction: column; gap: 2px;">
+      <a data-go="today.html" href="#today" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="M12 3v5"></path><path d="m5.64 8.64 1.42 1.42"></path><path d="m18.36 8.64-1.42 1.42"></path><path d="M3 15h2"></path><path d="M19 15h2"></path><path d="M16 15a4 4 0 0 0-8 0"></path><path d="M3 19h18"></path></svg>
+        <span>Today</span>
+      </a>
+      <a data-go="schedule.html" href="#schedule" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>
+        <span>Schedule</span>
+      </a>
+      <a data-go="patients.html" href="#patients" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <span>Patients</span>
+      </a>
+      <a data-go="ledger.html" href="#ledger" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"></path><path d="M8 7h8M8 11h8M8 15h5"></path></svg>
+        <span>Ledger</span>
+      </a>
+      <a data-go="close.html" data-toast="The Close sample is the end of the same day, Fri, Sep 25 at 5:06 PM, so its totals and exceptions differ from the morning boards." href="#close" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><rect x="8" y="2" width="8" height="4" rx="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="m9 14 2 2 4-4"></path></svg>
+        <span>Close</span>
+      </a>
+      <a data-go="inbox.html" href="#inbox" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="M22 12h-6l-2 3h-4l-2-3H2"></path><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11Z"></path></svg>
+        <span>Inbox</span>
+        <span aria-label="3 messages awaiting reply" style="margin-left: auto; min-width: 20px; height: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 999px; background: var(--df-raised); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center;">3</span>
+      </a>
+      <a data-here="1" href="#compliance" aria-current="page" data-part="nav-item-active" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; background: var(--df-raised); box-shadow: var(--df-shadow-nav-active); color: var(--df-text-1); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-accent);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+        <span>Compliance</span>
+      </a>
+    </nav>
+
+    <div data-part="sidebar-footer" style="margin-top: auto; display: flex; flex-direction: column; gap: 4px;">
+      <div data-part="practice" style="height: 48px; box-sizing: border-box; padding: 0 8px; display: flex; align-items: center; gap: 12px;">
+        <span aria-hidden="true" style="width: 32px; height: 32px; flex: 0 0 32px; border-radius: 10px; background: var(--df-sheet); box-shadow: var(--df-shadow-ring-tile); color: var(--df-text-2); display: flex; align-items: center; justify-content: center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5c-1.5-1.5-3-2-4.5-2C5 3.5 3.5 5.5 3.5 8c0 2 .8 3.4 1.4 5 .7 2 .9 4.2 1.6 6 .4 1 1.6 1.2 2.1.1.7-1.6.9-4.1 3.4-4.1s2.7 2.5 3.4 4.1c.5 1.1 1.7.9 2.1-.1.7-1.8.9-4 1.6-6 .6-1.6 1.4-3 1.4-5 0-2.5-1.5-4.5-4-4.5-1.5 0-3 .5-4.5 2Z"></path></svg>
+        </span>
+        <span style="display: flex; flex-direction: column; min-width: 0;">
+          <span style="font-size: 13px; line-height: 16px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">Lakeview Dental Care</span>
+          <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3);">Solo practice</span>
+        </span>
+      </div>
+      <div data-part="signed-in-user" style="height: 48px; box-sizing: border-box; padding: 0 0 0 8px; display: flex; align-items: center; gap: 12px;">
+        <span aria-hidden="true" style="width: 32px; height: 32px; flex: 0 0 32px; border-radius: 999px; background: var(--df-floating); box-shadow: var(--df-shadow-avatar); color: var(--df-text-1); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center;">MO</span>
+        <span style="display: flex; flex-direction: column; min-width: 0;">
+          <span style="font-size: 13px; line-height: 16px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">Maya Okafor</span>
+          <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Owner · dentist</span>
+        </span>
+        <button data-go="lock.html" type="button" aria-label="Lock this workstation" style="margin-left: auto; height: 32px; box-sizing: border-box; padding: 0 10px; border: 0; border-radius: 8px; background: var(--df-raised); box-shadow: var(--df-shadow-button-quiet); color: var(--df-text-1); font-family: inherit; font-size: 12.5px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+          <span>Lock</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <div data-part="sheet" style="position: relative; flex: 0 0 1200px; width: 1200px; height: 884px; margin: 8px 8px 8px 0; box-sizing: border-box; background: var(--df-sheet); border-radius: 16px; box-shadow: var(--df-shadow-sheet); display: flex; flex-direction: column;">
+
+    <header data-part="topbar" style="height: 56px; flex: 0 0 56px; box-sizing: border-box; padding: 0 24px; display: flex; align-items: center; gap: 12px;">
+      <h1 style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Compliance</h1>
+      <span style="font-size: 14px; line-height: 24px; color: var(--df-text-2); white-space: nowrap;">Fri, Sep 25</span>
+      <span data-part="freshness" style="margin-left: 4px; display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--df-text-3); white-space: nowrap;">
+        <span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 999px; background: var(--df-accent); box-shadow: var(--df-shadow-halo-live);"></span>
+        <span>Live · gate checked 2:14 PM</span>
+      </span>
+
+      <div style="margin-left: auto; display: flex; align-items: center; gap: 8px;">
+        <div data-part="search" style="position: relative; width: 280px; height: 36px; flex: 0 0 280px;">
+          <input id="global-search" type="search" style="width: 280px; height: 36px; box-sizing: border-box; padding: 0 44px 0 36px; border: 0; border-radius: 10px; background: var(--df-raised); box-shadow: var(--df-shadow-input); color: var(--df-text-1); font-family: inherit; font-size: 13px; -webkit-appearance: none; appearance: none;" />
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; left: 12px; top: 10px; pointer-events: none; stroke: var(--df-text-3);"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+          <label for="global-search" style="position: absolute; left: 36px; top: 0; height: 36px; display: flex; align-items: center; font-size: 13px; color: var(--df-text-3); pointer-events: none; white-space: nowrap;">Search patients, appointments…</label>
+          <kbd style="position: absolute; right: 8px; top: 8px; height: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 6px; background: var(--df-floating); box-shadow: var(--df-shadow-floating-chip); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; display: inline-flex; align-items: center; pointer-events: none;">⌘K</kbd>
+        </div>
+
+        <span data-part="env-badge" style="height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 999px; background: var(--df-raised); box-shadow: var(--df-shadow-ring-tile); color: var(--df-text-2); font-size: 12px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
+          <span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 999px; background: var(--df-amber);"></span>
+          <span>Fictional data</span>
+        </span>
+
+        <button type="button" data-part="theme-toggle" aria-label="Switch theme" title="Switch theme" style="width: 36px; height: 36px; box-sizing: border-box; padding: 0; border: 0; border-radius: 10px; background: transparent; color: var(--df-text-2); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <span class="df-when-dark" style="display: contents;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg></span>
+          <span class="df-when-light" style="display: contents;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></span>
+        </button>
+
+        <button data-toast="privacy" type="button" aria-label="Privacy mode, off" aria-pressed="false" style="width: 36px; height: 36px; box-sizing: border-box; padding: 0; border: 0; border-radius: 10px; background: transparent; color: var(--df-text-2); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path><path d="M6.61 6.61A13.53 13.53 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path><path d="m2 2 20 20"></path></svg>
+        </button>
+
+        <button data-toast="Notifications open a panel here in the real app: 2 unread (a proposal waiting and an Inbox reply)." type="button" aria-label="Notifications, 2 unread" style="position: relative; width: 36px; height: 36px; box-sizing: border-box; padding: 0; border: 0; border-radius: 10px; background: transparent; color: var(--df-text-2); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+          <span aria-hidden="true" style="position: absolute; top: 8px; right: 9px; width: 8px; height: 8px; box-sizing: border-box; border-radius: 999px; background: var(--df-accent); border: 2px solid var(--df-sheet);"></span>
+        </button>
+      </div>
+    </header>
+
+    <main data-part="board" style="flex: 1; min-height: 0; box-sizing: border-box; padding: 16px 24px 24px; display: flex; flex-direction: column; gap: 16px;">
+
+      <section data-part="env-banner" role="note" aria-label="Environment notice" style="height: 48px; flex: 0 0 48px; box-sizing: border-box; padding: 0 16px 0 10px; border-radius: 12px; background: var(--df-raised); box-shadow: var(--df-shadow-ring-tile); display: flex; align-items: center; gap: 12px;">
+        <span aria-hidden="true" style="width: 28px; height: 28px; flex: 0 0 28px; border-radius: 8px; background: var(--df-amber-soft); color: var(--df-amber); display: flex; align-items: center; justify-content: center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.53a2 2 0 0 1-.21.9L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.07-10.13a2 2 0 0 1-.21-.9V2"></path><path d="M8.5 2h7"></path><path d="M7 16h10"></path></svg>
+        </span>
+        <p style="margin: 0; flex: 1; min-width: 0; display: flex; flex-direction: column;">
+          <strong style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1); white-space: nowrap;">This environment is FICTIONAL.</strong>
+          <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Real patient data can never be loaded here (hosted on Hetzner, no BAA). Production runs on a HIPAA-eligible host with a signed BAA.</span>
+        </p>
+        <a data-toast="Real patient data needs all 10 PHI gate items, a HIPAA host with a signed BAA, the owner&#x27;s passkey and Dayfront&#x27;s approval." href="#how-the-gate-works" style="flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--df-text-2); text-decoration: none; white-space: nowrap;">
+          <span>How the gate works</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
+      </section>
+
+      <div data-part="row-mode" style="height: 196px; flex: 0 0 196px; display: grid; grid-template-columns: minmax(0, 1fr) 464px; gap: 16px;">
+
+        <section data-part="card" aria-labelledby="phi-title" style="min-width: 0; height: 196px; box-sizing: border-box; padding: 16px; background: var(--df-raised); border-radius: 14px; box-shadow: var(--df-shadow-raised); display: flex; flex-direction: column;">
+          <div data-part="card-header" style="height: 24px; flex: 0 0 24px; display: flex; align-items: center; gap: 12px;">
+            <h2 id="phi-title" style="margin: 0; font-size: 15px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">PHI mode</h2>
+            <span style="min-width: 0; font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">One-way: owner passkey + Dayfront approval</span>
+            <a data-toast="In the app this opens the PHI gate checklist: 3 of 10 items met. Production needs all 10." href="#phi-gate" aria-label="PHI gate, 3 of 10 items met" style="margin-left: auto; flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--df-text-2); text-decoration: none; white-space: nowrap;">
+              <span>PHI gate</span>
+              <span aria-hidden="true" style="height: 10px; display: inline-flex; align-items: flex-end; gap: 2px;"><span style="width: 3px; height: 10px; border-radius: 1px; background: var(--df-text-2);"></span><span style="width: 3px; height: 10px; border-radius: 1px; background: var(--df-text-2);"></span><span style="width: 3px; height: 10px; border-radius: 1px; background: var(--df-text-2);"></span><span style="width: 3px; height: 10px; border-radius: 1px; background: var(--df-overlay-12);"></span><span style="width: 3px; height: 10px; border-radius: 1px; background: var(--df-overlay-12);"></span><span style="width: 3px; height: 10px; border-radius: 1px; background: var(--df-overlay-12);"></span><span style="width: 3px; height: 10px; border-radius: 1px; background: var(--df-overlay-12);"></span><span style="width: 3px; height: 10px; border-radius: 1px; background: var(--df-overlay-12);"></span><span style="width: 3px; height: 10px; border-radius: 1px; background: var(--df-overlay-12);"></span><span style="width: 3px; height: 10px; border-radius: 1px; background: var(--df-overlay-12);"></span></span>
+              <span style="color: var(--df-text-1);">3 of 10</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+            </a>
+          </div>
+
+          <ol aria-label="PHI modes" data-part="mode-track" style="list-style: none; margin: 12px 0 0; padding: 4px; flex: 1; min-height: 0; box-sizing: border-box; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; background: var(--df-sheet); border-radius: 12px; box-shadow: var(--df-shadow-track);">
+
+            <li aria-current="true" data-part="mode-current" style="min-width: 0; box-sizing: border-box; padding: 12px; border-radius: 8px; background: var(--df-floating); box-shadow: var(--df-shadow-segment); display: flex; flex-direction: column;">
+              <div style="height: 20px; flex: 0 0 20px; display: flex; align-items: center; gap: 8px; min-width: 0;">
+                <span aria-hidden="true" style="width: 14px; height: 14px; flex: 0 0 14px; box-sizing: border-box; border-radius: 999px; border: 1.5px solid var(--df-accent); display: flex; align-items: center; justify-content: center;"><span style="width: 6px; height: 6px; border-radius: 999px; background: var(--df-accent);"></span></span>
+                <span style="font-size: 13px; line-height: 20px; font-weight: 600; color: var(--df-text-1); white-space: nowrap;">Fictional</span>
+                <span style="margin-left: auto; flex: 0 0 auto; height: 18px; box-sizing: border-box; padding: 0 7px; border-radius: 999px; background: var(--df-overlay-07); color: var(--df-text-1); font-size: 11px; font-weight: 600; display: inline-flex; align-items: center; white-space: nowrap;">Current</span>
+              </div>
+              <p style="margin: 4px 0 0; font-size: 12px; line-height: 16px; color: var(--df-text-2);">Made-up patients only. Texts, email and payments go to test destinations.</p>
+              <div style="margin-top: auto; height: 16px; flex: 0 0 16px; display: flex; align-items: center; gap: 6px; font-size: 12px; line-height: 16px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 12px;"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+                <span>Locked on this host</span>
+              </div>
+            </li>
+
+            <li data-part="mode-step" style="min-width: 0; box-sizing: border-box; padding: 12px; border-radius: 8px; display: flex; flex-direction: column;">
+              <div style="height: 20px; flex: 0 0 20px; display: flex; align-items: center; gap: 8px; min-width: 0;">
+                <span aria-hidden="true" style="width: 14px; height: 14px; flex: 0 0 14px; box-sizing: border-box; border-radius: 999px; border: 1.5px solid var(--df-text-3);"></span>
+                <span style="font-size: 13px; line-height: 20px; font-weight: 600; color: var(--df-text-2); white-space: nowrap;">Production — Forms only</span>
+              </div>
+              <p style="margin: 4px 0 0; font-size: 12px; line-height: 16px; color: var(--df-text-3);">Real patients, run on Boards and Forms. No chat model, no microphone.</p>
+              <div style="margin-top: auto; height: 16px; flex: 0 0 16px; display: flex; align-items: center; gap: 6px; font-size: 12px; line-height: 16px; font-weight: 500; color: var(--df-text-2); white-space: nowrap;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 12px; stroke: var(--df-text-3);"><circle cx="7.5" cy="15.5" r="5.5"></circle><path d="m21 2-9.6 9.6"></path><path d="m15.5 7.5 3 3L22 7l-3-3"></path></svg>
+                <span>Needs a HIPAA host + BAA</span>
+              </div>
+            </li>
+
+            <li data-part="mode-step" style="min-width: 0; box-sizing: border-box; padding: 12px; border-radius: 8px; display: flex; flex-direction: column;">
+              <div style="height: 20px; flex: 0 0 20px; display: flex; align-items: center; gap: 8px; min-width: 0;">
+                <span aria-hidden="true" style="width: 14px; height: 14px; flex: 0 0 14px; box-sizing: border-box; border-radius: 999px; border: 1.5px solid var(--df-text-3);"></span>
+                <span style="font-size: 13px; line-height: 20px; font-weight: 600; color: var(--df-text-2); white-space: nowrap;">Production — Full</span>
+              </div>
+              <p style="margin: 4px 0 0; font-size: 12px; line-height: 16px; color: var(--df-text-3);">Forms only, plus Chat proposals and hold-to-speak on real records.</p>
+              <div style="margin-top: auto; height: 16px; flex: 0 0 16px; display: flex; align-items: center; gap: 6px; font-size: 12px; line-height: 16px; font-weight: 500; color: var(--df-text-2); white-space: nowrap;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 12px; stroke: var(--df-text-3);"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                <span>Needs Chat + speech evals</span>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <section data-part="card" aria-labelledby="audit-title" style="min-width: 0; height: 196px; box-sizing: border-box; padding: 16px; background: var(--df-raised); border-radius: 14px; box-shadow: var(--df-shadow-raised); display: flex; flex-direction: column;">
+          <div data-part="card-header" style="height: 24px; flex: 0 0 24px; display: flex; align-items: center; gap: 12px;">
+            <h2 id="audit-title" style="margin: 0; font-size: 15px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Audit chain</h2>
+            <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Hash-linked · append-only</span>
+            <button data-toast="In the app this re-checks the hash chain up to head #48,213 now, instead of waiting for the 15:00 checkpoint." type="button" style="margin: -4px 0 -4px auto; height: 32px; box-sizing: border-box; padding: 0 12px; border: 0; border-radius: 8px; background: var(--df-overlay-07); box-shadow: var(--df-shadow-secondary-compact); color: var(--df-text-1); font-family: inherit; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; cursor: pointer;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"></path><path d="M21 3v5h-5"></path></svg>
+              <span>Verify now</span>
+            </button>
+          </div>
+
+          <div data-part="chain-status" style="margin-top: 16px; height: 40px; flex: 0 0 40px; display: flex; align-items: center; gap: 12px;">
+            <span aria-hidden="true" style="width: 40px; height: 40px; flex: 0 0 40px; border-radius: 10px; background: var(--df-floating); box-shadow: var(--df-shadow-icon-tile); color: var(--df-accent); display: flex; align-items: center; justify-content: center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+            </span>
+            <span style="min-width: 0; display: flex; flex-direction: column;">
+              <span style="font-size: 16px; line-height: 20px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Chain verified</span>
+              <span style="font-size: 12.5px; line-height: 20px; color: var(--df-text-3); white-space: nowrap;">last checkpoint <span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--df-text-1);">14:00</span> · next <span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--df-text-2);">15:00</span> · <span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--df-text-1);">0</span> gaps</span>
+            </span>
+            <dl style="margin: 0 0 0 auto; display: flex; flex-direction: column; align-items: flex-end;">
+              <dt style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Sequence head</dt>
+              <dd style="margin: 0; font-family: 'Geist Mono', monospace; font-size: 13.5px; line-height: 20px; font-weight: 500; color: var(--df-text-1);">#48,213</dd>
+            </dl>
+          </div>
+
+          <div data-part="checkpoint-strip" role="img" aria-label="Hourly checkpoints today: 08:00 to 14:00 all verified; next at 15:00" style="margin-top: 16px; position: relative; height: 36px; flex: 0 0 36px; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr));">
+            <span aria-hidden="true" style="position: absolute; left: 6.25%; width: 75%; top: 4px; height: 1px; background: var(--df-overlay-14);"></span>
+            <span aria-hidden="true" style="position: absolute; left: 81.25%; width: 12.5%; top: 4px; height: 0; border-top: 1px dashed var(--df-overlay-24);"></span>
+            <span aria-hidden="true" style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px;"><span style="width: 9px; height: 9px; border-radius: 999px; background: var(--df-text-2); box-shadow: var(--df-shadow-dot-cutout);"></span><span style="font-family: 'Geist Mono', monospace; font-size: 11px; line-height: 16px; color: var(--df-text-3);">08:00</span></span>
+            <span aria-hidden="true" style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px;"><span style="width: 9px; height: 9px; border-radius: 999px; background: var(--df-text-2); box-shadow: var(--df-shadow-dot-cutout);"></span><span style="font-family: 'Geist Mono', monospace; font-size: 11px; line-height: 16px; color: var(--df-text-3);">09:00</span></span>
+            <span aria-hidden="true" style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px;"><span style="width: 9px; height: 9px; border-radius: 999px; background: var(--df-text-2); box-shadow: var(--df-shadow-dot-cutout);"></span><span style="font-family: 'Geist Mono', monospace; font-size: 11px; line-height: 16px; color: var(--df-text-3);">10:00</span></span>
+            <span aria-hidden="true" style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px;"><span style="width: 9px; height: 9px; border-radius: 999px; background: var(--df-text-2); box-shadow: var(--df-shadow-dot-cutout);"></span><span style="font-family: 'Geist Mono', monospace; font-size: 11px; line-height: 16px; color: var(--df-text-3);">11:00</span></span>
+            <span aria-hidden="true" style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px;"><span style="width: 9px; height: 9px; border-radius: 999px; background: var(--df-text-2); box-shadow: var(--df-shadow-dot-cutout);"></span><span style="font-family: 'Geist Mono', monospace; font-size: 11px; line-height: 16px; color: var(--df-text-3);">12:00</span></span>
+            <span aria-hidden="true" style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px;"><span style="width: 9px; height: 9px; border-radius: 999px; background: var(--df-text-2); box-shadow: var(--df-shadow-dot-cutout);"></span><span style="font-family: 'Geist Mono', monospace; font-size: 11px; line-height: 16px; color: var(--df-text-3);">13:00</span></span>
+            <span aria-hidden="true" style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px;"><span style="width: 9px; height: 9px; border-radius: 999px; background: var(--df-accent); box-shadow: var(--df-shadow-dot-cutout-live);"></span><span style="font-family: 'Geist Mono', monospace; font-size: 11px; line-height: 16px; font-weight: 500; color: var(--df-text-1);">14:00</span></span>
+            <span aria-hidden="true" style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px;"><span style="width: 9px; height: 9px; box-sizing: border-box; border-radius: 999px; border: 1.5px solid var(--df-text-3); background: var(--df-raised); box-shadow: var(--df-shadow-dot-cutout);"></span><span style="font-family: 'Geist Mono', monospace; font-size: 11px; line-height: 16px; color: var(--df-text-3);">15:00</span></span>
+          </div>
+
+          <div data-part="audit-footer" style="margin-top: auto; height: 16px; flex: 0 0 16px; display: flex; align-items: center; gap: 6px; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 12px; stroke: var(--df-text-2);"><path d="M20 6 9 17l-5-5"></path></svg>
+            <span style="color: var(--df-text-2);">Write-once copy in sync</span>
+            <span aria-hidden="true">·</span>
+            <span>Nightly full check passed <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px;">02:00</span></span>
+          </div>
+        </section>
+      </div>
+
+      <div data-part="row-tables" style="height: 512px; flex: 0 0 512px; display: grid; grid-template-columns: minmax(0, 1fr) 464px; gap: 16px;">
+
+        <section data-part="card" aria-labelledby="flows-title" style="min-width: 0; height: 512px; box-sizing: border-box; padding: 16px 16px 12px; background: var(--df-raised); border-radius: 14px; box-shadow: var(--df-shadow-raised); display: flex; flex-direction: column;">
+          <div data-part="card-header" style="height: 24px; flex: 0 0 24px; display: flex; align-items: center; gap: 12px;">
+            <h2 id="flows-title" style="margin: 0; font-size: 15px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Per-flow switches</h2>
+            <span style="margin-left: auto; display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; line-height: 16px; color: var(--df-text-2); white-space: nowrap;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 14px; stroke: var(--df-text-3);"><circle cx="7.5" cy="15.5" r="5.5"></circle><path d="m21 2-9.6 9.6"></path><path d="m15.5 7.5 3 3L22 7l-3-3"></path></svg>
+              <span>Turning a flow on needs your passkey · off never does</span>
+            </span>
+          </div>
+          <p style="margin: 4px 0 0; height: 16px; flex: 0 0 16px; font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Switches govern real patient data in Production. Fictional mode sends only to test destinations.</p>
+
+          <div role="table" aria-labelledby="flows-title" data-part="flows-table" style="margin: 8px -8px 0; display: flex; flex-direction: column;">
+            <div role="row" data-part="table-head" style="height: 24px; box-sizing: border-box; padding: 0 8px; display: grid; grid-template-columns: minmax(0, 1fr) 132px 100px 96px; column-gap: 12px; align-items: center;">
+              <span role="columnheader" style="font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--df-text-3); white-space: nowrap;">Flow · what it sends</span>
+              <span role="columnheader" style="font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--df-text-3); white-space: nowrap;">Vendor</span>
+              <span role="columnheader" style="font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--df-text-3); white-space: nowrap;">BAA status</span>
+              <span role="columnheader" style="font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--df-text-3); white-space: nowrap;">State</span>
+            </div>
+
+            <div data-toast="Hosting &amp; database runs on AWS (EC2, EBS, KMS) in Production. BAA signed Sep 14, 2026; planned for go-live." role="row" data-part="flow-row" style="height: 50px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: minmax(0, 1fr) 132px 100px 96px; column-gap: 12px; align-items: center;">
+              <div role="rowheader" style="min-width: 0; display: flex; align-items: center; gap: 10px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 16px; stroke: var(--df-text-3);"><ellipse cx="12" cy="5" rx="8" ry="3"></ellipse><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"></path><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"></path></svg>
+                <span style="min-width: 0; display: flex; flex-direction: column;">
+                  <span style="display: flex; align-items: baseline; gap: 8px; min-width: 0; white-space: nowrap;"><span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1);">Hosting &amp; database</span><span style="font-family: 'Geist Mono', monospace; font-size: 11px; line-height: 18px; color: var(--df-text-3);">core_store</span></span>
+                  <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">All records, ledger, audit log</span>
+                </span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 13px; line-height: 18px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">AWS</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">EC2, EBS, KMS</span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                <span data-part="baa-signed" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-overlay-06); color: var(--df-text-1); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span>Signed</span></span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Sep 14, 2026</span>
+              </div>
+              <div role="cell" data-part="state-planned" style="min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <span style="height: 20px; display: flex; align-items: center; gap: 8px; white-space: nowrap;">
+                  <span aria-hidden="true" style="width: 32px; height: 20px; flex: 0 0 32px; display: flex; align-items: center; justify-content: center; color: var(--df-text-3);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg></span>
+                  <span style="font-size: 13px; font-weight: 600; color: var(--df-text-1);">Planned</span>
+                </span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">for go-live</span>
+              </div>
+            </div>
+
+            <div data-toast="Payments sends Stripe only amounts and opaque IDs, so no BAA is needed (§1179). It runs in test mode here." role="row" data-part="flow-row" style="height: 50px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: minmax(0, 1fr) 132px 100px 96px; column-gap: 12px; align-items: center;">
+              <div role="rowheader" style="min-width: 0; display: flex; align-items: center; gap: 10px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 16px; stroke: var(--df-text-3);"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M2 10h20"></path></svg>
+                <span style="min-width: 0; display: flex; flex-direction: column;">
+                  <span style="display: flex; align-items: baseline; gap: 8px; min-width: 0; white-space: nowrap;"><span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1);">Payments</span><span style="font-family: 'Geist Mono', monospace; font-size: 11px; line-height: 18px; color: var(--df-text-3);">payments</span></span>
+                  <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Amount and opaque IDs — no PHI</span>
+                </span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 13px; line-height: 18px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">Stripe</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Terminal, pay links</span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                <span data-part="baa-exempt" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-blue-soft); color: var(--df-blue); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path></svg><span>Exempt</span></span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">§1179 · no PHI</span>
+              </div>
+              <div role="cell" data-part="state-on" style="min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <span style="height: 20px; display: flex; align-items: center; gap: 8px; white-space: nowrap;">
+                  <button data-toast="In the app switching Payments off takes effect at once with no passkey (off never needs one), and the change is audited." type="button" role="switch" aria-checked="true" aria-label="Payments flow" style="width: 40px; height: 32px; flex: 0 0 40px; margin: -6px -4px; box-sizing: border-box; padding: 0; border: 0; border-radius: 8px; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                    <span aria-hidden="true" style="position: relative; width: 32px; height: 18px; box-sizing: border-box; border-radius: 999px; background: var(--df-accent); box-shadow: var(--df-shadow-primary-compact);"><span style="position: absolute; top: 2px; left: 16px; width: 14px; height: 14px; border-radius: 999px; background: var(--df-on-accent);"></span></span>
+                  </button>
+                  <span style="font-size: 13px; font-weight: 600; color: var(--df-text-1);">On</span>
+                </span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">test mode here</span>
+              </div>
+            </div>
+
+            <div data-toast="Chat AI runs on a local model on the PHI host (Anthropic API as fallback). It stays off until the go-live eval." role="row" data-part="flow-row" style="height: 58px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: minmax(0, 1fr) 132px 100px 96px; column-gap: 12px; align-items: center;">
+              <div role="rowheader" style="min-width: 0; display: flex; align-items: center; gap: 10px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 16px; stroke: var(--df-text-3);"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"></path></svg>
+                <span style="min-width: 0; display: flex; flex-direction: column;">
+                  <span style="display: flex; align-items: baseline; gap: 8px; min-width: 0; white-space: nowrap;"><span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1);">Chat AI</span><span style="font-family: 'Geist Mono', monospace; font-size: 11px; line-height: 18px; color: var(--df-text-3);">llm</span></span>
+                  <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Request text and minimum context</span>
+                </span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 13px; line-height: 18px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">Local model</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">on the PHI host</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">fallback: Anthropic API</span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                <span data-part="baa-not-needed" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-overlay-05); color: var(--df-text-2); font-size: 11.5px; font-weight: 500; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="7" rx="2"></rect><rect x="3" y="14" width="18" height="7" rx="2"></rect><path d="M7 6.5h.01M7 17.5h.01"></path></svg><span>Not needed</span></span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">no third party</span>
+              </div>
+              <div role="cell" data-part="state-off" style="min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <span style="height: 20px; display: flex; align-items: center; gap: 8px; white-space: nowrap;">
+                  <button data-toast="Turning Chat AI on needs your passkey, and it stays off until the go-live eval passes." type="button" role="switch" aria-checked="false" aria-label="Chat AI flow" style="width: 40px; height: 32px; flex: 0 0 40px; margin: -6px -4px; box-sizing: border-box; padding: 0; border: 0; border-radius: 8px; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                    <span aria-hidden="true" style="position: relative; width: 32px; height: 18px; box-sizing: border-box; border-radius: 999px; background: var(--df-sheet); box-shadow: var(--df-shadow-ring-tier-card);"><span style="position: absolute; top: 3px; left: 3px; width: 12px; height: 12px; border-radius: 999px; background: var(--df-text-3);"></span></span>
+                  </button>
+                  <span style="font-size: 13px; font-weight: 600; color: var(--df-text-2);">Off</span>
+                </span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">until go-live eval</span>
+              </div>
+            </div>
+
+            <div data-toast="Speech-to-text uses self-hosted Whisper on the PHI host, so no BAA is needed. It stays off until the go-live eval." role="row" data-part="flow-row" style="height: 50px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: minmax(0, 1fr) 132px 100px 96px; column-gap: 12px; align-items: center;">
+              <div role="rowheader" style="min-width: 0; display: flex; align-items: center; gap: 10px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 16px; stroke: var(--df-text-3);"><rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><path d="M12 18v4"></path></svg>
+                <span style="min-width: 0; display: flex; flex-direction: column;">
+                  <span style="display: flex; align-items: baseline; gap: 8px; min-width: 0; white-space: nowrap;"><span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1);">Speech-to-text</span><span style="font-family: 'Geist Mono', monospace; font-size: 11px; line-height: 18px; color: var(--df-text-3);">stt</span></span>
+                  <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Staff dictation audio</span>
+                </span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 13px; line-height: 18px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">Self-hosted Whisper</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">on the PHI host</span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                <span data-part="baa-not-needed" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-overlay-05); color: var(--df-text-2); font-size: 11.5px; font-weight: 500; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="7" rx="2"></rect><rect x="3" y="14" width="18" height="7" rx="2"></rect><path d="M7 6.5h.01M7 17.5h.01"></path></svg><span>Not needed</span></span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">no third party</span>
+              </div>
+              <div role="cell" data-part="state-off" style="min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <span style="height: 20px; display: flex; align-items: center; gap: 8px; white-space: nowrap;">
+                  <button data-toast="Turning Speech-to-text on needs your passkey, and it stays off until the go-live eval passes." type="button" role="switch" aria-checked="false" aria-label="Speech-to-text flow" style="width: 40px; height: 32px; flex: 0 0 40px; margin: -6px -4px; box-sizing: border-box; padding: 0; border: 0; border-radius: 8px; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                    <span aria-hidden="true" style="position: relative; width: 32px; height: 18px; box-sizing: border-box; border-radius: 999px; background: var(--df-sheet); box-shadow: var(--df-shadow-ring-tier-card);"><span style="position: absolute; top: 3px; left: 3px; width: 12px; height: 12px; border-radius: 999px; background: var(--df-text-3);"></span></span>
+                  </button>
+                  <span style="font-size: 13px; font-weight: 600; color: var(--df-text-2);">Off</span>
+                </span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">until go-live eval</span>
+              </div>
+            </div>
+
+            <div data-toast="SMS (reminders and pay links) goes through AWS End User Messaging under the AWS BAA. It waits on 10DLC registration." role="row" data-part="flow-row" style="height: 50px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: minmax(0, 1fr) 132px 100px 96px; column-gap: 12px; align-items: center;">
+              <div role="rowheader" style="min-width: 0; display: flex; align-items: center; gap: 10px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 16px; stroke: var(--df-text-3);"><rect x="6" y="2" width="12" height="20" rx="2"></rect><path d="M11 18h2"></path></svg>
+                <span style="min-width: 0; display: flex; flex-direction: column;">
+                  <span style="display: flex; align-items: baseline; gap: 8px; min-width: 0; white-space: nowrap;"><span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1);">SMS</span><span style="font-family: 'Geist Mono', monospace; font-size: 11px; line-height: 18px; color: var(--df-text-3);">sms</span></span>
+                  <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Reminders and pay links</span>
+                </span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 13px; line-height: 18px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">AWS</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">End User Messaging</span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                <span data-part="baa-covered" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-overlay-06); color: var(--df-text-1); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span>Covered</span></span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">by AWS BAA</span>
+              </div>
+              <div role="cell" data-part="state-off" style="min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <span style="height: 20px; display: flex; align-items: center; gap: 8px; white-space: nowrap;">
+                  <button data-toast="SMS can&#x27;t turn on until 10DLC registration clears. Then turning it on needs your passkey." type="button" role="switch" aria-checked="false" aria-label="SMS flow" style="width: 40px; height: 32px; flex: 0 0 40px; margin: -6px -4px; box-sizing: border-box; padding: 0; border: 0; border-radius: 8px; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                    <span aria-hidden="true" style="position: relative; width: 32px; height: 18px; box-sizing: border-box; border-radius: 999px; background: var(--df-sheet); box-shadow: var(--df-shadow-ring-tier-card);"><span style="position: absolute; top: 3px; left: 3px; width: 12px; height: 12px; border-radius: 999px; background: var(--df-text-3);"></span></span>
+                  </button>
+                  <span style="font-size: 13px; font-weight: 600; color: var(--df-text-2);">Off</span>
+                </span>
+                <span style="font-size: 12px; line-height: 16px; font-weight: 500; color: var(--df-amber); white-space: nowrap;">10DLC pending</span>
+              </div>
+            </div>
+
+            <div data-toast="Email &amp; inbox uses the clinic&#x27;s Google Workspace. It stays off until the clinic accepts Google&#x27;s BAA." role="row" data-part="flow-row" style="height: 50px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: minmax(0, 1fr) 132px 100px 96px; column-gap: 12px; align-items: center;">
+              <div role="rowheader" style="min-width: 0; display: flex; align-items: center; gap: 10px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 16px; stroke: var(--df-text-3);"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
+                <span style="min-width: 0; display: flex; flex-direction: column;">
+                  <span style="display: flex; align-items: baseline; gap: 8px; min-width: 0; white-space: nowrap;"><span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1);">Email &amp; inbox</span><span style="font-family: 'Geist Mono', monospace; font-size: 11px; line-height: 18px; color: var(--df-text-3);">email_inbox</span></span>
+                  <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Patient email, in and out</span>
+                </span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 13px; line-height: 18px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">Google Workspace</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">the clinic's account</span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                <span data-part="baa-pending" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><span>Pending</span></span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">clinic to accept</span>
+              </div>
+              <div role="cell" data-part="state-off" style="min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <span style="height: 20px; display: flex; align-items: center; gap: 8px; white-space: nowrap;">
+                  <button data-toast="Email &amp; inbox can&#x27;t turn on while its BAA is pending. Once the clinic accepts it, turning it on needs your passkey." type="button" role="switch" aria-checked="false" aria-label="Email and inbox flow" style="width: 40px; height: 32px; flex: 0 0 40px; margin: -6px -4px; box-sizing: border-box; padding: 0; border: 0; border-radius: 8px; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                    <span aria-hidden="true" style="position: relative; width: 32px; height: 18px; box-sizing: border-box; border-radius: 999px; background: var(--df-sheet); box-shadow: var(--df-shadow-ring-tier-card);"><span style="position: absolute; top: 3px; left: 3px; width: 12px; height: 12px; border-radius: 999px; background: var(--df-text-3);"></span></span>
+                  </button>
+                  <span style="font-size: 13px; font-weight: 600; color: var(--df-text-2);">Off</span>
+                </span>
+                <span style="font-size: 12px; line-height: 16px; font-weight: 500; color: var(--df-amber); white-space: nowrap;">BAA pending</span>
+              </div>
+            </div>
+
+            <div data-toast="Backups and the audit copy go to encrypted AWS S3 with Object Lock, covered by the AWS BAA. Planned for go-live." role="row" data-part="flow-row" style="height: 50px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: minmax(0, 1fr) 132px 100px 96px; column-gap: 12px; align-items: center;">
+              <div role="rowheader" style="min-width: 0; display: flex; align-items: center; gap: 10px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 16px; stroke: var(--df-text-3);"><rect x="2" y="3" width="20" height="5" rx="1"></rect><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"></path><path d="M10 12h4"></path></svg>
+                <span style="min-width: 0; display: flex; flex-direction: column;">
+                  <span style="display: flex; align-items: baseline; gap: 8px; min-width: 0; white-space: nowrap;"><span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1);">Backups</span><span style="font-family: 'Geist Mono', monospace; font-size: 11px; line-height: 18px; color: var(--df-text-3);">backup</span></span>
+                  <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Encrypted backups and audit copy</span>
+                </span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 13px; line-height: 18px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">AWS S3</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Object Lock, encrypted</span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                <span data-part="baa-covered" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-overlay-06); color: var(--df-text-1); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span>Covered</span></span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">by AWS BAA</span>
+              </div>
+              <div role="cell" data-part="state-planned" style="min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <span style="height: 20px; display: flex; align-items: center; gap: 8px; white-space: nowrap;">
+                  <span aria-hidden="true" style="width: 32px; height: 20px; flex: 0 0 32px; display: flex; align-items: center; justify-content: center; color: var(--df-text-3);"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg></span>
+                  <span style="font-size: 13px; font-weight: 600; color: var(--df-text-1);">Planned</span>
+                </span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">for go-live</span>
+              </div>
+            </div>
+
+            <div data-toast="Monitoring is self-hosted on the PHI host and scrubs PHI from errors and traces, so no BAA is needed." role="row" data-part="flow-row" style="height: 50px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: minmax(0, 1fr) 132px 100px 96px; column-gap: 12px; align-items: center;">
+              <div role="rowheader" style="min-width: 0; display: flex; align-items: center; gap: 10px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 16px; stroke: var(--df-text-3);"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                <span style="min-width: 0; display: flex; flex-direction: column;">
+                  <span style="display: flex; align-items: baseline; gap: 8px; min-width: 0; white-space: nowrap;"><span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1);">Monitoring</span><span style="font-family: 'Geist Mono', monospace; font-size: 11px; line-height: 18px; color: var(--df-text-3);">observability</span></span>
+                  <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Errors and traces, PHI scrubbed</span>
+                </span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 13px; line-height: 18px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">Self-hosted</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">on the PHI host</span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 2px;">
+                <span data-part="baa-not-needed" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-overlay-05); color: var(--df-text-2); font-size: 11.5px; font-weight: 500; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="7" rx="2"></rect><rect x="3" y="14" width="18" height="7" rx="2"></rect><path d="M7 6.5h.01M7 17.5h.01"></path></svg><span>Not needed</span></span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">PHI-free logs</span>
+              </div>
+              <div role="cell" data-part="state-on" style="min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <span style="height: 20px; display: flex; align-items: center; gap: 8px; white-space: nowrap;">
+                  <button data-toast="In the app switching Monitoring off takes effect at once with no passkey, and the change is audited." type="button" role="switch" aria-checked="true" aria-label="Monitoring flow" style="width: 40px; height: 32px; flex: 0 0 40px; margin: -6px -4px; box-sizing: border-box; padding: 0; border: 0; border-radius: 8px; background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                    <span aria-hidden="true" style="position: relative; width: 32px; height: 18px; box-sizing: border-box; border-radius: 999px; background: var(--df-accent); box-shadow: var(--df-shadow-primary-compact);"><span style="position: absolute; top: 2px; left: 16px; width: 14px; height: 14px; border-radius: 999px; background: var(--df-on-accent);"></span></span>
+                  </button>
+                  <span style="font-size: 13px; font-weight: 600; color: var(--df-text-1);">On</span>
+                </span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">stays on host</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section data-part="card" aria-labelledby="register-title" style="min-width: 0; height: 512px; box-sizing: border-box; padding: 16px 16px 12px; background: var(--df-raised); border-radius: 14px; box-shadow: var(--df-shadow-raised); display: flex; flex-direction: column;">
+          <div data-part="card-header" style="height: 24px; flex: 0 0 24px; display: flex; align-items: center; gap: 12px;">
+            <h2 id="register-title" style="margin: 0; font-size: 15px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Business associate register</h2>
+            <button data-toast="In the app this downloads the business associate register: 6 vendors with BAA status, signed and renewal dates." type="button" style="margin: -4px 0 -4px auto; height: 32px; box-sizing: border-box; padding: 0 12px; border: 0; border-radius: 8px; background: var(--df-overlay-07); box-shadow: var(--df-shadow-secondary-compact); color: var(--df-text-1); font-family: inherit; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; cursor: pointer;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"></path><path d="m7 10 5 5 5-5"></path><path d="M5 21h14"></path></svg>
+              <span>Export</span>
+            </button>
+          </div>
+          <p style="margin: 4px 0 0; height: 16px; flex: 0 0 16px; font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Vendors that could touch patient data, and their agreements.</p>
+
+          <div role="table" aria-labelledby="register-title" data-part="register-table" style="margin: 8px -8px 0; display: flex; flex-direction: column;">
+            <div role="row" data-part="table-head" style="height: 24px; box-sizing: border-box; padding: 0 8px; display: grid; grid-template-columns: minmax(0, 1fr) 80px 84px 84px; column-gap: 10px; align-items: center;">
+              <span role="columnheader" style="font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--df-text-3); white-space: nowrap;">Business associate</span>
+              <span role="columnheader" style="font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--df-text-3); white-space: nowrap;">BAA</span>
+              <span role="columnheader" style="font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--df-text-3); white-space: nowrap;">Signed</span>
+              <span role="columnheader" style="font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--df-text-3); white-space: nowrap;">Renewal</span>
+            </div>
+
+            <div data-toast="Clinic ↔ Dayfront BAA, signed by both parties Sep 22, 2026. It renews yearly (next Sep 22, 2027), with alerts from 90 days out." role="row" data-part="register-row" style="height: 50px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: minmax(0, 1fr) 80px 84px 84px; column-gap: 10px; align-items: center;">
+              <div role="rowheader" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lakeview Dental Care</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Clinic ↔ Dayfront BAA</span>
+              </div>
+              <div role="cell" style="min-width: 0;"><span data-part="baa-signed" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-overlay-06); color: var(--df-text-1); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span>Signed</span></span></div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 12.5px; line-height: 18px; color: var(--df-text-1); white-space: nowrap;">Sep 22, 2026</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">both parties</span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 12.5px; line-height: 18px; color: var(--df-text-1); white-space: nowrap;">Sep 22, 2027</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">yearly</span>
+              </div>
+            </div>
+
+            <div data-toast="AWS BAA signed Sep 14, 2026 through AWS Artifact. It covers hosting, backups and SMS; next review Dec 14, 2026." role="row" data-part="register-row" style="height: 50px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: minmax(0, 1fr) 80px 84px 84px; column-gap: 10px; align-items: center;">
+              <div role="rowheader" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Amazon Web Services</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Hosting, backups, SMS</span>
+              </div>
+              <div role="cell" style="min-width: 0;"><span data-part="baa-signed" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-overlay-06); color: var(--df-text-1); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span>Signed</span></span></div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 12.5px; line-height: 18px; color: var(--df-text-1); white-space: nowrap;">Sep 14, 2026</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">AWS Artifact</span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 12.5px; line-height: 18px; color: var(--df-text-1); white-space: nowrap;">Dec 14, 2026</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">review</span>
+              </div>
+            </div>
+
+            <div data-toast="Stripe is exempt under §1179: payments only, no PHI sent. Note dated Sep 18, 2026; next review Dec 18, 2026." role="row" data-part="register-row" style="height: 50px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: minmax(0, 1fr) 80px 84px 84px; column-gap: 10px; align-items: center;">
+              <div role="rowheader" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Stripe</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Payments · no PHI sent</span>
+              </div>
+              <div role="cell" style="min-width: 0;"><span data-part="baa-exempt" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-blue-soft); color: var(--df-blue); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path></svg><span>Exempt</span></span></div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 12.5px; line-height: 18px; color: var(--df-text-1); white-space: nowrap;">Sep 18, 2026</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">§1179 note</span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 12.5px; line-height: 18px; color: var(--df-text-1); white-space: nowrap;">Dec 18, 2026</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">review</span>
+              </div>
+            </div>
+
+            <div data-toast="Google Workspace&#x27;s BAA is pending: the clinic has to accept it before Email &amp; inbox can turn on." role="row" data-part="register-row" style="height: 50px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: minmax(0, 1fr) 80px 84px 84px; column-gap: 10px; align-items: center;">
+              <div role="rowheader" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Google Workspace</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Clinic email · to accept</span>
+              </div>
+              <div role="cell" style="min-width: 0;"><span data-part="baa-pending" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><span>Pending</span></span></div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 12.5px; line-height: 18px; color: var(--df-text-3); white-space: nowrap;">Not signed</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">not yet</span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 12.5px; line-height: 18px; color: var(--df-text-3); white-space: nowrap;">None</span>
+              </div>
+            </div>
+
+            <div data-toast="Anthropic&#x27;s BAA is signed only if the fallback is needed. Until then Chat AI uses the local model on the PHI host." role="row" data-part="register-row" style="height: 50px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: minmax(0, 1fr) 80px 84px 84px; column-gap: 10px; align-items: center;">
+              <div role="rowheader" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="display: flex; align-items: center; gap: 6px; min-width: 0; white-space: nowrap;"><span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1);">Anthropic</span><span data-part="tier-tag" style="flex: 0 0 auto; height: 18px; box-sizing: border-box; padding: 0 6px; border-radius: 5px; background: var(--df-overlay-07); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 10.5px; letter-spacing: 0.04em; text-transform: uppercase; display: inline-flex; align-items: center;">fallback</span></span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">HIPAA-ready API</span>
+              </div>
+              <div role="cell" style="min-width: 0;"><span data-part="baa-pending" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><span>Pending</span></span></div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 12.5px; line-height: 18px; color: var(--df-text-3); white-space: nowrap;">Not signed</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">if needed</span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 12.5px; line-height: 18px; color: var(--df-text-3); white-space: nowrap;">None</span>
+              </div>
+            </div>
+
+            <div data-toast="Hetzner offers no BAA, which is why this build is fictional and can never hold real patient data." role="row" data-part="register-row" style="height: 50px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: grid; grid-template-columns: minmax(0, 1fr) 80px 84px 84px; column-gap: 10px; align-items: center;">
+              <div role="rowheader" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Hetzner</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">This fictional build</span>
+              </div>
+              <div role="cell" style="min-width: 0;"><span data-part="baa-refused" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; box-shadow: var(--df-shadow-ring-pill); color: var(--df-text-2); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; white-space: nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="m5.7 5.7 12.6 12.6"></path></svg><span>Refused</span></span></div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 12.5px; line-height: 18px; color: var(--df-text-3); white-space: nowrap;">Not signed</span>
+                <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">not offered</span>
+              </div>
+              <div role="cell" style="min-width: 0; display: flex; flex-direction: column;">
+                <span style="font-size: 12.5px; line-height: 18px; color: var(--df-text-3); white-space: nowrap;">None</span>
+              </div>
+            </div>
+          </div>
+
+          <ul data-part="register-notes" aria-label="Register rules" style="list-style: none; margin: auto 0 0; padding: 10px 12px; box-sizing: border-box; border-radius: 10px; background: var(--df-sheet); box-shadow: var(--df-shadow-ring-well); display: flex; flex-direction: column; gap: 4px;">
+            <li style="height: 16px; display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 16px; color: var(--df-text-2); white-space: nowrap;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 13px; stroke: var(--df-text-3);"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+              <span>Alerts at 90, 60, 30 and 7 days before a renewal or review</span>
+            </li>
+            <li style="height: 16px; display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 16px; color: var(--df-text-2); white-space: nowrap;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 13px; stroke: var(--df-text-3);"><rect x="3" y="3" width="18" height="7" rx="2"></rect><rect x="3" y="14" width="18" height="7" rx="2"></rect><path d="M7 6.5h.01M7 17.5h.01"></path></svg>
+              <span>Local model, Whisper and logs stay on-host: no BAA needed</span>
+            </li>
+            <li style="height: 16px; display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 16px; color: var(--df-text-2); white-space: nowrap;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 13px; stroke: var(--df-text-3);"><circle cx="7.5" cy="15.5" r="5.5"></circle><path d="m21 2-9.6 9.6"></path><path d="m15.5 7.5 3 3L22 7l-3-3"></path></svg>
+              <span>Edits and exports need your passkey; every change is audited</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  </div>
+</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>

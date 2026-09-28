@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Dayfront · Daily close</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root,.df-dark{color-scheme:dark;--df-canvas:#0E1113;--df-sheet:#15191C;--df-recessed:#181D20;--df-raised:#1C2226;--df-in-chair:#1E2B2D;--df-floating:#262E33;--df-lift:#262E33;--df-thumb:#2A3136;--df-thumb-disc:#30383D;--df-scrim:rgba(14,17,19,.86);--df-backdrop:rgba(14,17,19,.72);--df-edge-ink:#FFFFFF;--df-text-1:#EDF0F2;--df-text-2:#B3BCC2;--df-text-3:#8B969E;--df-on-accent:#04211D;--df-on-accent-fill:rgba(4,33,29,.12);--df-accent:#5EEAD4;--df-accent-hover:#99F6E4;--df-accent-edge:rgba(255,255,255,.35);--df-accent-progress:rgba(94,234,212,.07);--df-accent-soft:rgba(94,234,212,.12);--df-accent-chip:rgba(94,234,212,.14);--df-accent-halo:rgba(94,234,212,.16);--df-accent-ring:rgba(94,234,212,.22);--df-accent-glow:rgba(94,234,212,.35);--df-accent-underline:rgba(94,234,212,.75);--df-amber:#F5B454;--df-amber-row:rgba(245,180,84,.08);--df-amber-soft:rgba(245,180,84,.12);--df-amber-chip:rgba(245,180,84,.14);--df-amber-callout:rgba(245,180,84,.16);--df-amber-track:rgba(245,180,84,.25);--df-amber-ring:rgba(245,180,84,.32);--df-amber-dash:rgba(245,180,84,.4);--df-amber-dash-strong:rgba(245,180,84,.6);--df-blue:#8AB4F8;--df-blue-soft:rgba(138,180,248,.12);--df-blue-chip:rgba(138,180,248,.14);--df-overlay-025:rgba(255,255,255,.025);--df-overlay-03:rgba(255,255,255,.03);--df-overlay-04:rgba(255,255,255,.04);--df-overlay-05:rgba(255,255,255,.05);--df-overlay-06:rgba(255,255,255,.06);--df-overlay-07:rgba(255,255,255,.07);--df-overlay-08:rgba(255,255,255,.08);--df-overlay-10:rgba(255,255,255,.1);--df-overlay-12:rgba(255,255,255,.12);--df-overlay-14:rgba(255,255,255,.14);--df-overlay-24:rgba(255,255,255,.24);--df-overlay-28:rgba(255,255,255,.28);--df-shadow-18:rgba(0,0,0,.18);--df-shadow-25:rgba(0,0,0,.25);--df-shadow-30:rgba(0,0,0,.3);--df-shadow-35:rgba(0,0,0,.35);--df-shadow-40:rgba(0,0,0,.4);--df-shadow-45:rgba(0,0,0,.45);--df-shadow-50:rgba(0,0,0,.5);--df-shadow-55:rgba(0,0,0,.55);--df-shadow-60:rgba(0,0,0,.6);--df-shadow-65:rgba(0,0,0,.65);--df-illus-card-front:#E6EAEE;--df-illus-card-back:#DEE3E7;--df-illus-card-disc-1:#CFDCE4;--df-illus-card-disc-2:#D8E2E8;--df-illus-crop:#DDE3E8;--df-illus-logo:#2F5A73;--df-illus-ink-title:#1E3A4C;--df-illus-ink-heading:#33434D;--df-illus-ink-strong:#15232C;--df-illus-ink-field:#1D2A33;--df-illus-ink-meta:#3E4C55;--df-illus-ink-subtle:#5B6972;--df-illus-ink-label:#6A7780;--df-illus-ink-faint:#7C8993;--df-illus-rule:#B7C1C8;--df-illus-amber-fill:rgba(245,180,84,.5);--df-illus-amber-ring:#C98A1E;--df-danger:#F28B82;--df-danger-soft:rgba(242,139,130,.12);--df-focus-ring:#5EEAD4;--df-control-edge:#737F87;--df-shadow-track:inset 0 0 0 1px rgba(255,255,255,.04);--df-shadow-segment-mode:inset 0 1px 0 rgba(255,255,255,.08), 0 1px 2px rgba(0,0,0,.45);--df-shadow-nav-active:inset 0 1px 0 rgba(255,255,255,.05), 0 1px 2px rgba(0,0,0,.3);--df-shadow-ring-tile:inset 0 0 0 1px rgba(255,255,255,.06);--df-shadow-avatar:inset 0 1px 0 rgba(255,255,255,.08);--df-shadow-button-quiet:inset 0 1px 0 rgba(255,255,255,.06), 0 0 0 1px rgba(255,255,255,.04);--df-shadow-sheet:inset 0 1px 0 rgba(255,255,255,.05), 0 0 0 1px rgba(255,255,255,.03), 0 16px 48px rgba(0,0,0,.4);--df-shadow-halo-live:0 0 0 3px rgba(94,234,212,.16);--df-shadow-input:inset 0 1px 0 rgba(255,255,255,.05), 0 0 0 1px #737F87;--df-shadow-floating-chip:inset 0 1px 0 rgba(255,255,255,.06);--df-shadow-raised:inset 0 1px 0 rgba(255,255,255,.06), 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.18);--df-shadow-segment:inset 0 1px 0 rgba(255,255,255,.08), 0 1px 2px rgba(0,0,0,.4);--df-shadow-ring-in-chair:inset 0 0 0 1px rgba(94,234,212,.22);--df-shadow-lift-row:inset 0 1px 0 rgba(255,255,255,.06), 0 4px 12px -2px rgba(0,0,0,.35);--df-shadow-primary-compact:inset 0 1px 0 rgba(255,255,255,.35);--df-shadow-secondary-compact:inset 0 1px 0 rgba(255,255,255,.05);--df-shadow-ring-tier:inset 0 0 0 1px rgba(255,255,255,.08);--df-shadow-panel:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px rgba(255,255,255,.05), 0 2px 6px rgba(0,0,0,.35), 0 32px 64px -12px rgba(0,0,0,.65);--df-shadow-hairline-below:0 1px 0 rgba(255,255,255,.04);--df-shadow-ring-well:inset 0 0 0 1px rgba(255,255,255,.03);--df-shadow-lift:inset 0 1px 0 rgba(255,255,255,.08), 0 0 0 1px rgba(255,255,255,.04), 0 2px 6px rgba(0,0,0,.3), 0 10px 24px -6px rgba(0,0,0,.55);--df-shadow-ring-tier-card:inset 0 0 0 1px rgba(255,255,255,.1);--df-shadow-input-outline:inset 0 0 0 1px #737F87;--df-shadow-primary:inset 0 1px 0 rgba(255,255,255,.35), 0 1px 2px rgba(0,0,0,.4);--df-shadow-panel-composer:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px #737F87;--df-shadow-mic:0 1px 2px rgba(0,0,0,.4);--df-shadow-new-chat:inset 0 1px 0 rgba(255,255,255,.06), 0 1px 2px rgba(0,0,0,.3);--df-shadow-thumb:inset 0 0 0 1px rgba(255,255,255,.06), 0 12px 24px -8px rgba(0,0,0,.6);--df-shadow-photo-card:0 8px 16px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);--df-shadow-photo-highlight-ring:0 0 0 1px #C98A1E;--df-shadow-action-card:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px rgba(255,255,255,.05), 0 2px 6px rgba(0,0,0,.3), 0 20px 48px -12px rgba(0,0,0,.6);--df-shadow-icon-tile:inset 0 1px 0 rgba(255,255,255,.07);--df-shadow-ring-verify:inset 0 0 0 1px rgba(245,180,84,.32);--df-shadow-primary-hero:inset 0 1px 0 rgba(255,255,255,.35), 0 1px 2px rgba(0,0,0,.4), 0 8px 20px -8px rgba(94,234,212,.35);--df-shadow-composer:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px #737F87, 0 2px 6px rgba(0,0,0,.3), 0 16px 40px -8px rgba(0,0,0,.6);--df-shadow-rail:inset 0 1px 0 rgba(255,255,255,.06), 0 0 0 1px rgba(255,255,255,.04), 0 2px 6px rgba(0,0,0,.25), 0 16px 40px -8px rgba(0,0,0,.5);--df-shadow-avatar-lg:inset 0 1px 0 rgba(255,255,255,.08), 0 0 0 1px rgba(255,255,255,.05);--df-shadow-halo-pending:0 0 0 3px rgba(245,180,84,.16);--df-shadow-input-inline:inset 0 0 0 1px #737F87;--df-shadow-choice:inset 0 0 0 1.5px #8B969E;--df-shadow-choice-on:inset 0 0 0 1.5px #5EEAD4, inset 0 0 0 4.5px #262E33;--df-shadow-choice-blocking:inset 0 0 0 1.5px #F5B454;--df-shadow-photo-card-sm:0 6px 12px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);--df-shadow-dot-cutout:0 0 0 3px #1C2226;--df-shadow-dot-cutout-live:0 0 0 3px rgba(94,234,212,.16), 0 0 0 3px #1C2226;--df-shadow-ring-pill:inset 0 0 0 1px rgba(255,255,255,.14);--df-shadow-input-invalid:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px rgba(245,180,84,.6);--df-shadow-hairline-above:0 -1px 0 rgba(255,255,255,.04);--df-shadow-button-disabled:inset 0 1px 0 rgba(255,255,255,.04);--df-shadow-mark:inset 0 0 0 1px rgba(255,255,255,.07);--df-shadow-blockout:inset 0 0 0 1px rgba(255,255,255,.05);--df-shadow-action-bar:inset 0 1px 0 rgba(255,255,255,.07), 0 0 0 1px rgba(255,255,255,.05), 0 2px 6px rgba(0,0,0,.3), 0 16px 40px -8px rgba(0,0,0,.6);--df-shadow-input-attention:inset 0 0 0 1px rgba(245,180,84,.6)}
+:root[data-theme="light"],.df-light{color-scheme:light;--df-canvas:#E6E9EC;--df-sheet:#EFF1F3;--df-recessed:#F3F5F6;--df-raised:#F9FAFB;--df-in-chair:#EBF3F2;--df-floating:#FFFFFF;--df-lift:#FFFFFF;--df-thumb:#2A3136;--df-thumb-disc:#30383D;--df-scrim:rgba(255,255,255,.88);--df-backdrop:rgba(17,24,28,.36);--df-edge-ink:#11181C;--df-text-1:#11181C;--df-text-2:#3E4950;--df-text-3:#57636B;--df-on-accent:#FFFFFF;--df-on-accent-fill:rgba(0,20,18,.22);--df-accent:#0E6F68;--df-accent-hover:#0A5550;--df-accent-edge:rgba(255,255,255,.2);--df-accent-progress:rgba(14,111,104,.07);--df-accent-soft:rgba(14,111,104,.09);--df-accent-chip:rgba(14,111,104,.10);--df-accent-halo:rgba(14,111,104,.16);--df-accent-ring:rgba(14,111,104,.30);--df-accent-glow:rgba(14,111,104,.32);--df-accent-underline:rgba(14,111,104,.7);--df-amber:#8D5400;--df-amber-row:rgba(141,84,0,.06);--df-amber-soft:rgba(141,84,0,.10);--df-amber-chip:rgba(141,84,0,.08);--df-amber-callout:rgba(141,84,0,.12);--df-amber-track:rgba(141,84,0,.22);--df-amber-ring:rgba(141,84,0,.75);--df-amber-dash:rgba(141,84,0,.45);--df-amber-dash-strong:rgba(141,84,0,.6);--df-blue:#1452A9;--df-blue-soft:rgba(20,82,169,.09);--df-blue-chip:rgba(20,82,169,.10);--df-overlay-025:rgba(17,24,28,.035);--df-overlay-03:rgba(17,24,28,.05);--df-overlay-04:rgba(17,24,28,.05);--df-overlay-05:rgba(17,24,28,.06);--df-overlay-06:rgba(17,24,28,.07);--df-overlay-07:rgba(17,24,28,.08);--df-overlay-08:rgba(17,24,28,.10);--df-overlay-10:rgba(17,24,28,.12);--df-overlay-12:rgba(17,24,28,.22);--df-overlay-14:rgba(17,24,28,.24);--df-overlay-24:rgba(17,24,28,.36);--df-overlay-28:rgba(17,24,28,.42);--df-shadow-18:rgba(17,24,28,.05);--df-shadow-25:rgba(17,24,28,.05);--df-shadow-30:rgba(17,24,28,.06);--df-shadow-35:rgba(17,24,28,.07);--df-shadow-40:rgba(17,24,28,.10);--df-shadow-45:rgba(17,24,28,.12);--df-shadow-50:rgba(17,24,28,.10);--df-shadow-55:rgba(17,24,28,.14);--df-shadow-60:rgba(17,24,28,.14);--df-shadow-65:rgba(17,24,28,.18);--df-illus-card-front:#E6EAEE;--df-illus-card-back:#DEE3E7;--df-illus-card-disc-1:#CFDCE4;--df-illus-card-disc-2:#D8E2E8;--df-illus-crop:#DDE3E8;--df-illus-logo:#2F5A73;--df-illus-ink-title:#1E3A4C;--df-illus-ink-heading:#33434D;--df-illus-ink-strong:#15232C;--df-illus-ink-field:#1D2A33;--df-illus-ink-meta:#3E4C55;--df-illus-ink-subtle:#5B6972;--df-illus-ink-label:#6A7780;--df-illus-ink-faint:#7C8993;--df-illus-rule:#B7C1C8;--df-illus-amber-fill:rgba(245,180,84,.5);--df-illus-amber-ring:#C98A1E;--df-danger:#B3261E;--df-danger-soft:rgba(179,38,30,.09);--df-focus-ring:#0E6F68;--df-control-edge:#737F87;--df-shadow-track:inset 0 0 0 1px rgba(17,24,28,.06);--df-shadow-segment-mode:0 0 0 1px rgba(17,24,28,.08), 0 1px 2px rgba(17,24,28,.12);--df-shadow-nav-active:0 0 0 1px rgba(17,24,28,.07), 0 1px 2px rgba(17,24,28,.06);--df-shadow-ring-tile:inset 0 0 0 1px rgba(17,24,28,.08);--df-shadow-avatar:inset 0 0 0 1px rgba(17,24,28,.10);--df-shadow-button-quiet:0 0 0 1px rgba(17,24,28,.10), 0 1px 2px rgba(17,24,28,.06);--df-shadow-sheet:0 0 0 1px rgba(17,24,28,.06), 0 1px 2px rgba(17,24,28,.04), 0 16px 48px rgba(17,24,28,.08);--df-shadow-halo-live:0 0 0 3px rgba(14,111,104,.16);--df-shadow-input:0 0 0 1px #737F87;--df-shadow-floating-chip:inset 0 0 0 1px rgba(17,24,28,.08), 0 1px 2px rgba(17,24,28,.04);--df-shadow-raised:0 0 0 1px rgba(17,24,28,.07), 0 1px 2px rgba(17,24,28,.06), 0 8px 24px rgba(17,24,28,.05);--df-shadow-segment:0 0 0 1px rgba(17,24,28,.08), 0 1px 2px rgba(17,24,28,.10);--df-shadow-ring-in-chair:inset 0 0 0 1px rgba(14,111,104,.30);--df-shadow-lift-row:0 0 0 1px rgba(17,24,28,.07), 0 4px 12px -2px rgba(17,24,28,.10);--df-shadow-primary-compact:inset 0 1px 0 rgba(255,255,255,.2);--df-shadow-secondary-compact:inset 0 0 0 1px rgba(17,24,28,.08);--df-shadow-ring-tier:inset 0 0 0 1px rgba(17,24,28,.12);--df-shadow-panel:0 0 0 1px rgba(17,24,28,.08), 0 2px 6px rgba(17,24,28,.07), 0 32px 64px -12px rgba(17,24,28,.18);--df-shadow-hairline-below:0 1px 0 rgba(17,24,28,.07);--df-shadow-ring-well:inset 0 0 0 1px rgba(17,24,28,.05);--df-shadow-lift:0 0 0 1px rgba(17,24,28,.08), 0 2px 6px rgba(17,24,28,.06), 0 10px 24px -6px rgba(17,24,28,.14);--df-shadow-ring-tier-card:inset 0 0 0 1px rgba(17,24,28,.14);--df-shadow-input-outline:inset 0 0 0 1px #737F87;--df-shadow-primary:inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(17,24,28,.16);--df-shadow-panel-composer:0 0 0 1px #737F87;--df-shadow-mic:0 1px 2px rgba(17,24,28,.16);--df-shadow-new-chat:0 0 0 1px rgba(17,24,28,.08), 0 1px 2px rgba(17,24,28,.06);--df-shadow-thumb:inset 0 0 0 1px rgba(17,24,28,.08), 0 12px 24px -8px rgba(17,24,28,.22);--df-shadow-photo-card:0 8px 16px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);--df-shadow-photo-highlight-ring:0 0 0 1px #C98A1E;--df-shadow-action-card:0 0 0 1px rgba(17,24,28,.08), 0 2px 6px rgba(17,24,28,.06), 0 20px 48px -12px rgba(17,24,28,.14);--df-shadow-icon-tile:inset 0 0 0 1px rgba(17,24,28,.08);--df-shadow-ring-verify:inset 0 0 0 1px rgba(141,84,0,.75);--df-shadow-primary-hero:inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(17,24,28,.16), 0 8px 20px -8px rgba(14,111,104,.32);--df-shadow-composer:0 0 0 1px #737F87, 0 2px 6px rgba(17,24,28,.06), 0 16px 40px -8px rgba(17,24,28,.14);--df-shadow-rail:0 0 0 1px rgba(17,24,28,.07), 0 2px 6px rgba(17,24,28,.05), 0 16px 40px -8px rgba(17,24,28,.10);--df-shadow-avatar-lg:inset 0 0 0 1px rgba(17,24,28,.10), 0 1px 2px rgba(17,24,28,.06);--df-shadow-halo-pending:0 0 0 3px rgba(141,84,0,.12);--df-shadow-input-inline:inset 0 0 0 1px #737F87;--df-shadow-choice:inset 0 0 0 1.5px #57636B;--df-shadow-choice-on:inset 0 0 0 1.5px #0E6F68, inset 0 0 0 4.5px #FFFFFF;--df-shadow-choice-blocking:inset 0 0 0 1.5px #8D5400;--df-shadow-photo-card-sm:0 6px 12px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);--df-shadow-dot-cutout:0 0 0 3px #F9FAFB;--df-shadow-dot-cutout-live:0 0 0 3px rgba(14,111,104,.16), 0 0 0 3px #F9FAFB;--df-shadow-ring-pill:inset 0 0 0 1px rgba(17,24,28,.20);--df-shadow-input-invalid:0 0 0 1px #8D5400;--df-shadow-hairline-above:0 -1px 0 rgba(17,24,28,.07);--df-shadow-button-disabled:inset 0 0 0 1px rgba(17,24,28,.06);--df-shadow-mark:inset 0 0 0 1px rgba(17,24,28,.12);--df-shadow-blockout:inset 0 0 0 1px rgba(17,24,28,.06);--df-shadow-action-bar:0 0 0 1px rgba(17,24,28,.08), 0 2px 6px rgba(17,24,28,.06), 0 20px 48px -12px rgba(17,24,28,.14);--df-shadow-input-attention:inset 0 0 0 1px #8D5400}
+body{margin:0;font-family:'Geist',system-ui,sans-serif;background:var(--df-canvas);color:var(--df-text-1);-webkit-font-smoothing:antialiased}
+a{color:var(--df-accent)}a:hover{color:var(--df-accent-hover)}
+</style>
+<link rel="stylesheet" href="proto.css">
+<script>window.DF_PAGES=[{"slug": "signin", "href": "index.html", "title": "Sign in", "group": "Start"}, {"slug": "today", "href": "today.html", "title": "Today", "group": "Boards"}, {"slug": "schedule", "href": "schedule.html", "title": "Schedule", "group": "Boards"}, {"slug": "patients", "href": "patients.html", "title": "Patients", "group": "Boards"}, {"slug": "patient", "href": "patient.html", "title": "Patient chart", "group": "Boards"}, {"slug": "ledger", "href": "ledger.html", "title": "Ledger", "group": "Boards"}, {"slug": "account", "href": "account.html", "title": "Patient account", "group": "Boards"}, {"slug": "close", "href": "close.html", "title": "Daily close", "group": "Boards", "arrive": "The Close sample is the end of the same day, Fri, Sep 25 at 5:06 PM, so its totals and exceptions differ from the morning boards."}, {"slug": "inbox", "href": "inbox.html", "title": "Inbox", "group": "Boards"}, {"slug": "compliance", "href": "compliance.html", "title": "Compliance", "group": "Boards", "arrive": "Compliance is shown as the owner, Dr. Maya Okafor, sees it: she is the signed-in user here, and its passkey prompts are hers."}, {"slug": "chat", "href": "chat.html", "title": "Chat · insurance card photos", "group": "Chat"}, {"slug": "chat-booking", "href": "chat-booking.html", "title": "Chat · new patient + booking", "group": "Chat"}, {"slug": "chat-refund", "href": "chat-refund.html", "title": "Refund with passkey", "group": "Chat"}, {"slug": "forms", "href": "forms.html", "title": "Forms", "group": "Forms"}, {"slug": "intake", "href": "intake.html", "title": "Intake form", "group": "Forms"}, {"slug": "lock", "href": "lock.html", "title": "Workstation lock", "group": "Start"}, {"slug": "console", "href": "console.html", "title": "Operator console", "group": "Dayfront staff"}];window.DF_PAGE="close";</script>
+<script src="proto-theme.js"></script>
+</head>
+<body>
+<div id="proto-stage">
+<div data-part="app" style="width: 1440px; height: 900px; box-sizing: border-box; display: flex; overflow: hidden; background: var(--df-canvas); color: var(--df-text-1); font-family: 'Geist', system-ui, sans-serif; font-size: 14px; line-height: 20px;">
+
+  <aside data-part="sidebar" aria-label="Main navigation" style="width: 232px; flex: 0 0 232px; height: 900px; box-sizing: border-box; padding: 8px 12px 12px; display: flex; flex-direction: column;">
+
+    <div data-go="today.html" data-part="brand" style="height: 56px; flex: 0 0 56px; box-sizing: border-box; padding: 0 8px; display: flex; align-items: center; gap: 10px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="0" y="0" width="24" height="24" rx="7" style="fill: var(--df-accent);"></rect><path d="M6.5 9.5h11" stroke-width="2.25" stroke-linecap="round" style="stroke: var(--df-canvas);"></path></svg>
+      <span style="font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: -0.02em; color: var(--df-text-1);">Dayfront</span>
+    </div>
+
+    <div role="group" aria-label="Mode" data-part="mode-switch" style="height: 36px; flex: 0 0 36px; box-sizing: border-box; padding: 2px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; background: var(--df-sheet); border-radius: 10px; box-shadow: var(--df-shadow-track);">
+      <button data-go="chat.html" type="button" aria-pressed="false" style="height: 32px; box-sizing: border-box; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--df-text-2); font-family: inherit; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"></path></svg>
+        <span>Chat</span>
+      </button>
+      <button data-go="today.html" type="button" aria-pressed="true" style="height: 32px; box-sizing: border-box; padding: 0; border: 0; border-radius: 8px; background: var(--df-floating); box-shadow: var(--df-shadow-segment-mode); color: var(--df-text-1); font-family: inherit; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-accent);"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
+        <span>Boards</span>
+      </button>
+      <button data-go="forms.html" type="button" aria-pressed="false" style="height: 32px; box-sizing: border-box; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--df-text-2); font-family: inherit; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path><path d="M14 2v6h6"></path><path d="M8 13h8M8 17h5"></path></svg>
+        <span>Forms</span>
+      </button>
+    </div>
+
+    <nav data-part="nav" aria-label="Boards" style="margin-top: 24px; display: flex; flex-direction: column; gap: 2px;">
+      <a data-go="today.html" href="#today" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="M12 3v5"></path><path d="m5.64 8.64 1.42 1.42"></path><path d="m18.36 8.64-1.42 1.42"></path><path d="M3 15h2"></path><path d="M19 15h2"></path><path d="M16 15a4 4 0 0 0-8 0"></path><path d="M3 19h18"></path></svg>
+        <span>Today</span>
+      </a>
+      <a data-go="schedule.html" href="#schedule" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><rect x="3" y="4" width="18" height="17" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg>
+        <span>Schedule</span>
+      </a>
+      <a data-go="patients.html" href="#patients" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <span>Patients</span>
+      </a>
+      <a data-go="ledger.html" href="#ledger" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"></path><path d="M8 7h8M8 11h8M8 15h5"></path></svg>
+        <span>Ledger</span>
+      </a>
+      <a data-here="1" href="#close" aria-current="page" data-part="nav-item-active" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; background: var(--df-raised); box-shadow: var(--df-shadow-nav-active); color: var(--df-text-1); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-accent);"><rect x="8" y="2" width="8" height="4" rx="1"></rect><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><path d="m9 14 2 2 4-4"></path></svg>
+        <span>Close</span>
+      </a>
+      <a data-go="inbox.html" href="#inbox" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="M22 12h-6l-2 3h-4l-2-3H2"></path><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11Z"></path></svg>
+        <span>Inbox</span>
+        <span aria-label="3 messages awaiting reply" style="margin-left: auto; min-width: 20px; height: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 999px; background: var(--df-raised); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center;">3</span>
+      </a>
+      <a data-go="compliance.html" data-toast="Compliance is shown as the owner, Dr. Maya Okafor, sees it: she is the signed-in user here, and its passkey prompts are hers." href="#compliance" data-part="nav-item" style="height: 32px; box-sizing: border-box; padding: 0 8px; border-radius: 8px; display: flex; align-items: center; gap: 12px; color: var(--df-text-2); font-size: 14px; font-weight: 500; text-decoration: none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+        <span>Compliance</span>
+      </a>
+    </nav>
+
+    <div data-part="sidebar-footer" style="margin-top: auto; display: flex; flex-direction: column; gap: 4px;">
+      <div data-part="practice" style="height: 48px; box-sizing: border-box; padding: 0 8px; display: flex; align-items: center; gap: 12px;">
+        <span aria-hidden="true" style="width: 32px; height: 32px; flex: 0 0 32px; border-radius: 10px; background: var(--df-sheet); box-shadow: var(--df-shadow-ring-tile); color: var(--df-text-2); display: flex; align-items: center; justify-content: center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5c-1.5-1.5-3-2-4.5-2C5 3.5 3.5 5.5 3.5 8c0 2 .8 3.4 1.4 5 .7 2 .9 4.2 1.6 6 .4 1 1.6 1.2 2.1.1.7-1.6.9-4.1 3.4-4.1s2.7 2.5 3.4 4.1c.5 1.1 1.7.9 2.1-.1.7-1.8.9-4 1.6-6 .6-1.6 1.4-3 1.4-5 0-2.5-1.5-4.5-4-4.5-1.5 0-3 .5-4.5 2Z"></path></svg>
+        </span>
+        <span style="display: flex; flex-direction: column; min-width: 0;">
+          <span style="font-size: 13px; line-height: 16px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">Lakeview Dental Care</span>
+          <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3);">Solo practice</span>
+        </span>
+      </div>
+      <div data-part="signed-in-user" style="height: 48px; box-sizing: border-box; padding: 0 0 0 8px; display: flex; align-items: center; gap: 12px;">
+        <span aria-hidden="true" style="width: 32px; height: 32px; flex: 0 0 32px; border-radius: 999px; background: var(--df-floating); box-shadow: var(--df-shadow-avatar); color: var(--df-text-1); font-size: 12px; font-weight: 600; letter-spacing: 0.02em; display: flex; align-items: center; justify-content: center;">RD</span>
+        <span style="display: flex; flex-direction: column; min-width: 0;">
+          <span style="font-size: 13px; line-height: 16px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">Rosa Delgado</span>
+          <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3);">Front desk</span>
+        </span>
+        <button data-go="lock.html" type="button" aria-label="Lock this workstation" style="margin-left: auto; height: 32px; box-sizing: border-box; padding: 0 10px; border: 0; border-radius: 8px; background: var(--df-raised); box-shadow: var(--df-shadow-button-quiet); color: var(--df-text-1); font-family: inherit; font-size: 12.5px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+          <span>Lock</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <div data-part="sheet" style="position: relative; flex: 0 0 1200px; width: 1200px; height: 884px; margin: 8px 8px 8px 0; box-sizing: border-box; background: var(--df-sheet); border-radius: 16px; box-shadow: var(--df-shadow-sheet); display: flex; flex-direction: column;">
+
+    <header data-part="topbar" style="width: 808px; height: 56px; flex: 0 0 56px; box-sizing: border-box; padding: 0 24px; display: flex; align-items: center; gap: 12px;">
+      <h1 style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Daily close</h1>
+      <span data-part="freshness" style="margin-left: 4px; display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--df-text-3); white-space: nowrap;">
+        <span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 999px; background: var(--df-accent); box-shadow: var(--df-shadow-halo-live);"></span>
+        <span>Live · 5:06 PM</span>
+      </span>
+
+      <div style="margin-left: auto; display: flex; align-items: center; gap: 8px;">
+        <div data-part="search" style="position: relative; width: 280px; height: 36px; flex: 0 0 280px;">
+          <input id="global-search" type="search" style="width: 280px; height: 36px; box-sizing: border-box; padding: 0 44px 0 36px; border: 0; border-radius: 10px; background: var(--df-raised); box-shadow: var(--df-shadow-input); color: var(--df-text-1); font-family: inherit; font-size: 13px; -webkit-appearance: none; appearance: none;" />
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; left: 12px; top: 10px; pointer-events: none; stroke: var(--df-text-3);"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+          <label for="global-search" style="position: absolute; left: 36px; top: 0; height: 36px; display: flex; align-items: center; font-size: 13px; color: var(--df-text-3); pointer-events: none; white-space: nowrap;">Search patients, appointments…</label>
+          <kbd style="position: absolute; right: 8px; top: 8px; height: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 6px; background: var(--df-floating); box-shadow: var(--df-shadow-floating-chip); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; display: inline-flex; align-items: center; pointer-events: none;">⌘K</kbd>
+        </div>
+
+        <span data-part="env-badge" style="height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 999px; background: var(--df-raised); box-shadow: var(--df-shadow-ring-tile); color: var(--df-text-2); font-size: 12px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
+          <span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 999px; background: var(--df-amber);"></span>
+          <span>Fictional data</span>
+        </span>
+
+        <button type="button" data-part="theme-toggle" aria-label="Switch theme" title="Switch theme" style="width: 36px; height: 36px; box-sizing: border-box; padding: 0; border: 0; border-radius: 10px; background: transparent; color: var(--df-text-2); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <span class="df-when-dark" style="display: contents;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg></span>
+          <span class="df-when-light" style="display: contents;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg></span>
+        </button>
+
+        <button data-toast="privacy" type="button" aria-label="Privacy mode, off" aria-pressed="false" style="width: 36px; height: 36px; box-sizing: border-box; padding: 0; border: 0; border-radius: 10px; background: transparent; color: var(--df-text-2); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path><path d="M6.61 6.61A13.53 13.53 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path><path d="m2 2 20 20"></path></svg>
+        </button>
+
+        <button data-toast="Notifications open a panel here in the real app: 2 unread (a proposal waiting and an Inbox reply)." type="button" aria-label="Notifications, 2 unread" style="position: relative; width: 36px; height: 36px; box-sizing: border-box; padding: 0; border: 0; border-radius: 10px; background: transparent; color: var(--df-text-2); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+          <span aria-hidden="true" style="position: absolute; top: 8px; right: 9px; width: 8px; height: 8px; box-sizing: border-box; border-radius: 999px; background: var(--df-accent); border: 2px solid var(--df-sheet);"></span>
+        </button>
+      </div>
+    </header>
+
+    <main data-part="board" style="width: 808px; flex: 1; min-height: 0; box-sizing: border-box; padding: 16px 24px 24px; display: flex; flex-direction: column; gap: 16px;">
+
+      <div data-part="day-bar" style="height: 40px; flex: 0 0 40px; display: flex; align-items: center; gap: 12px;">
+        <div role="group" aria-label="Business day" data-part="day-switcher" style="height: 36px; flex: 0 0 auto; box-sizing: border-box; padding: 2px; display: inline-flex; align-items: center; gap: 2px; background: var(--df-raised); border-radius: 10px; box-shadow: var(--df-shadow-input);">
+          <button data-toast="In the app this shows Thu, Sep 24 read-only: it was closed at 5:41 PM by Rosa Delgado." type="button" aria-label="Previous day, Thu, Sep 24, closed" style="width: 32px; height: 32px; flex: 0 0 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--df-text-2); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"></path></svg>
+          </button>
+          <span style="height: 32px; box-sizing: border-box; padding: 0 6px; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;">
+            <span style="font-size: 13.5px; font-weight: 600; color: var(--df-text-1);">Fri, Sep 25</span>
+            <span data-part="state-open" style="height: 20px; box-sizing: border-box; padding: 0 8px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-size: 11.5px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;"><span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 999px; background: var(--df-amber);"></span>Open</span>
+          </span>
+          <button data-toast="The next day opens only after Fri, Sep 25 is closed." type="button" disabled aria-label="Next day, not available yet" style="width: 32px; height: 32px; flex: 0 0 32px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: var(--df-overlay-24); display: flex; align-items: center; justify-content: center; cursor: not-allowed;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+          </button>
+        </div>
+
+        <div style="flex: 1; min-width: 0; display: flex; flex-direction: column;">
+          <span style="font-size: 13px; line-height: 18px; font-weight: 500; color: var(--df-text-1); white-space: nowrap;">Oldest open day</span>
+          <span style="font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Thu, Sep 24 was closed at 5:41 PM by Rosa Delgado</span>
+        </div>
+
+        <a data-toast="In the app Close history lists each closed day with who closed it, such as Thu, Sep 24 by Rosa Delgado at 5:41 PM." href="#close-history" style="flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--df-text-2); text-decoration: none; white-space: nowrap;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path><path d="M12 7v5l4 2"></path></svg>
+          <span>Close history</span>
+        </a>
+        <button data-toast="In the app this prints the Fri, Sep 25 day sheet with totals as of 5:06 PM." type="button" aria-label="Print day sheet" style="width: 36px; height: 36px; flex: 0 0 36px; box-sizing: border-box; padding: 0; border: 0; border-radius: 10px; background: transparent; color: var(--df-text-2); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8" rx="1"></rect></svg>
+        </button>
+      </div>
+
+      <section data-part="day-totals" aria-label="Totals that freeze at close" style="flex: 0 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; row-gap: 16px; align-items: start;">
+
+        <section data-part="figure" aria-labelledby="fig-outcomes" style="min-width: 0; display: flex; flex-direction: column;">
+          <h2 id="fig-outcomes" style="margin: 0; height: 16px; font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;">
+            <a data-go="schedule.html" href="#schedule" style="height: 16px; display: flex; align-items: center; gap: 6px; color: var(--df-text-3); text-decoration: none; white-space: nowrap;">
+              <span>Appointment outcomes</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left: auto; flex: 0 0 12px;"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+            </a>
+          </h2>
+          <p style="margin: 8px 0 0; height: 40px; display: flex; align-items: baseline; gap: 8px; white-space: nowrap;">
+            <span style="font-size: 36px; line-height: 40px; font-weight: 500; letter-spacing: -0.035em; font-variant-numeric: tabular-nums; color: var(--df-text-1);">9</span>
+            <span style="font-size: 14px; color: var(--df-text-2);">booked</span>
+          </p>
+          <dl style="margin: 12px 0 0; display: flex; flex-direction: column;">
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+              <dt style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; color: var(--df-text-2); white-space: nowrap;"><span aria-hidden="true" style="width: 6px; height: 6px; flex: 0 0 6px; border-radius: 999px; background: var(--df-text-3);"></span><span>Completed</span></dt>
+              <dd style="margin: 0; flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--df-text-1);">7</dd>
+            </div>
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+              <dt style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; color: var(--df-text-2); white-space: nowrap;"><span aria-hidden="true" style="width: 6px; height: 6px; flex: 0 0 6px; border-radius: 999px; background: var(--df-amber);"></span><span>No-show</span><span style="min-width: 0; font-size: 12.5px; color: var(--df-text-3); overflow: hidden; text-overflow: ellipsis;">Grace Whitfield</span></dt>
+              <dd style="margin: 0; flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--df-text-1);">1</dd>
+            </div>
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+              <dt style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; color: var(--df-text-2); white-space: nowrap;"><span aria-hidden="true" style="width: 6px; height: 6px; flex: 0 0 6px; border-radius: 999px; background: var(--df-blue);"></span><span>Remaining</span><span style="min-width: 0; font-size: 12.5px; color: var(--df-text-3); overflow: hidden; text-overflow: ellipsis;">Andre Washington</span></dt>
+              <dd style="margin: 0; flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--df-text-1);">1</dd>
+            </div>
+          </dl>
+          <p style="margin: 0; height: 16px; padding-left: 14px; font-size: 12px; line-height: 16px; font-weight: 600; color: var(--df-amber); white-space: nowrap;">Not checked out · blocks close</p>
+          <p style="margin: 8px 0 0; font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">7 patients seen · 1 new</p>
+        </section>
+
+        <section data-part="figure" aria-labelledby="fig-production" style="min-width: 0; display: flex; flex-direction: column;">
+          <h2 id="fig-production" style="margin: 0; height: 16px; font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;">
+            <a data-go="ledger.html" href="#ledger" style="height: 16px; display: flex; align-items: center; gap: 6px; color: var(--df-text-3); text-decoration: none; white-space: nowrap;">
+              <span>Production posted</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left: auto; flex: 0 0 12px;"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+            </a>
+          </h2>
+          <p style="margin: 8px 0 0; height: 40px; display: flex; align-items: baseline; gap: 8px; white-space: nowrap;">
+            <span style="font-size: 36px; line-height: 40px; font-weight: 500; letter-spacing: -0.035em; font-variant-numeric: tabular-nums; color: var(--df-text-1);">$4,820<span style="font-size: 20px; letter-spacing: -0.01em; color: var(--df-text-3);">.00</span></span>
+          </p>
+          <dl style="margin: 12px 0 0; display: flex; flex-direction: column;">
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+              <dt style="flex: 1; min-width: 0; color: var(--df-text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Dr. Maya Okafor</dt>
+              <dd style="margin: 0; flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--df-text-1);">$3,905.00</dd>
+            </div>
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+              <dt style="flex: 1; min-width: 0; color: var(--df-text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Jen Park, RDH</dt>
+              <dd style="margin: 0; flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--df-text-1);">$915.00</dd>
+            </div>
+          </dl>
+          <dl style="margin: 8px 0 0; display: flex; flex-direction: column;">
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+              <dt style="flex: 1; min-width: 0; color: var(--df-text-3); white-space: nowrap;">Late-posted charges</dt>
+              <dd style="margin: 0; flex: 0 0 auto; font-size: 12.5px; color: var(--df-text-2);"><span style="font-family: 'Geist Mono', monospace; font-size: 11.5px;">#1069</span> · <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px;">$245.00</span></dd>
+            </div>
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+              <dt style="flex: 1; min-width: 0; color: var(--df-text-3); white-space: nowrap;">Fee overrides</dt>
+              <dd style="margin: 0; flex: 0 0 auto; font-size: 12.5px; color: var(--df-text-2);">None</dd>
+            </div>
+          </dl>
+          <p style="margin: 8px 0 0; font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">Gross · by posting date</p>
+        </section>
+
+        <section data-part="figure" aria-labelledby="fig-collections" style="min-width: 0; display: flex; flex-direction: column;">
+          <h2 id="fig-collections" style="margin: 0; height: 16px; font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;">
+            <a data-go="ledger.html" data-toast="In the app this opens today&#x27;s payments in the ledger: $3,530.00 gross, $3,315.00 net after refunds." href="#ledger-payments" style="height: 16px; display: flex; align-items: center; gap: 6px; color: var(--df-text-3); text-decoration: none; white-space: nowrap;">
+              <span>Collections by tender</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left: auto; flex: 0 0 12px;"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+            </a>
+          </h2>
+          <p style="margin: 8px 0 0; height: 40px; display: flex; align-items: baseline; gap: 8px; white-space: nowrap;">
+            <span style="font-size: 36px; line-height: 40px; font-weight: 500; letter-spacing: -0.035em; font-variant-numeric: tabular-nums; color: var(--df-text-1);">$3,530<span style="font-size: 20px; letter-spacing: -0.01em; color: var(--df-text-3);">.00</span></span>
+            <span style="font-size: 14px; color: var(--df-text-2);">gross</span>
+          </p>
+          <dl style="margin: 12px 0 0; display: flex; flex-direction: column;">
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+              <dt style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; color: var(--df-text-2); white-space: nowrap;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 14px; stroke: var(--df-text-3);"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M2 10h20"></path></svg><span>Card · reader</span></dt>
+              <dd style="margin: 0; flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--df-text-1);">$2,140.00</dd>
+            </div>
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+              <dt style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; color: var(--df-text-2); white-space: nowrap;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 14px; stroke: var(--df-text-3);"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><span>Card · pay links</span></dt>
+              <dd style="margin: 0; flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--df-text-1);">$980.00</dd>
+            </div>
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+              <dt style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; color: var(--df-text-2); white-space: nowrap;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 14px; stroke: var(--df-text-3);"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2.5"></circle><path d="M6 12h.01M18 12h.01"></path></svg><span>Cash</span></dt>
+              <dd style="margin: 0; flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--df-text-1);">$220.00</dd>
+            </div>
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+              <dt style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; color: var(--df-text-2); white-space: nowrap;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 14px; stroke: var(--df-text-3);"><rect x="2" y="6" width="20" height="12" rx="2"></rect><path d="M6 10h4M6 14h7M16 14h2"></path></svg><span>Check</span></dt>
+              <dd style="margin: 0; flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--df-text-1);">$190.00</dd>
+            </div>
+          </dl>
+          <dl style="margin: 8px 0 0; display: flex; flex-direction: column;">
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+              <dt style="flex: 1; min-width: 0; color: var(--df-text-2); white-space: nowrap;">Less refunds</dt>
+              <dd style="margin: 0; flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--df-text-2);">−$215.00</dd>
+            </div>
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+              <dt style="flex: 1; min-width: 0; font-weight: 600; color: var(--df-text-1); white-space: nowrap;">Net collected</dt>
+              <dd style="margin: 0; flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; font-weight: 500; color: var(--df-text-1);">$3,315.00</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section data-part="figure" aria-labelledby="fig-adjustments" style="min-width: 0; display: flex; flex-direction: column;">
+          <h2 id="fig-adjustments" style="margin: 0; height: 16px; font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;">
+            <a data-go="ledger.html" data-toast="In the app this opens today&#x27;s 2 adjustment lines in the ledger ($80.00, both by Rosa D.)." href="#ledger-adjustments" style="height: 16px; display: flex; align-items: center; gap: 6px; color: var(--df-text-3); text-decoration: none; white-space: nowrap;">
+              <span>Adjustments</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left: auto; flex: 0 0 12px;"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+            </a>
+          </h2>
+          <p style="margin: 8px 0 0; height: 40px; display: flex; align-items: baseline; gap: 8px; white-space: nowrap;">
+            <span style="font-size: 36px; line-height: 40px; font-weight: 500; letter-spacing: -0.035em; font-variant-numeric: tabular-nums; color: var(--df-text-1);">$80<span style="font-size: 20px; letter-spacing: -0.01em; color: var(--df-text-3);">.00</span></span>
+            <span style="font-size: 14px; color: var(--df-text-2);">2 lines</span>
+          </p>
+          <dl style="margin: 12px 0 0; display: flex; flex-direction: column;">
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+              <dt style="flex: 1; min-width: 0; color: var(--df-text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Courtesy discount</dt>
+              <dd style="margin: 0; flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--df-text-1);">$50.00</dd>
+            </div>
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+              <dt style="flex: 1; min-width: 0; color: var(--df-text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Small-balance write-off</dt>
+              <dd style="margin: 0; flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--df-text-1);">$30.00</dd>
+            </div>
+          </dl>
+          <p style="margin: 8px 0 0; font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Both by Rosa D. · within her limit</p>
+        </section>
+
+        <section data-part="figure" aria-labelledby="fig-refunds" style="min-width: 0; display: flex; flex-direction: column;">
+          <h2 id="fig-refunds" style="margin: 0; height: 16px; font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;">
+            <a data-go="chat-refund.html" data-toast="This is Priya Nair&#x27;s $215.00 refund as proposed, before Dr. Okafor approved it with her passkey at 11:20 AM." href="#ledger-refunds" style="height: 16px; display: flex; align-items: center; gap: 6px; color: var(--df-text-3); text-decoration: none; white-space: nowrap;">
+              <span>Refunds</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left: auto; flex: 0 0 12px;"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+            </a>
+          </h2>
+          <p style="margin: 8px 0 0; height: 40px; display: flex; align-items: baseline; gap: 8px; white-space: nowrap;">
+            <span style="font-size: 36px; line-height: 40px; font-weight: 500; letter-spacing: -0.035em; font-variant-numeric: tabular-nums; color: var(--df-text-1);">$215<span style="font-size: 20px; letter-spacing: -0.01em; color: var(--df-text-3);">.00</span></span>
+            <span style="font-size: 14px; color: var(--df-text-2);">1 refund</span>
+          </p>
+          <dl style="margin: 12px 0 0; display: flex; flex-direction: column;">
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+              <dt style="flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; white-space: nowrap;"><span style="font-weight: 500; color: var(--df-text-1);">Priya Nair</span><span style="min-width: 0; font-size: 12.5px; color: var(--df-text-3); overflow: hidden; text-overflow: ellipsis;">credit refund</span></dt>
+              <dd style="margin: 0; flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--df-text-1);">$215.00</dd>
+            </div>
+          </dl>
+          <p style="margin: 0; font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Returned to the original card</p>
+          <p style="margin: 8px 0 0; height: 16px; display: flex; align-items: center; gap: 6px; font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; min-width: 0;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 14px; stroke: var(--df-text-2);"><circle cx="7.5" cy="15.5" r="5.5"></circle><path d="m21 2-9.6 9.6"></path><path d="m15.5 7.5 3 3L22 7l-3-3"></path></svg>
+            <span style="overflow: hidden; text-overflow: ellipsis;">Passkey · Dr. Okafor · 11:20 AM</span>
+          </p>
+        </section>
+
+        <section data-part="figure" aria-labelledby="fig-variance" style="min-width: 0; display: flex; flex-direction: column;">
+          <h2 id="fig-variance" style="margin: 0; height: 16px; font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;">
+            <a data-toast="In the app this opens the Stripe payout match: $3,120.00 in card collections vs $3,120.00 in Stripe charges, variance $0.00." href="#payouts" style="height: 16px; display: flex; align-items: center; gap: 6px; color: var(--df-text-3); text-decoration: none; white-space: nowrap;">
+              <span>Processor variance</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left: auto; flex: 0 0 12px;"><path d="M7 17 17 7"></path><path d="M7 7h10v10"></path></svg>
+            </a>
+          </h2>
+          <p style="margin: 8px 0 0; height: 40px; display: flex; align-items: center; gap: 12px; white-space: nowrap;">
+            <span style="font-size: 36px; line-height: 40px; font-weight: 500; letter-spacing: -0.035em; font-variant-numeric: tabular-nums; color: var(--df-text-1);">$0<span style="font-size: 20px; letter-spacing: -0.01em; color: var(--df-text-3);">.00</span></span>
+            <span data-part="status-matched" style="display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 500; color: var(--df-text-2);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+              <span>Matched</span>
+            </span>
+          </p>
+          <dl style="margin: 12px 0 0; display: flex; flex-direction: column;">
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+              <dt style="flex: 1; min-width: 0; color: var(--df-text-2); white-space: nowrap;">Card collections</dt>
+              <dd style="margin: 0; flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--df-text-1);">$3,120.00</dd>
+            </div>
+            <div style="height: 24px; display: flex; align-items: center; gap: 8px; font-size: 13px;">
+              <dt style="flex: 1; min-width: 0; color: var(--df-text-2); white-space: nowrap;">Stripe charges</dt>
+              <dd style="margin: 0; flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--df-text-1);">$3,120.00</dd>
+            </div>
+          </dl>
+          <p style="margin: 8px 0 0; font-size: 12.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Stripe payouts vs card collections</p>
+        </section>
+      </section>
+
+      <section data-part="card" aria-labelledby="exceptions-title" style="flex: 1; min-height: 0; box-sizing: border-box; padding: 16px 16px 12px; background: var(--df-raised); border-radius: 14px; box-shadow: var(--df-shadow-raised); display: flex; flex-direction: column;">
+        <div style="height: 24px; flex: 0 0 24px; display: flex; align-items: center; gap: 8px;">
+          <h2 id="exceptions-title" style="margin: 0; font-size: 15px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Open exceptions</h2>
+          <span aria-label="3 open" style="height: 20px; min-width: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 999px; background: var(--df-floating); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center;">3</span>
+          <span style="font-size: 13px; color: var(--df-text-3); white-space: nowrap;">1 blocks the close</span>
+          <span data-part="severity-legend" style="margin-left: auto; display: inline-flex; align-items: center; gap: 16px; font-size: 12px; color: var(--df-text-3); white-space: nowrap;">
+            <span style="display: inline-flex; align-items: center; gap: 6px;"><span style="flex: 0 0 auto; height: 18px; box-sizing: border-box; padding: 0 6px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-size: 11px; font-weight: 600; display: inline-flex; align-items: center;">Blocking</span>resolve, or accept with a note</span>
+            <span style="display: inline-flex; align-items: center; gap: 6px;"><span style="flex: 0 0 auto; height: 18px; box-sizing: border-box; padding: 0 6px; border-radius: 999px; background: var(--df-blue-soft); color: var(--df-blue); font-size: 11px; font-weight: 600; display: inline-flex; align-items: center;">Info</span>never blocks</span>
+          </span>
+        </div>
+        <p style="margin: 4px 0 0; font-size: 12.5px; line-height: 16px; color: var(--df-text-3);">Computed from the ledger. Each clears when the data behind it is fixed.</p>
+
+        <ul style="list-style: none; margin: 4px -8px 0; padding: 0; display: flex; flex-direction: column; gap: 2px;">
+          <li data-go="account.html" data-toast="Sample account: the prototype has one account (Maria Alvarez). In the app this opens Jordan Miles&#x27;s $96.00 charge that needs a CDT code." data-part="exception-row" data-hover="true" style="height: 52px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; background: var(--df-floating); box-shadow: var(--df-shadow-lift-row); display: flex; align-items: center; gap: 12px;">
+            <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-size: 13.5px; line-height: 18px; font-weight: 600; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Charge missing procedure code · Jordan Miles</span>
+              <span style="display: flex; align-items: center; gap: 8px; min-width: 0; font-size: 12.5px; line-height: 16px; color: var(--df-text-3);">
+                <span style="flex: 0 0 auto; height: 18px; box-sizing: border-box; padding: 0 6px; border-radius: 999px; background: var(--df-amber-soft); color: var(--df-amber); font-size: 11px; font-weight: 600; display: inline-flex; align-items: center;">Blocking</span>
+                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Posted 3:40 PM by Rosa D. · Dr. Maya Okafor</span>
+              </span>
+            </span>
+            <span style="flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--df-text-1);">$96.00</span>
+            <button data-toast="In the app this opens a CDT code picker for Jordan Miles&#x27;s $96.00 charge. Once coded, the blocking exception clears." type="button" style="flex: 0 0 auto; height: 32px; box-sizing: border-box; padding: 0 12px; border: 0; border-radius: 8px; background: var(--df-accent); box-shadow: var(--df-shadow-primary-compact); color: var(--df-on-accent); font-family: inherit; font-size: 13px; font-weight: 600; white-space: nowrap; cursor: pointer;">Add CDT code</button>
+            <button data-toast="In the app this posts a reversal of Jordan Miles&#x27;s $96.00 line, with a reason. The original stays in the record and the exception clears." type="button" style="flex: 0 0 auto; height: 32px; box-sizing: border-box; padding: 0 12px; border: 0; border-radius: 8px; background: var(--df-overlay-07); box-shadow: var(--df-shadow-secondary-compact); color: var(--df-text-1); font-family: inherit; font-size: 13px; font-weight: 500; white-space: nowrap; cursor: pointer;">Reverse line</button>
+          </li>
+          <li>
+            <a data-go="account.html" data-toast="Sample account: the prototype has one account (Maria Alvarez). In the app this opens Hannah Lindqvist&#x27;s account to apply her $60.00 pay-link payment." href="#exception-unapplied" data-part="exception-row" style="height: 52px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: flex; align-items: center; gap: 12px; color: var(--df-text-1); text-decoration: none;">
+              <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <span style="font-size: 13.5px; line-height: 18px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Payment unapplied · Hannah Lindqvist</span>
+                <span style="display: flex; align-items: center; gap: 8px; min-width: 0; font-size: 12.5px; line-height: 16px; color: var(--df-text-3);">
+                  <span style="flex: 0 0 auto; height: 18px; box-sizing: border-box; padding: 0 6px; border-radius: 999px; background: var(--df-blue-soft); color: var(--df-blue); font-size: 11px; font-weight: 600; display: inline-flex; align-items: center;">Info</span>
+                  <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Pay link paid 2:14 PM · apply it to her open charge, or keep it on account as credit</span>
+                </span>
+              </span>
+              <span style="flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--df-text-1);">$60.00</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 16px; stroke: var(--df-text-3);"><path d="m9 18 6-6-6-6"></path></svg>
+            </a>
+          </li>
+          <li>
+            <a data-go="account.html" data-toast="Sample account: the prototype has one account (Maria Alvarez). In the app this opens Samuel Osei&#x27;s account to apply his $60.00 card payment." href="#exception-unapplied-card" data-part="exception-row" style="height: 52px; box-sizing: border-box; padding: 0 8px; border-radius: 10px; display: flex; align-items: center; gap: 12px; color: var(--df-text-1); text-decoration: none;">
+              <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+                <span style="font-size: 13.5px; line-height: 18px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Payment unapplied · Samuel Osei</span>
+                <span style="display: flex; align-items: center; gap: 8px; min-width: 0; font-size: 12.5px; line-height: 16px; color: var(--df-text-3);">
+                  <span style="flex: 0 0 auto; height: 18px; box-sizing: border-box; padding: 0 6px; border-radius: 999px; background: var(--df-blue-soft); color: var(--df-blue); font-size: 11px; font-weight: 600; display: inline-flex; align-items: center;">Info</span>
+                  <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Card reader 9:58 AM · apply it to a charge, or keep it on account as credit</span>
+                </span>
+              </span>
+              <span style="flex: 0 0 auto; font-family: 'Geist Mono', monospace; font-size: 13px; color: var(--df-text-1);">$60.00</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 16px; stroke: var(--df-text-3);"><path d="m9 18 6-6-6-6"></path></svg>
+            </a>
+          </li>
+        </ul>
+
+        <div data-part="resolved" style="margin: auto -8px 0; box-sizing: border-box; padding: 4px 8px; border-radius: 10px; background: var(--df-sheet); box-shadow: var(--df-shadow-ring-well);">
+          <div style="height: 24px; display: flex; align-items: center; gap: 8px;">
+            <h3 style="margin: 0; font-size: 13px; line-height: 20px; font-weight: 600; color: var(--df-text-1); white-space: nowrap;">Resolved today</h3>
+            <span aria-label="2 resolved" style="height: 20px; min-width: 20px; box-sizing: border-box; padding: 0 6px; border-radius: 999px; background: var(--df-raised); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 11px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center;">2</span>
+            <span style="font-size: 12px; color: var(--df-text-3); white-space: nowrap;">Kept in the snapshot with who, when and the note</span>
+          </div>
+          <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column;">
+            <li style="height: 24px; display: grid; grid-template-columns: 16px minmax(0, 1fr) auto 72px; column-gap: 10px; align-items: center; font-size: 12.5px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="M20 6 9 17l-5-5"></path></svg>
+              <span style="min-width: 0; color: var(--df-text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Payout variance · Sep 24 payout</span>
+              <span style="font-size: 12px; color: var(--df-text-3); white-space: nowrap;">Accepted with a note by Dr. Maya Okafor · 12:10 PM</span>
+              <span style="text-align: right; font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--df-text-3);">$12.40</span>
+            </li>
+            <li style="height: 24px; display: grid; grid-template-columns: 16px minmax(0, 1fr) auto 72px; column-gap: 10px; align-items: center; font-size: 12.5px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="stroke: var(--df-text-3);"><path d="M20 6 9 17l-5-5"></path></svg>
+              <span style="min-width: 0; color: var(--df-text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Charge missing procedure code · Tomás Herrera</span>
+              <span style="font-size: 12px; color: var(--df-text-3); white-space: nowrap;">Fixed by Rosa D. · 11:05 AM</span>
+              <span style="text-align: right; font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--df-text-3);">$112.00</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <aside data-part="close-panel" aria-labelledby="close-title" style="position: absolute; left: 808px; top: 16px; width: 376px; height: 852px; box-sizing: border-box; padding: 20px 20px 16px; background: var(--df-raised); border-radius: 16px; box-shadow: var(--df-shadow-panel); display: flex; flex-direction: column; overflow: hidden; z-index: 5;">
+
+      <div style="height: 16px; flex: 0 0 16px; display: flex; align-items: center; gap: 8px;">
+        <span style="font-family: 'Geist Mono', monospace; font-size: 11px; line-height: 16px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--df-text-3); white-space: nowrap;">Close checklist</span>
+        <span aria-label="Risk tier 2, money" style="margin-left: auto; height: 18px; box-sizing: border-box; padding: 0 6px; border-radius: 999px; box-shadow: var(--df-shadow-ring-tier-card); color: var(--df-text-2); font-family: 'Geist Mono', monospace; font-size: 10.5px; display: inline-flex; align-items: center; white-space: nowrap;">T2 · money</span>
+      </div>
+
+      <div style="margin-top: 8px; height: 24px; flex: 0 0 24px; display: flex; align-items: center; gap: 8px;">
+        <h2 id="close-title" style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: -0.01em; color: var(--df-text-1); white-space: nowrap;">Before you close</h2>
+        <span style="margin-left: auto; font-size: 12.5px; color: var(--df-text-3); white-space: nowrap;">Day version <span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--df-text-2);">v41</span></span>
+      </div>
+
+      <div style="margin-top: 10px; height: 16px; flex: 0 0 16px; display: flex; align-items: center; gap: 12px;">
+        <div role="progressbar" aria-label="Close checklist" aria-valuemin="0" aria-valuemax="5" aria-valuenow="3" aria-valuetext="3 of 5 done" style="flex: 1; min-width: 0; height: 4px; display: flex; gap: 4px;">
+          <span style="flex: 1; border-radius: 2px; background: var(--df-accent);"></span>
+          <span style="flex: 1; border-radius: 2px; background: var(--df-accent);"></span>
+          <span style="flex: 1; border-radius: 2px; background: var(--df-accent);"></span>
+          <span style="flex: 1; border-radius: 2px; background: var(--df-overlay-10);"></span>
+          <span style="flex: 1; border-radius: 2px; background: var(--df-overlay-10);"></span>
+        </div>
+        <span style="flex: 0 0 auto; font-size: 12.5px; color: var(--df-text-3); white-space: nowrap;"><span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--df-text-1);">3 of 5</span> done</span>
+      </div>
+
+      <div data-part="checklist" style="margin-top: 16px; flex: 0 0 auto; display: flex; flex-direction: column;">
+        <h3 style="margin: 0; height: 16px; display: flex; align-items: center; gap: 8px; font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--df-amber); white-space: nowrap;">
+          <span>Blocks the close</span>
+          <span style="font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0;">2</span>
+        </h3>
+        <ul style="list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px;">
+          <li data-part="check-blocking" style="box-sizing: border-box; padding: 10px 10px 10px 12px; border-radius: 10px; background: var(--df-floating); box-shadow: var(--df-shadow-floating-chip); display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; column-gap: 12px; row-gap: 2px; align-items: center;">
+            <span role="img" aria-label="Not done, blocks the close" style="width: 20px; height: 20px; box-sizing: border-box; border-radius: 999px; box-shadow: var(--df-shadow-choice-blocking); color: var(--df-amber); display: flex; align-items: center; justify-content: center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6v7"></path><path d="M12 18h.01"></path></svg>
+            </span>
+            <span style="min-width: 0; font-size: 13.5px; line-height: 20px; font-weight: 600; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Every visit has an outcome</span>
+            <button data-toast="In the app this opens Andre Washington&#x27;s checkout (checked in 1:58 PM) to record the visit outcome, clearing 1 of the 2 blockers." type="button" style="height: 32px; box-sizing: border-box; padding: 0 12px; border: 0; border-radius: 8px; background: var(--df-accent); box-shadow: var(--df-shadow-primary-compact); color: var(--df-on-accent); font-family: inherit; font-size: 13px; font-weight: 600; white-space: nowrap; cursor: pointer;">Check out</button>
+            <span style="grid-column: 2 / span 2; font-size: 12px; line-height: 16px; color: var(--df-text-2);">Andre Washington checked in 1:58 PM, never checked out</span>
+          </li>
+          <li data-part="check-blocking" style="box-sizing: border-box; padding: 10px 10px 10px 12px; border-radius: 10px; background: var(--df-floating); box-shadow: var(--df-shadow-floating-chip); display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; column-gap: 12px; row-gap: 2px; align-items: center;">
+            <span role="img" aria-label="Not done, blocks the close" style="width: 20px; height: 20px; box-sizing: border-box; border-radius: 999px; box-shadow: var(--df-shadow-choice-blocking); color: var(--df-amber); display: flex; align-items: center; justify-content: center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6v7"></path><path d="M12 18h.01"></path></svg>
+            </span>
+            <span style="min-width: 0; font-size: 13.5px; line-height: 20px; font-weight: 600; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Exceptions resolved</span>
+            <a data-toast="The blocking exception is Jordan Miles&#x27;s $96.00 charge missing a CDT code, under Open exceptions. The 2 info items never block." href="#exceptions-title" style="height: 32px; box-sizing: border-box; padding: 0 12px; border-radius: 8px; background: var(--df-overlay-07); box-shadow: var(--df-shadow-secondary-compact); color: var(--df-text-1); font-size: 13px; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; white-space: nowrap;">Review</a>
+            <span style="grid-column: 2 / span 2; font-size: 12px; line-height: 16px; color: var(--df-text-2);">1 blocking, 2 info</span>
+          </li>
+        </ul>
+
+        <h3 style="margin: 16px 0 0; height: 16px; display: flex; align-items: center; gap: 8px; font-size: 11.5px; line-height: 16px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--df-text-3); white-space: nowrap;">
+          <span>Done</span>
+          <span style="font-family: 'Geist Mono', monospace; font-size: 11px; letter-spacing: 0;">3</span>
+        </h3>
+        <ul style="list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-direction: column;">
+          <li data-part="check-done" style="box-sizing: border-box; padding: 4px 10px 4px 12px; display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; column-gap: 12px; align-items: center;">
+            <span role="img" aria-label="Done" style="width: 20px; height: 20px; border-radius: 999px; background: var(--df-overlay-06); color: var(--df-text-2); display: flex; align-items: center; justify-content: center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            </span>
+            <span style="min-width: 0; font-size: 13.5px; line-height: 20px; font-weight: 500; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Cash counted</span>
+            <a data-toast="In the app this reopens the cash count: $220.00 counted vs $220.00 expected, by Rosa D. at 4:58 PM." href="#cash-count" style="height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 6px; color: var(--df-text-2); font-size: 12.5px; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; white-space: nowrap;">Recount</a>
+            <span style="grid-column: 2 / span 2; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: var(--df-text-2);">$220.00</span> counted · <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: var(--df-text-2);">$220.00</span> expected</span>
+            <span style="grid-column: 2 / span 2; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Variance <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: var(--df-text-2);">$0.00</span> · Rosa D. · 4:58 PM</span>
+          </li>
+          <li data-part="check-done" style="box-sizing: border-box; padding: 4px 10px 4px 12px; display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; column-gap: 12px; align-items: center;">
+            <span role="img" aria-label="Done" style="width: 20px; height: 20px; border-radius: 999px; background: var(--df-overlay-06); color: var(--df-text-2); display: flex; align-items: center; justify-content: center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            </span>
+            <span style="min-width: 0; font-size: 13.5px; line-height: 20px; font-weight: 500; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Deposit slip</span>
+            <a data-toast="In the app this opens deposit slip DEP-0925: $220.00 cash and 1 check (#2201), printed 5:01 PM." href="#deposit" style="height: 28px; box-sizing: border-box; padding: 0 10px; border-radius: 6px; color: var(--df-text-2); font-size: 12.5px; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; white-space: nowrap;">View</a>
+            <span style="grid-column: 2 / span 2; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: var(--df-text-2);">DEP-0925</span> · <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: var(--df-text-2);">$220.00</span> cash · 1 check (<span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: var(--df-text-2);">#2201</span>)</span>
+            <span style="grid-column: 2 / span 2; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Printed 5:01 PM</span>
+          </li>
+          <li data-part="check-done" style="box-sizing: border-box; padding: 4px 10px 4px 12px; display: grid; grid-template-columns: 20px minmax(0, 1fr) auto; column-gap: 12px; align-items: center;">
+            <span role="img" aria-label="Done" style="width: 20px; height: 20px; border-radius: 999px; background: var(--df-overlay-06); color: var(--df-text-2); display: flex; align-items: center; justify-content: center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>
+            </span>
+            <span style="min-width: 0; font-size: 13.5px; line-height: 20px; font-weight: 500; color: var(--df-text-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Card processor matched</span>
+            <span></span>
+            <span style="grid-column: 2 / span 2; font-size: 12px; line-height: 16px; color: var(--df-text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Stripe vs card collections · variance <span style="font-family: 'Geist Mono', monospace; font-size: 11.5px; color: var(--df-text-2);">$0.00</span></span>
+          </li>
+        </ul>
+      </div>
+
+      <div data-part="close-effects" style="margin-top: 16px; flex: 0 0 auto; box-sizing: border-box; padding: 12px; border-radius: 12px; background: var(--df-sheet); box-shadow: var(--df-shadow-ring-well); display: flex; flex-direction: column; gap: 10px;">
+        <div data-part="lock-date" style="height: 20px; display: flex; align-items: center; gap: 10px; font-size: 12.5px; color: var(--df-text-2); white-space: nowrap;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 14px; stroke: var(--df-text-3);"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+          <span>Lock date</span>
+          <span style="margin-left: auto; display: inline-flex; align-items: center; gap: 6px;">
+            <span style="font-family: 'Geist Mono', monospace; font-size: 12px; color: var(--df-text-3);">Thu, Sep 24</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="moves to" style="flex: 0 0 12px; stroke: var(--df-text-2);"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            <span style="font-family: 'Geist Mono', monospace; font-size: 12px; font-weight: 500; color: var(--df-text-1);">Fri, Sep 25</span>
+          </span>
+        </div>
+        <div data-part="snapshot-note" style="display: flex; align-items: flex-start; gap: 10px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 14px; margin-top: 1px; stroke: var(--df-text-3);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+          <p style="margin: 0; min-width: 0; font-size: 12.5px; line-height: 16px; color: var(--df-text-2);">When you close the day, its totals become read-only. Corrections post as reversals in the next open day.</p>
+        </div>
+        <div data-part="reopen-note" style="display: flex; align-items: flex-start; gap: 10px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 14px; margin-top: 1px; stroke: var(--df-text-3);"><circle cx="7.5" cy="15.5" r="5.5"></circle><path d="m21 2-9.6 9.6"></path><path d="m15.5 7.5 3 3L22 7l-3-3"></path></svg>
+          <p style="margin: 0; min-width: 0; display: flex; flex-direction: column; gap: 2px;">
+            <span style="font-size: 12.5px; line-height: 16px; font-weight: 600; color: var(--df-text-1);">Only the owner can re-open a closed day</span>
+            <span style="font-size: 12px; line-height: 16px; color: var(--df-text-3);">Dr. Maya Okafor, with her passkey and a reason. Every re-open is audited.</span>
+          </p>
+        </div>
+      </div>
+
+      <div data-part="close-action" style="margin-top: auto; padding-top: 16px; flex: 0 0 auto; display: flex; flex-direction: column; gap: 8px;">
+        <button data-toast="Fri, Sep 25 can&#x27;t close yet: 2 blockers remain (Andre Washington&#x27;s checkout and Jordan Miles&#x27;s missing CDT code)." type="button" disabled aria-describedby="close-blocked-note" data-part="btn-close-day" style="width: 100%; height: 44px; box-sizing: border-box; padding: 0 16px; border: 0; border-radius: 10px; background: var(--df-floating); box-shadow: var(--df-shadow-floating-chip); color: var(--df-text-3); font-family: inherit; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 8px; white-space: nowrap; cursor: not-allowed;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>
+          <span>Close day</span>
+          <span style="font-family: 'Geist Mono', monospace; font-size: 13px; font-weight: 500;">Fri, Sep 25</span>
+        </button>
+        <p id="close-blocked-note" style="margin: 0; height: 16px; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 12.5px; line-height: 16px; font-weight: 600; color: var(--df-amber); white-space: nowrap;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 14px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v4M12 16h.01"></path></svg>
+          <span>Resolve 2 blockers first · 1 visit, 1 exception</span>
+        </p>
+      </div>
+
+      <footer data-part="card-footer" style="margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--df-overlay-06); height: 16px; flex: 0 0 auto; display: flex; align-items: center; gap: 8px; font-size: 11.5px; line-height: 16px; color: var(--df-text-3); white-space: nowrap;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: 0 0 12px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path></svg>
+        <span style="min-width: 0; overflow: hidden; text-overflow: ellipsis;">Closing as Rosa Delgado · totals as of 5:06 PM</span>
+      </footer>
+    </aside>
+  </div>
+</div>
+</div>
+<script src="proto.js"></script>
+</body>
+</html>
